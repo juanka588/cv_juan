@@ -1,0 +1,17 @@
+{
+  "name": "cv_page",
+  "version": "1.0.0",
+  "description": "Juan Curriculum Viate",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "firebase"
+  ],
+  "author": "Juan Camilo Rodriguez Duran",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^3.6.9"
+  }
+}
