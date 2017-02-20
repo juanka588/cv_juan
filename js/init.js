@@ -26,11 +26,32 @@ language = "en";
             console.log(snapshot.val());
             snapshot.forEach(function (child) {
                 strings[child.key] = child.val();
-                console.log("in english " + strings[child.key][language]);
             });
 
-            console.log(strings);
+            loadStrings();
         });
 
     }); // end of document ready
 })(jQuery); // end of jQuery name space
+
+
+function loadStrings() {
+    for (var index in strings) {
+        console.log("new values " + strings[index][language]);
+    }
+}
+
+var angularApp = angular.module('cvApp', []);
+
+angularApp.controller('languagesController', function () {
+    this.languages = ['en', 'es', 'fr'];
+    this.updateLanguage = function (lang) {
+        alert("hola" + lang);
+        language = lang;
+        loadStrings();
+    };
+});
+
+angularApp.controller('cvController', function () {
+    this.test = [5, 3, 4];
+});
