@@ -12,6 +12,7 @@
   "author": "Juan Camilo Rodriguez Duran",
   "license": "ISC",
   "dependencies": {
+    "angularfire": "^2.3.0",
     "firebase": "^3.6.9"
   }
 }

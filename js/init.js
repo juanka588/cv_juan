@@ -1,5 +1,5 @@
 var firebaseApp = initFireBase();
-var angularApp = angular.module('cvApp', []);
+var angularApp = angular.module('cvApp', ['firebase']);
 
 var strings = {};
 var language = "en";
@@ -27,21 +27,23 @@ function initFireBase() {
 angularApp.controller('languagesController', function () {
     this.languages = ['en', 'es', 'fr'];
     this.updateLanguage = function (lang) {
-        alert("hola" + lang);
         language = lang;
         loadStrings();
     };
 });
 
-angularApp.controller('cvController', function () {
-    var controller=this;
+angularApp.controller('cvController', function ($firebaseObject) {
     var nameRef = firebaseApp.database().ref('contact');
-    controller.test = [];
-    nameRef.on('value', function (snapshot) {
-        console.log(snapshot.key);
-        console.log(snapshot.val().name);
-        controller.test['contact'] = snapshot.val();
-    });
+    var langsRef = firebaseApp.database().ref('languages');
+    var educationRef = firebaseApp.database().ref('education');
+    var workRef = firebaseApp.database().ref('work_experience');
+    this.contact = $firebaseObject(nameRef);
+    this.languages = $firebaseObject(langsRef);
+    this.education = $firebaseObject(educationRef);
+    this.work = $firebaseObject(workRef);
+    this.getName = function (key) {
+        return strings[key][language];
+    };
 });
 
 

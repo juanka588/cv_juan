@@ -13,6 +13,8 @@
         <!--  Scripts-->
         <script src="node_modules/firebase/firebase.js"></script>
         <script src="node_modules/angular/angular.js"></script>
+        <script src="node_modules/angularfire/dist/angularfire.js"></script>
+
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="js/materialize.js"></script>
         <script src="js/init.js"></script>
@@ -25,12 +27,9 @@
                     <a href="index.php" class="brand-logo"><img src="images/logo.png" alt="Geo Proyecciones" style="width:240px;height:64px;"></a>
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons cyan-text text-darken-4">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="index.php"><i class="material-icons grey-text text-darken-4">new_releases</i><span class="grey-text text-darken-4">Inicio</span></a></li>
-                        <li><a href="products.php"><i class="material-icons grey-text text-darken-4">shopping_cart</i><span class="grey-text text-darken-4">Productos</span></a></li>
+                        <li><a href="index.html"><i class="material-icons grey-text text-darken-4">new_releases</i><span class="grey-text text-darken-4">Inicio</span></a></li>
+                        <li><a href="cvPage.html"><i class="material-icons grey-text text-darken-4">shopping_cart</i><span class="grey-text text-darken-4">Productos</span></a></li>
                         <li><a href="news.php"><i class="material-icons grey-text text-darken-4">forum</i><span class="grey-text text-darken-4">Noticias</span></a></li>
-                        <li><a href="clients.php"><i class="material-icons grey-text text-darken-4">assignment_ind</i><span class="grey-text text-darken-4">Clientes</span></a></li>
-                        <li><a href="contact.php"><i class="material-icons grey-text text-darken-4">contacts</i><span class="grey-text text-darken-4">Contacto</span></a></li>
-                        <li><a href="about_us.php"><i class="material-icons grey-text text-darken-4">business</i><span class="grey-text text-darken-4">Sobre Nosotros</span></a></li>
                         <li><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i><span class="grey-text text-darken-4">Languages</span></a></li>
                     </ul>				
                 </div>
@@ -40,21 +39,46 @@
             <li><a href="index.php"><i class="material-icons grey-text text-darken-4">new_releases</i><span class="grey-text text-darken-4">Inicio</span></a></li>
             <li><a href="products.php"><i class="material-icons grey-text text-darken-4">shopping_cart</i><span class="grey-text text-darken-4">Productos</span></a></li>
             <li><a href="news.php"><i class="material-icons grey-text text-darken-4">forum</i><span class="grey-text text-darken-4">Noticias</span></a></li>
-            <li><a href="clients.php"><i class="material-icons grey-text text-darken-4">assignment_ind</i><span class="grey-text text-darken-4">Clientes</span></a></li>
-            <li><a href="contact.php"><i class="material-icons grey-text text-darken-4">contacts</i><span class="grey-text text-darken-4">Contacto</span></a></li>
-            <li><a href="about_us.php"><i class="material-icons grey-text text-darken-4">business</i><span class="grey-text text-darken-4">Sobre Nosotros</span></a></li>
-            <li class="divider"></li>
         </ul>
-        <div ng-controller="languagesController as lan">
-            <ul id="dropdown1" class="dropdown-content">
-                <li ng-repeat="l in lan.languages">
-                    <a href="" ng-click="lan.updateLanguage(l)">{{l}}</a>
-                </li>
-            </ul>
-        </div>
+        <ul  ng-controller="languagesController as lan"id="dropdown1" class="dropdown-content">
+            <li ng-repeat="l in lan.languages">
+                <a href="" ng-click="lan.updateLanguage(l)">{{l}}</a>
+            </li>
+        </ul>
 
-        <div ng-controller="cvController as con">
-            Hola desde el : {{con.test}}
+        <div class="container" ng-controller="cvController as con">
+            Hola desde el : {{con.contact.name}}
+            <div class="row">
+                <div id="languages" class="cols s6">
+                    <div class="lang" ng-repeat="l in con.languages">
+                        <span>{{con.getName(l.name)}}</span>
+                        <span>{{l.certification}}</span>
+                        <span>{{l.level}}</span>
+                    </div>
+                </div>
+
+                <div id="education" class="cols s6">
+                    <div class="educationItem" ng-repeat="ed in con.education">
+                        <span>{{con.getName(ed.carrer)}}</span>
+                        <span>Since: {{ed.period_init}}</span>
+                        <span>- Until: {{ed.period_finish}}</span>
+                        <span>{{ed.institution}}</span>
+                        <span>{{ed.place}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="work">
+                    <div class="workItem" ng-repeat="wk in con.work">
+                        <span>{{wk.enterprise}}</span>
+                        <span>{{con.getName(wk.rol)}}</span>
+                        <span>Since: {{wk.period_init}}</span>
+                        <span>- Until: {{wk.period_finish}}</span>
+                        <span>  {{con.getName(wk.description)}}</span>
+                        <span>{{wk.place}}</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </body>
