@@ -35,8 +35,12 @@ angularApp.controller('languagesController', function () {
 angularApp.controller('cvController', function ($firebaseObject) {
     var nameRef = firebaseApp.database().ref('contact');
     var langsRef = firebaseApp.database().ref('languages');
-    var educationRef = firebaseApp.database().ref('education');
-    var workRef = firebaseApp.database().ref('work_experience');
+    var educationRef = firebaseApp.database().ref('education').orderByChild('period_finish');
+    educationRef.on('value', function (snap) {
+        console.log("holas " + snap.val());
+    });
+
+    var workRef = firebaseApp.database().ref('work_experience').orderByChild('period_finish');
     this.contact = $firebaseObject(nameRef);
     this.languages = $firebaseObject(langsRef);
     this.education = $firebaseObject(educationRef);

@@ -40,24 +40,27 @@
             <li><a href="products.php"><i class="material-icons grey-text text-darken-4">shopping_cart</i><span class="grey-text text-darken-4">Productos</span></a></li>
             <li><a href="news.php"><i class="material-icons grey-text text-darken-4">forum</i><span class="grey-text text-darken-4">Noticias</span></a></li>
         </ul>
-        <ul  ng-controller="languagesController as lan"id="dropdown1" class="dropdown-content">
+
+        <ul ng-controller="languagesController as lan"id="dropdown1" class="dropdown-content">
             <li ng-repeat="l in lan.languages">
                 <a href="" ng-click="lan.updateLanguage(l)">{{l}}</a>
             </li>
         </ul>
 
-        <div class="container" ng-controller="cvController as con">
-            Hola desde el : {{con.contact.name}}
-            <div class="row">
-                <div id="languages" class="cols s6">
-                    <div class="lang" ng-repeat="l in con.languages">
-                        <span>{{con.getName(l.name)}}</span>
-                        <span>{{l.certification}}</span>
-                        <span>{{l.level}}</span>
-                    </div>
+        <div class="container " ng-controller="cvController as con">
+            <div class="row valign-wrapper">
+                <img src="images/me.jpg" alt="" class="circle responsive-img col s3">
+                <div class="col s9">
+                    <div id="full_name">{{con.contact.name}}</div>
+                    <div id="adress"><address>{{con.contact.address}}</address></div>
+                    <div id="birthdate">{{con.contact.birthdate}}</div>
+                    <div id="cellphone">{{con.contact.cellphone}}</div>
+                    <div id="email">{{con.contact.email}}</div>
+                    <div id="github"><a href="{{con.contact.github}}">{{con.contact.github}}</a></div>
                 </div>
-
-                <div id="education" class="cols s6">
+            </div>
+            <div class="row">
+                <div id="education" class="col s12 m6">
                     <div class="educationItem" ng-repeat="ed in con.education">
                         <span>{{con.getName(ed.carrer)}}</span>
                         <span>Since: {{ed.period_init}}</span>
@@ -66,9 +69,17 @@
                         <span>{{ed.place}}</span>
                     </div>
                 </div>
+
+                <div id="languages" class="col s12 m6">
+                    <div class="lang" ng-repeat="l in con.languages">
+                        <span>{{con.getName(l.name)}}</span>
+                        <span>{{l.certification}}</span>
+                        <span>{{l.level}}</span>
+                    </div>
+                </div>
             </div>
             <div class="row">
-                <div id="work">
+                <div id="work" class="col s12">
                     <div class="workItem" ng-repeat="wk in con.work">
                         <span>{{wk.enterprise}}</span>
                         <span>{{con.getName(wk.rol)}}</span>

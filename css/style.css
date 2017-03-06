@@ -11,3 +11,9 @@ nav ul li i {
 .nav-wrapper{
     background-color: #fafafa !important;
 }
+.lang,.educationItem,.workItem{
+    border: 1px solid;
+}
+#education,#languages,#work{
+    border: 2px solid;
+}
