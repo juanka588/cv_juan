@@ -1,3 +1,20 @@
+@page {
+    size: auto;  /* auto is the initial value */
+    margin: 4px; /* this affects the margin in the printer settings */
+}
+@media print {
+    html * {
+        visibility: hidden;
+    }
+    #section-to-print, #section-to-print * {
+        visibility: visible;
+    }
+    #section-to-print {
+        position: absolute;
+        left: 50px;
+        top: 0;
+    }
+}
 .icon-block {
     padding: 0 15px;
 }
@@ -12,8 +29,14 @@ nav ul li i {
     background-color: #fafafa !important;
 }
 .lang,.educationItem,.workItem{
-    border: 1px solid;
+    /*border: 1px solid;*/
 }
 #education,#languages,#work{
-    border: 2px solid;
+    /*border: 2px solid;*/
+}
+.rol,.institution,.language_name,.enterprise{
+    font-weight: bold;
+}
+.period_finish,.period_init{
+    display: inline;
 }

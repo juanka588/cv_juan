@@ -7,6 +7,24 @@ var language = "en";
 (function ($) {
     $(function () {
         $(".dropdown-button").dropdown();
+        $("#printButton").click(function () {
+            var DocumentContainer = document.getElementById('section-to-print');
+            var WindowObject = window.open('', 'PrintWindow', 'width=750,height=650,top=50,left=50,toolbars=no,scrollbars=yes,status=no,resizable=yes');
+            WindowObject.document.writeln('<!DOCTYPE html>');
+            WindowObject.document.writeln('<html><head><title></title>');
+            WindowObject.document.writeln('<link rel="stylesheet" type="text/css" href="css/style.css">');
+            WindowObject.document.writeln('<link rel="stylesheet" type="text/css" href="css/materialize.css">');
+            WindowObject.document.writeln('</head><body>')
+
+            WindowObject.document.writeln(DocumentContainer.innerHTML);
+
+            WindowObject.document.writeln('</body></html>');
+
+            WindowObject.document.close();
+            WindowObject.focus();
+            WindowObject.print();
+           // WindowObject.close();
+        });
         initMain();
     }); // end of document ready
 })(jQuery); // end of jQuery name space
