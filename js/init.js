@@ -6,7 +6,6 @@ var language = "en";
 
 (function ($) {
     $(function () {
-        $(".dropdown-button").dropdown();
         $("#printButton").click(function () {
             var DocumentContainer = document.getElementById('section-to-print');
             var WindowObject = window.open('', 'PrintWindow', 'width=750,height=650,top=50,left=50,toolbars=no,scrollbars=yes,status=no,resizable=yes');
@@ -23,7 +22,7 @@ var language = "en";
             WindowObject.document.close();
             WindowObject.focus();
             WindowObject.print();
-           // WindowObject.close();
+            // WindowObject.close();
         });
         initMain();
     }); // end of document ready
@@ -55,14 +54,17 @@ angularApp.controller('cvController', function ($firebaseObject) {
     var langsRef = firebaseApp.database().ref('languages');
     var educationRef = firebaseApp.database().ref('education').orderByChild('period_finish');
     educationRef.on('value', function (snap) {
-        console.log("holas " + snap.val());
+        console.log(snap.val());
     });
 
     var workRef = firebaseApp.database().ref('work_experience').orderByChild('period_finish');
+    var programmingRef = firebaseApp.database().ref('programming_experience');
     this.contact = $firebaseObject(nameRef);
     this.languages = $firebaseObject(langsRef);
     this.education = $firebaseObject(educationRef);
     this.work = $firebaseObject(workRef);
+    this.programming = $firebaseObject(programmingRef);
+    console.log(this.programming);
     this.getName = function (key) {
         return strings[key][language];
     };
@@ -76,7 +78,7 @@ function initMain() {
         closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
     }
     );
-
+    $(".dropdown-button").dropdown();
     firebaseApp.database().ref('strings').once('value').then(function (snapshot) {
         console.log(snapshot.val());
         snapshot.forEach(function (child) {
@@ -90,7 +92,7 @@ function initMain() {
 
 function loadStrings() {
     for (var index in strings) {
-        console.log("new values " + strings[index][language]);
+        //console.log("new values " + strings[index][language]);
     }
 }
 

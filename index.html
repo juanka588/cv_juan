@@ -91,6 +91,7 @@
             </div>
 
             <div id="work">
+                <b>{{con.getName('work_experience')}}</b>
                 <div class="workItem card-panel hoverable" ng-repeat="wk in con.work">
                     <div class="row">
                         <div class="col s12 m4">
@@ -103,9 +104,24 @@
                             <div class="rol">{{con.getName(wk.rol)}}</div>
                             <div class="work_description">  {{con.getName(wk.description)}}</div>
                         </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="chip" 
+                             ng-repeat="k in wk.keywords.split(',')"> {{k}}</div>
                     </div>
                 </div>
             </div>
+
+            <div id="programming">
+                <b>{{con.getName('programming_experience')}}</b>
+                <div class="row">
+                    <div class="programmingItem card-panel hoverable col s2" ng-repeat="p in con.programming">
+                        {{p.language}}<br />{{p.level}}
+                    </div>
+                </div>
+            </div>
+
         </div>
     </body>
 </html>
