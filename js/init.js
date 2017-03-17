@@ -85,6 +85,7 @@ function initMain() {
     }
     );
     $(".dropdown-button").dropdown();
+    $('.materialboxed').materialbox();
     firebaseApp.database().ref('strings').once('value').then(function (snapshot) {
         console.log(snapshot.val());
         snapshot.forEach(function (child) {

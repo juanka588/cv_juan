@@ -146,10 +146,17 @@
                 <b>{{con.getName('projects')}}</b>
                 <div class="projectItem card-panel hoverable" ng-repeat="p in con.projects">
                     <div class="row">
-                        <div class="projectName col s12">{{con.getName(p.name)}}</div>
-                        <div class="projectDescription col s12">{{con.getName(p.description)}}</div>
-                        <img class="col s6 demoImage" src="images/me.jpg" alt="demo"/>
-                        <a href="{{p.demo}}">DEMO</a>
+                        <div class="row col s12 m6">
+                            <div class="projectName col s12">{{con.getName(p.name)}}</div>
+                            <div class="projectDescription col s12">{{con.getName(p.description)}}</div>
+                        </div>
+                        <div class="center row col s12 m6">
+                            <img class="materialboxed demoImage" 
+                                 src="{{p.link}}" 
+                                 alt="demo"
+                                 data-caption="{{p.name}}"/>
+                            <a class="col s12" href="{{p.demo}}">DEMO</a>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="chip" 
