@@ -47,7 +47,8 @@
             </li>
         </ul>
 
-        <div id="section-to-print" class="container" ng-controller="cvController as con">
+        <div id="section-to-print" class="container" 
+             ng-controller="cvController as con">
             <div class="row valign-wrapper  card-panel">
                 <img src="images/me.jpg" alt="" class="circle responsive-img col s2">
                 <div class="col s8">
@@ -116,11 +117,47 @@
             <div id="programming">
                 <b>{{con.getName('programming_experience')}}</b>
                 <div class="row">
-                    <div class="programmingItem card-panel hoverable col s2" ng-repeat="p in con.programming">
-                        {{p.language}}<br />{{p.level}}
+                    <div class="programmingItem card-panel hoverable" ng-repeat="p in con.programming">
+                        {{p.language}}<br />{{con.getName(p.level)}}
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div id="tools" class="col s12 m6">
+                    <b>{{con.getName('tools')}}</b>
+                    <div class="row">
+                        <div class="toolsItem card-panel hoverable" ng-repeat="(key,value) in con.tools">
+                            {{key}}
+                        </div>
+                    </div>
+                </div>
+
+                <div id="network" class="col s12 m6">
+                    <b>{{con.getName('network_experience')}}</b>
+                    <div class="row">
+                        <div class="networkItem card-panel hoverable" ng-repeat="(key,value) in con.network">
+                            {{key}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="projects">
+                <b>{{con.getName('projects')}}</b>
+                <div class="projectItem card-panel hoverable" ng-repeat="p in con.projects">
+                    <div class="row">
+                        <div class="projectName col s12">{{con.getName(p.name)}}</div>
+                        <div class="projectDescription col s12">{{con.getName(p.description)}}</div>
+                        <img class="col s6 demoImage" src="images/me.jpg" alt="demo"/>
+                        <a href="{{p.demo}}">DEMO</a>
+                    </div>
+                    <div class="row">
+                        <div class="chip" 
+                             ng-repeat="k in p.technologies.split(',')"> {{k}}</div>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </body>

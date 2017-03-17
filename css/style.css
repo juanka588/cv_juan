@@ -34,9 +34,16 @@ nav ul li i {
 #education,#languages,#work{
     /*border: 2px solid;*/
 }
-.rol,.institution,.language_name,.enterprise{
+.rol,.institution,.language_name,.enterprise,.projectName{
     font-weight: bold;
 }
 .period_finish,.period_init{
     display: inline;
+}
+.programmingItem,.networkItem,.toolsItem{
+    display: inline-block;
+}
+.demoImage{
+    max-width: 60px;
+    max-height: 60px;
 }
