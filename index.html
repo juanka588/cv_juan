@@ -137,35 +137,23 @@
                     <b>{{con.getName('network_experience')}}</b>
                     <div class="row">
                         <div class="networkItem card-panel hoverable" ng-repeat="(key,value) in con.network">
-                            {{key}}
+                            {{key| uppercase}}
                         </div>
                     </div>
                 </div>
             </div>
             <div id="projects">
                 <b>{{con.getName('projects')}}</b>
-                <div class="projectItem card-panel hoverable" ng-repeat="p in con.projects">
+                <div class="projectItem card-panel hoverable col s12"  ng-click="con.details(p)" ng-repeat="p in con.projects">
                     <div class="row">
-                        <div class="row col s12 m6">
-                            <div class="projectName col s12">{{con.getName(p.name)}}</div>
-                            <div class="projectDescription col s12">{{con.getName(p.description)}}</div>
-                        </div>
-                        <div class="center row col s12 m6">
-                            <img class="materialboxed demoImage" 
-                                 src="{{p.link}}" 
-                                 alt="demo"
-                                 data-caption="{{p.name}}"/>
-                            <a class="col s12" href="{{p.demo}}">DEMO</a>
-                        </div>
-                    </div>
-                    <div class="row">
+                        <div class="projectName col s12">{{con.getName(p.name)}}</div>
+                        <div class="projectDescription col s12">{{con.getName(p.description)}}</div>
+                        <a class="col s12" href="{{p.demo}}">{{p.demo}}</a>
                         <div class="chip" 
                              ng-repeat="k in p.technologies.split(',')"> {{k}}</div>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </body>
 </html>

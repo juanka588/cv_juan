@@ -48,3 +48,9 @@ nav ul li i {
     display: inline;
     /*height: 120px;*/
 }
+.toolsItem{
+    text-transform: capitalize;
+}
+.projectItem{
+    padding: 8px;
+}
