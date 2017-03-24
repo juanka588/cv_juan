@@ -1,7 +1,7 @@
 {
   "name": "cv_page",
   "version": "1.0.0",
-  "description": "Juan Curriculum Viate",
+  "description": "Juan Curriculum Vitae",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +12,7 @@
   "author": "Juan Camilo Rodriguez Duran",
   "license": "ISC",
   "dependencies": {
+    "angular-route": "^1.6.3",
     "angularfire": "^2.3.0",
     "firebase": "^3.6.9"
   }

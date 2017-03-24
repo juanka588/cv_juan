@@ -1,0 +1,108 @@
+<div id="section-to-print" class="container" 
+     ng-controller="cvController as con">
+    <div class="row valign-wrapper  card-panel">
+        <img src="images/me.jpg" alt="" class="circle responsive-img col s2">
+        <div class="col s8">
+            <div id="full_name">{{con.contact.name}}</div>
+            <div id="adress"><address>{{con.contact.address}}</address></div>
+            <div id="birthdate">{{con.contact.birthdate}}</div>
+            <div id="cellphone">{{con.contact.cellphone}}</div>
+            <div id="email">{{con.contact.email}}</div>
+            <div id="github"><a href="{{con.contact.github}}">{{con.contact.github}}</a></div>
+        </div>
+        <a id="printButton" class="btn-floating btn-large red">
+            <i class="large material-icons">print</i>
+        </a>
+    </div>
+    <div class="row">
+        <div id="education" class="col s12 m8">
+            <b>{{con.getName('education')}}</b>
+            <div class="educationItem" ng-repeat="ed in con.education">
+                <div class="institution">{{ed.institution}}</div>
+                <ul>
+                    <li class="carrer">{{con.getName(ed.carrer)}}</li>
+                    <li>
+                        <div class="period_init">{{con.getName('since')}}: {{ed.period_init}}</div>
+                        <div class="period_finish">{{con.getName('until')}}: {{ed.period_finish}}</div>
+                    </li>
+                    <li class="place">{{ed.place}}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="languages" class="col s12 m4">
+            <b>{{con.getName('language')}}</b>
+            <div class="lang" ng-repeat="l in con.languages">
+                <div class="language_name">{{con.getName(l.name)}}</div>
+                <ul>
+                    <li class="certification">{{con.getName('certification')}}:{{l.certification}}</li>
+                    <li class="level">{{con.getName('level')}}:{{l.level}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="work">
+        <b>{{con.getName('work_experience')}}</b>
+        <div class="workItem card-panel hoverable" ng-repeat="wk in con.work">
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="enterprise">{{wk.enterprise}}</div>
+                    <div class="period_init">{{con.getName('since')}}: {{wk.period_init}}</div>
+                    <div class="period_finish">{{con.getName('until')}}: {{wk.period_finish}}</div>
+                    <div class="place">{{wk.place}}</div>
+                </div>
+                <div class="col s12 m8">
+                    <div class="rol">{{con.getName(wk.rol)}}</div>
+                    <div class="work_description">  {{con.getName(wk.description)}}</div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="chip" 
+                     ng-repeat="k in wk.keywords.split(',')"> {{k}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="programming">
+        <b>{{con.getName('programming_experience')}}</b>
+        <div class="row">
+            <div class="programmingItem card-panel hoverable" ng-repeat="p in con.programming">
+                {{p.language}}<br />{{con.getName(p.level)}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="tools" class="col s12 m6">
+            <b>{{con.getName('tools')}}</b>
+            <div class="row">
+                <div class="toolsItem card-panel hoverable" ng-repeat="(key,value) in con.tools">
+                    {{key}}
+                </div>
+            </div>
+        </div>
+
+        <div id="network" class="col s12 m6">
+            <b>{{con.getName('network_experience')}}</b>
+            <div class="row">
+                <div class="networkItem card-panel hoverable" ng-repeat="(key,value) in con.network">
+                    {{key| uppercase}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="projects">
+        <b>{{con.getName('projects')}}</b>
+        <div class="projectItem card-panel hoverable col s12"  ng-click="con.details(p)" ng-repeat="p in con.projects">
+            <div class="row">
+                <div class="projectName col s12">{{con.getName(p.name)}}</div>
+                <div class="projectDescription col s12">{{con.getName(p.description)}}</div>
+                <a class="col s12" href="{{p.demo}}">{{p.demo}}</a>
+                <div class="chip" 
+                     ng-repeat="k in p.technologies.split(',')"> {{k}}</div>
+            </div>
+        </div>
+    </div>
+</div>
