@@ -1,5 +1,5 @@
 var firebaseApp = initFireBase();
-var angularApp = angular.module('cvApp', ['firebase','ngRoute']);
+var angularApp = angular.module('cvApp', ['firebase', 'ngRoute']);
 
 var strings = {};
 var language = "en";
@@ -48,18 +48,19 @@ var lController = angularApp.controller('languagesController', function () {
     };
 });
 
-angularApp.config(['$routeProvider', '$locationProvider'
-    , function($routeProvider, $locationProvider) {
-    $routeProvider
-		.when('/juan', {
-            templateUrl: 'views/cvView.html',
-            controller: 'cvController'
-        })
-		.when('/', {
-            templateUrl: 'views/cvView.html',
-            controller: 'cvController'
-        })
+angularApp
+        .config(['$routeProvider', '$locationProvider'
+            , function ($routeProvider, $locationProvider) {
+                $routeProvider
+                        .when('/juan', {
+                            templateUrl: 'views/cvView.html',
+                            controller: 'cvController'
+                        })
+                        .when('/', {
+                            templateUrl: 'views/cvView.html',
+                            controller: 'cvController'
+                        })
 
-    $locationProvider.html5Mode(true);
+                $locationProvider.html5Mode(true);
 
-}]);
+            }]);
