@@ -48,19 +48,38 @@ var lController = angularApp.controller('languagesController', function () {
     };
 });
 
-angularApp
-        .config(['$routeProvider', '$locationProvider'
-            , function ($routeProvider, $locationProvider) {
-                $routeProvider
-                        .when('/juan', {
-                            templateUrl: 'views/cvView.html',
-                            controller: 'cvController'
-                        })
-                        .when('/', {
-                            templateUrl: 'views/cvView.html',
-                            controller: 'cvController'
-                        })
+function getName(key) {
+    if (!strings[key]) {
+        return "cargando";
+    }
+    return strings[key][language];
+}
 
-                $locationProvider.html5Mode(true);
+angularApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+        $routeProvider
+                .when('/juan', {
+                    templateUrl: 'views/aboutMeView.html',
+                    controller: 'personalDataController'
+                })
+                .when('/cvitae', {
+                    templateUrl: 'views/cvView.html',
+                    controller: 'cvController'
+                })
+                .when('/experience', {
+                    templateUrl: 'views/experienceView.html',
+                    controller: 'experienceController'
+                })
+                .when('/projects', {
+                    templateUrl: 'views/projectsView.html',
+                    controller: 'projectsController'
+                })
+                .when('/main', {
+                    templateUrl: 'views/main.html',
+                })
+                .when('/', {
+                    templateUrl: 'views/main.html',
+                });
 
-            }]);
+        $locationProvider.html5Mode(true);
+
+    }]);

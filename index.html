@@ -11,7 +11,8 @@
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
         <link href="node_modules/animate.css/animate.min.css" rel="stylesheet" type="text/css"/>
         <link href="node_modules/materialize-css/dist/css/materialize.min.css" rel="stylesheet" type="text/css"/>
-        
+        <link href="css/nouislider.min.css" rel="stylesheet" type="text/css"/>
+
         <!--  Scripts-->
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="node_modules/firebase/firebase.js"></script>
@@ -19,10 +20,14 @@
         <script src="node_modules/angular-route/angular-route.min.js"></script>
         <script src="node_modules/angularfire/dist/angularfire.js"></script>
         <script src="node_modules/materialize-css/dist/js/materialize.min.js" type="text/javascript"></script>
-        
-        <script src="app.js"></script>
-        <script src="/js/cvController.js"></script>
+        <script src="js/wNumb.js" type="text/javascript"></script>
+        <script src="js/nouislider.min.js" type="text/javascript"></script>
 
+        <script src="app.js" type="text/javascript"></script>
+        <script src="/js/cvController.js" type="text/javascript"></script>
+        <script src="/js/personalDataController.js" type="text/javascript"></script>
+        <script src="/js/projectsController.js" type="text/javascript"></script>
+        <script src="/js/experienceController.js" type="text/javascript"></script>
     </head>
     <body>
         <div class="navbar-fixed">
@@ -31,18 +36,21 @@
                     <a href="index.php" class="brand-logo"><img src="images/logo.png" alt="Geo Proyecciones" style="width:240px;height:64px;"></a>
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons cyan-text text-darken-4">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="index.html"><i class="material-icons grey-text text-darken-4">new_releases</i><span class="grey-text text-darken-4">Inicio</span></a></li>
-                        <li><a href="juan"><i class="material-icons grey-text text-darken-4">shopping_cart</i><span class="grey-text text-darken-4">Productos</span></a></li>
-                        <li><a href="news.php"><i class="material-icons grey-text text-darken-4">forum</i><span class="grey-text text-darken-4">Noticias</span></a></li>
+                        <li><a href="main"><i class="material-icons grey-text text-darken-4">new_releases</i><span class="grey-text text-darken-4">Inicio</span></a></li>
+                        <li><a href="juan"><i class="material-icons grey-text text-darken-4">shopping_cart</i><span class="grey-text text-darken-4">About Me</span></a></li>
+                        <li><a href="cvitae"><i class="material-icons grey-text text-darken-4">shopping_cart</i><span class="grey-text text-darken-4">Curriculum Vitae</span></a></li>
+                        <li><a href="experience"><i class="material-icons grey-text text-darken-4">forum</i><span class="grey-text text-darken-4">Professional Experience</span></a></li>
+                        <li><a href="projects"><i class="material-icons grey-text text-darken-4">forum</i><span class="grey-text text-darken-4">Projects</span></a></li>
                         <li><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i><span class="grey-text text-darken-4">Languages</span></a></li>
                     </ul>				
                 </div>
             </nav>
         </div>
         <ul class="side-nav" id="mobile-demo">
-            <li><a href="index.php"><i class="material-icons grey-text text-darken-4">new_releases</i><span class="grey-text text-darken-4">Inicio</span></a></li>
-            <li><a href="products.php"><i class="material-icons grey-text text-darken-4">shopping_cart</i><span class="grey-text text-darken-4">Productos</span></a></li>
-            <li><a href="news.php"><i class="material-icons grey-text text-darken-4">forum</i><span class="grey-text text-darken-4">Noticias</span></a></li>
+            <li><a href="index.html"><i class="material-icons grey-text text-darken-4">new_releases</i><span class="grey-text text-darken-4">Inicio</span></a></li>
+            <li><a href="juan"><i class="material-icons grey-text text-darken-4">shopping_cart</i><span class="grey-text text-darken-4">Curriculum Vitae</span></a></li>
+            <li><a href="news.php"><i class="material-icons grey-text text-darken-4">forum</i><span class="grey-text text-darken-4">Professional Experience</span></a></li>
+            <li><a href="projects"><i class="material-icons grey-text text-darken-4">forum</i><span class="grey-text text-darken-4">Projects</span></a></li>
         </ul>
 
         <ul ng-controller="languagesController as lan"id="dropdown1" class="dropdown-content">

@@ -16,7 +16,7 @@
     </div>
     <div class="row">
         <div id="education" class="col s12 m8">
-            <b>{{con.getName('education')}}</b>
+            <h3>{{con.getName('education')}}</h3>
             <div class="educationItem" ng-repeat="ed in con.education">
                 <div class="institution">{{ed.institution}}</div>
                 <ul>
@@ -31,7 +31,7 @@
         </div>
 
         <div id="languages" class="col s12 m4">
-            <b>{{con.getName('language')}}</b>
+            <h3>{{con.getName('language')}}</h3>
             <div class="lang" ng-repeat="l in con.languages">
                 <div class="language_name">{{con.getName(l.name)}}</div>
                 <ul>
@@ -43,7 +43,7 @@
     </div>
 
     <div id="work">
-        <b>{{con.getName('work_experience')}}</b>
+        <h3>{{con.getName('work_experience')}}</h3>
         <div class="workItem card-panel hoverable" ng-repeat="wk in con.work">
             <div class="row">
                 <div class="col s12 m4">
@@ -66,7 +66,7 @@
     </div>
 
     <div id="programming">
-        <b>{{con.getName('programming_experience')}}</b>
+        <h3>{{con.getName('programming_experience')}}</h3>
         <div class="row">
             <div class="programmingItem card-panel hoverable" ng-repeat="p in con.programming">
                 {{p.language}}<br />{{con.getName(p.level)}}
@@ -76,7 +76,7 @@
 
     <div class="row">
         <div id="tools" class="col s12 m6">
-            <b>{{con.getName('tools')}}</b>
+            <h3>{{con.getName('tools')}}</h3>
             <div class="row">
                 <div class="toolsItem card-panel hoverable" ng-repeat="(key,value) in con.tools">
                     {{key}}
@@ -85,7 +85,7 @@
         </div>
 
         <div id="network" class="col s12 m6">
-            <b>{{con.getName('network_experience')}}</b>
+            <h3>{{con.getName('network_experience')}}</h3>
             <div class="row">
                 <div class="networkItem card-panel hoverable" ng-repeat="(key,value) in con.network">
                     {{key| uppercase}}
@@ -94,7 +94,7 @@
         </div>
     </div>
     <div id="projects">
-        <b>{{con.getName('projects')}}</b>
+        <h3>{{con.getName('projects')}}</h3>
         <div class="projectItem card-panel hoverable col s12"  ng-click="con.details(p)" ng-repeat="p in con.projects">
             <div class="row">
                 <div class="projectName col s12">{{con.getName(p.name)}}</div>

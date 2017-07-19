@@ -1,0 +1,15 @@
+<div class="container" ng-controller="projectsController as con">
+    <h2>{{con.getName('projects')}}</h2>
+    <button onclick="initControls()">iniciar</button>
+    <div id="slider_date"></div>
+    <input disabled id="date_selected" ng-model="con.currentDate">
+    <div class="carousel carousel-slider center" data-indicators="true">
+        <div class="carousel-item red white-text" ng-click="con.details(p)" ng-repeat="p in con.projects">
+            <div class="projectName col s12"><h4>{{con.getName(p.name)}}</h4></div>
+            <div class="projectDescription col s12"><p>{{con.getName(p.description)}}</p></div>
+            <a class="col s12" href="{{p.demo}}">{{p.demo}}</a>
+            <div class="chip" 
+                 ng-repeat="k in p.technologies.split(',')"> {{k}}</div>
+        </div>
+    </div>
+</div>

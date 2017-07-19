@@ -18,13 +18,11 @@ angularApp.controller('cvController', function ($firebaseObject) {
     controller.tools = $firebaseObject(toolsRef);
     controller.projects = $firebaseObject(projectsRef);
 
+    controller.getName = function (key) {
+        return getName(key);
+    };
+
     controller.details = function (p) {
         console.log(p);
-    };
-    controller.getName = function (key) {
-        if (!strings[key]) {
-            return "cargando";
-        }
-        return strings[key][language];
     };
 });

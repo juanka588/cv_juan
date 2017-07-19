@@ -1,0 +1,16 @@
+<div class="container" ng-controller="personalDataController as con">
+    <div class="row valign-wrapper  card-panel">
+        <img src="images/me.jpg" alt="" class="circle responsive-img col s2">
+        <div class="col s8">
+            <div id="full_name">{{con.contact.name}}</div>
+            <div id="adress"><address>{{con.contact.address}}</address></div>
+            <div id="birthdate">{{con.contact.birthdate}}</div>
+            <div id="cellphone">{{con.contact.cellphone}}</div>
+            <div id="email">{{con.contact.email}}</div>
+            <div id="github"><a href="{{con.contact.github}}">{{con.contact.github}}</a></div>
+        </div>
+        <a id="printButton" class="btn-floating btn-large red">
+            <i class="large material-icons">print</i>
+        </a>
+    </div>
+</div>
