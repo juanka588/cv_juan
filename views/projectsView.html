@@ -1,6 +1,5 @@
 <div class="container" ng-controller="projectsController as con">
     <div class="row">
-
         <h2>{{con.getName('projects')}}</h2>
         <div class="col s12" id="slider_date"></div>
         <input class="col s12" disabled id="date_selected" ng-model="con.currentDate">
@@ -15,22 +14,68 @@
             </button>
         </div>
     </div>
-
-    <div class="carousel carousel-slider center" data-indicators="true">
-        <div class="carousel-item {{con.colors[$index % con.colors.length]}} white-text" 
-             ng-click="con.details(p)" ng-repeat="p in con.projects">
-            <div class="projectName col s12"><h4>{{con.getName(p.name)}}</h4></div>
-            <div class="row">
-                <div class="col s12 m6">
-                    <p class="projectDescription">{{con.getName(p.description)}}</p>
-                    <div class="chip" 
-                         ng-repeat="k in p.technologies.split(',')"> {{k}}</div>
+    <div ng-if="con.projects.$resolved">
+        <div class="carousel carousel-slider center" data-indicators="true">
+            <div class="carousel-item {{con.colors[$index % con.colors.length]}} white-text" 
+                 ng-click="con.details(p)" ng-repeat="p in con.projects">
+                <div class="col s12"><h4>{{con.formatDate(p.time)}}</h4></div>
+                <div class="projectName col s12"><h4>{{con.getName(p.name)}}</h4></div>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <p class="projectDescription">{{con.getName(p.description)}}</p>
+                        <div class="chip" 
+                             ng-repeat="k in p.technologies.split(',')"> {{k}}</div>
+                    </div>
+                    <div class="col s12 m6">
+                        <p><img  style="max-width: 350px;padding: 30px;" alt="{{p.demo}}" src="{{p.demo}}"></p>
+                    </div>
                 </div>
-                <div class="col s12 m6">
-                    <p><img  style="max-width: 350px;padding: 30px;" alt="{{p.demo}}" src="{{p.demo}}"></p>
-                </div>
+                <a class="black-text col s12" href="{{p.link}}">{{p.link}}</a>
             </div>
-            <a class="black-text col s12" href="{{p.link}}">{{p.link}}</a>
         </div>
     </div>
+    <div ng-if="!con.projects.$resolved" class="center">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+
+            <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+
+            <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+
+            <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

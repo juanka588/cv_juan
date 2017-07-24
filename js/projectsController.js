@@ -1,29 +1,45 @@
-angularApp.controller('projectsController', function ($firebaseObject,$timeout) {
+angularApp.controller('projectsController', function ($firebaseArray, $timeout) {
     var controller = this;
     var projectsRef = firebaseApp.database().ref('projects');
 
-    controller.projects = $firebaseObject(projectsRef);
+    controller.projects = $firebaseArray(projectsRef);
+//    controller.projects.$loaded()
+//            .then(function (data) {
+//                console.log(data);
+//                initControls();
+//            });
+
     controller.currentDate = new Date();
     controller.colors = ["red", "blue", "green", "purple", "indigo"];
     controller.colors = shuffle(controller.colors);
+    controller.eventsTime = [];
+    controller.currentEvent = null;
+
+    controller.formatDate = function (timestamp) {
+        var date = new Date();
+        date.setTime(timestamp * 1000);
+        return formatDate(date);
+    };
 
     controller.getName = function (key) {
         return getName(key);
     };
+
+    controller.nextEvent = function () {
     
-    controller.nextEvent=function(){
-        alert();    
+    };
+
+    controller.previousEvent = function () {
+    
     };
     
-    controller.previousEvent=function(){
-        alert();
-    };
-    
-    $timeout(initControls, 800);
+    $timeout(initControls, 500)
 });
 
+
+
 function initControls() {
-    
+
     $('.carousel.carousel-slider').carousel({fullWidth: true});
 
     var dateSlider = document.getElementById('slider_date');
