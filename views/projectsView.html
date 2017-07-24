@@ -18,7 +18,7 @@
         <div class="carousel carousel-slider center" data-indicators="true">
             <div class="carousel-item {{con.colors[$index % con.colors.length]}} white-text" 
                  ng-click="con.details(p)" ng-repeat="p in con.projects">
-                <div class="col s12"><h4>{{con.formatDate(p.time)}}</h4></div>
+                <div class="col s12">{{con.formatDate(p.time)}}</div>
                 <div class="projectName col s12"><h4>{{con.getName(p.name)}}</h4></div>
                 <div class="row">
                     <div class="col s12 m6">

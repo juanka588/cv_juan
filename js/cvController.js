@@ -1,7 +1,7 @@
 angularApp.controller('cvController', function ($firebaseObject) {
     var controller = this;
     var langsRef = firebaseApp.database().ref('languages');
-    var educationRef = firebaseApp.database().ref('education').orderByChild('period_finish');
+    var educationRef = firebaseApp.database().ref('education').orderByChild('time');
     var programmingRef = firebaseApp.database().ref('programming_experience');
     var networkRef = firebaseApp.database().ref('network_experience');
     var toolsRef = firebaseApp.database().ref('programming_tools');

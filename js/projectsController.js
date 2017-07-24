@@ -1,6 +1,6 @@
 angularApp.controller('projectsController', function ($firebaseArray, $timeout) {
     var controller = this;
-    var projectsRef = firebaseApp.database().ref('projects');
+    var projectsRef = firebaseApp.database().ref('projects').orderByChild('time');
 
     controller.projects = $firebaseArray(projectsRef);
 //    controller.projects.$loaded()
