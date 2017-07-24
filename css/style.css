@@ -57,4 +57,13 @@ nav ul li i {
 .parallax-container {
     height: 1800px;
 }
+.projectDescription{
+    text-align: justify;
+    padding: 15px;
+    font-size: large !important;
+}
+
+.carousel.carousel-slider.initialized{
+    min-height: 60vh !important;
+}
 

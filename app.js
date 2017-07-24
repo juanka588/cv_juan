@@ -4,6 +4,7 @@ var angularApp = angular.module('cvApp', ['firebase', 'ngRoute']);
 var strings = {};
 var language = "en";
 
+
 (function ($) {
     $(function () {
         firebaseApp.database().ref('strings').once('value').then(function (snapshot) {
@@ -46,14 +47,10 @@ var lController = angularApp.controller('languagesController', function () {
     this.updateLanguage = function (lang) {
         language = lang;
     };
+    this.getName = function (key) {
+        return getName(key)
+    };
 });
-
-function getName(key) {
-    if (!strings[key]) {
-        return "cargando";
-    }
-    return strings[key][language];
-}
 
 angularApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider

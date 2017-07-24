@@ -1,17 +1,20 @@
-angularApp.controller('projectsController', function ($firebaseObject) {
+angularApp.controller('projectsController', function ($firebaseObject,$timeout) {
     var controller = this;
     var projectsRef = firebaseApp.database().ref('projects');
 
     controller.projects = $firebaseObject(projectsRef);
     controller.currentDate = new Date();
+    controller.colors = ["red", "blue", "green", "purple", "indigo"];
+    controller.colors = shuffle(controller.colors);
 
     controller.getName = function (key) {
         return getName(key);
     };
-
+    $timeout(initControls, 800);
 });
 
 function initControls() {
+    
     $('.carousel.carousel-slider').carousel({fullWidth: true});
 
     var dateSlider = document.getElementById('slider_date');
@@ -40,47 +43,4 @@ function initControls() {
         $("#date_selected").val(formatDate(new Date(+values[handle])));
     });
 
-}
-
-// Create a list of day and monthnames.
-var weekdays = [
-    "Sunday", "Monday", "Tuesday",
-    "Wednesday", "Thursday", "Friday",
-    "Saturday"
-];
-var months = [
-    "January", "February", "March",
-    "April", "May", "June", "July",
-    "August", "September", "October",
-    "November", "December"
-];
-
-// Append a suffix to dates.
-// Example: 23 => 23rd, 1 => 1st.
-function nth(d) {
-    if (d > 3 && d < 21)
-        return 'th';
-    switch (d % 10) {
-        case 1:
-            return "st";
-        case 2:
-            return "nd";
-        case 3:
-            return "rd";
-        default:
-            return "th";
-    }
-}
-
-// Create a string representation of the date.
-function formatDate(date) {
-    return weekdays[date.getDay()] + ", " +
-            date.getDate() + nth(date.getDate()) + " " +
-            months[date.getMonth()] + " " +
-            date.getFullYear();
-}
-
-
-function timestamp(str) {
-    return new Date(str).getTime();
 }
