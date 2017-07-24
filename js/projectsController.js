@@ -10,6 +10,15 @@ angularApp.controller('projectsController', function ($firebaseObject,$timeout) 
     controller.getName = function (key) {
         return getName(key);
     };
+    
+    controller.nextEvent=function(){
+        alert();    
+    };
+    
+    controller.previousEvent=function(){
+        alert();
+    };
+    
     $timeout(initControls, 800);
 });
 

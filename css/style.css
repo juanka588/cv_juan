@@ -36,6 +36,8 @@ nav ul li i {
 }
 .rol,.institution,.language_name,.enterprise,.projectName{
     font-weight: bold;
+    font-size: large;
+    margin-top: 12px;
 }
 .period_finish,.period_init{
     display: inline;
@@ -62,8 +64,21 @@ nav ul li i {
     padding: 15px;
     font-size: large !important;
 }
-
+.projectSmallDescription{
+    margin-top: 20px;
+}
 .carousel.carousel-slider.initialized{
     min-height: 60vh !important;
 }
-
+.keywordList{
+    margin-top: 30px; 
+}
+.programmingItem, .networkItem,.toolsItem{
+    margin-left: 12px !important;
+}
+.pLanguage{
+    display: block;
+}
+.pLevel{
+    font-size: smaller;
+}

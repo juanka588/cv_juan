@@ -1,7 +1,21 @@
 <div class="container" ng-controller="projectsController as con">
-    <h2>{{con.getName('projects')}}</h2>
-    <div id="slider_date"></div>
-    <input disabled id="date_selected" ng-model="con.currentDate">
+    <div class="row">
+
+        <h2>{{con.getName('projects')}}</h2>
+        <div class="col s12" id="slider_date"></div>
+        <input class="col s12" disabled id="date_selected" ng-model="con.currentDate">
+        <div class="col s1">
+            <button class="btn-floating btn-large waves-effect waves-light blue" ng-click="con.previousEvent()">
+                <i class="material-icons right">navigate_before</i>
+            </button>
+        </div>
+        <div class="col s1 offset-s10">
+            <button class="btn-floating btn-large waves-effect waves-light blue" ng-click="con.nextEvent()">
+                <i class="material-icons right">navigate_next</i>
+            </button>
+        </div>
+    </div>
+
     <div class="carousel carousel-slider center" data-indicators="true">
         <div class="carousel-item {{con.colors[$index % con.colors.length]}} white-text" 
              ng-click="con.details(p)" ng-repeat="p in con.projects">
@@ -13,10 +27,10 @@
                          ng-repeat="k in p.technologies.split(',')"> {{k}}</div>
                 </div>
                 <div class="col s12 m6">
-    <p><img  style="max-width: 350px;padding: 30px;" alt="{{p.demo}}" src="{{p.demo}}"></p>
-</div>
-                         </div>
+                    <p><img  style="max-width: 350px;padding: 30px;" alt="{{p.demo}}" src="{{p.demo}}"></p>
+                </div>
+            </div>
             <a class="black-text col s12" href="{{p.link}}">{{p.link}}</a>
-</div>
+        </div>
     </div>
 </div>

@@ -12,11 +12,10 @@
                 <div class="rol">{{con.getName(wk.rol)}}</div>
                 <div class="work_description">  {{con.getName(wk.description)}}</div>
             </div>
-
-        </div>
-        <div class="row">
-            <div class="chip" 
-                 ng-repeat="k in wk.keywords.split(',')"> {{k}}</div>
+            <div class="col s12">
+                <div class="chip keywordList" 
+                     ng-repeat="k in wk.keywords.split(',')"> {{k}}</div>
+            </div>
         </div>
     </div>
 </div>

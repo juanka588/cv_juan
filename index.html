@@ -36,20 +36,30 @@
             <div class="navbar-fixed">
                 <nav>
                     <div class="blue nav-wrapper">
-                        <a href="index.php" class="brand-logo"><img src="images/logo.png" alt="Geo Proyecciones" style="width:240px;height:64px;"></a>
+                        <a href="main" class="brand-logo"><i class="large material-icons">insert_chart</i></a>
                         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons cyan-text text-darken-4">menu</i></a>
                         <ul class="right hide-on-med-and-down">
-                            <li><a href="main"><i class="material-icons white-text text-darken-4">branding_watermark</i><span class="white-text text-darken-4">{{lan.getName("index")}}</span></a></li>
-                            <li><a href="juan"><i class="material-icons white-text text-darken-4">comment</i><span class="white-text text-darken-4">{{lan.getName("about_me")}}</span></a></li>
-                            <li><a href="cvitae"><i class="material-icons white-text text-darken-4">move_to_inbox</i><span class="white-text text-darken-4">Curriculum Vitae</span></a></li>
-                            <li><a href="experience"><i class="material-icons white-text text-darken-4">code</i><span class="white-text text-darken-4">{{lan.getName("work_experience")}}</span></a></li>
-                            <li><a href="projects"><i class="material-icons white-text text-darken-4">apps</i><span class="white-text text-darken-4">{{lan.getName("projects")}}</span></a></li>
+                            <li><a class="valign-wrapper" href="main"><i class="material-icons white-text text-darken-4">branding_watermark</i><span class="white-text text-darken-4">{{lan.getName("index")}}</span></a></li>
+                            <li><a class="valign-wrapper" href="juan"><i class="material-icons white-text text-darken-4">comment</i><span class="white-text text-darken-4">{{lan.getName("about_me")}}</span></a></li>
+                            <li><a class="valign-wrapper" href="cvitae"><i class="material-icons white-text text-darken-4">move_to_inbox</i><span class="white-text text-darken-4">Curriculum Vitae</span></a></li>
+                            <li><a class="valign-wrapper" href="experience"><i class="material-icons white-text text-darken-4">code</i><span class="white-text text-darken-4">{{lan.getName("work_experience")}}</span></a></li>
+                            <li><a class="valign-wrapper" href="projects"><i class="material-icons white-text text-darken-4">apps</i><span class="white-text text-darken-4">{{lan.getName("projects")}}</span></a></li>
                             <li><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i><span class="white-text text-darken-4">Languages</span></a></li>
                         </ul>				
                     </div>
                 </nav>
             </div>
             <ul class="side-nav" id="mobile-demo">
+                <li>
+                    <div class="user-view">
+                        <div class="background">
+                            <img src="images/office.jpg">
+                        </div>
+                        <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+                        <a href="#!name"><span class="white-text name">John Doe</span></a>
+                        <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                    </div>
+                </li>
                 <li><a href="main"><i class="material-icons grey-text text-darken-4">branding_watermark</i><span class="grey-text text-darken-4">{{lan.getName("index")}}</span></a></li>
                 <li><a href="juan"><i class="material-icons grey-text text-darken-4">comment</i><span class="grey-text text-darken-4">{{lan.getName("about_me")}}</span></a></li>
                 <li><a href="cvitae"><i class="material-icons grey-text text-darken-4">move_to_inbox</i><span class="grey-text text-darken-4">Curriculum Vitae</span></a></li>
@@ -77,7 +87,7 @@
                 </li>
             </ul>
         </div>
-        
+
         <div ng-view=""></div>
 
     </body>

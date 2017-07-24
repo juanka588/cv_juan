@@ -1,7 +1,7 @@
 <div id="section-to-print" class="container white" >
-    <div class="valign-wrapper  card-panel" ng-controller="personalDataController as per">
-        <img src="images/me.jpg" alt="" class="circle responsive-img col s2">
-        <div class="col s8">
+    <div class="row valign-wrapper card-panel" ng-controller="personalDataController as per">
+        <img src="images/me.jpg" alt="myself" class="circle responsive-img col s2 offset-s1">
+        <div class="col s6 offset-s1">
             <div id="full_name">{{per.contact.name}}</div>
             <div id="adress"><address>{{per.contact.address}}</address></div>
             <div id="birthdate">{{per.contact.birthdate}}</div>
@@ -9,27 +9,30 @@
             <div id="email">{{per.contact.email}}</div>
             <div id="github"><a href="{{per.contact.github}}">{{per.contact.github}}</a></div>
         </div>
-        <a id="printButton" class="btn-floating btn-large red">
-            <i class="large material-icons">print</i>
-        </a>
+        <div class="col s2">
+            <a id="printButton" class="btn-floating btn-large red">
+                <i class="large material-icons">print</i>
+            </a>
+        </div>
     </div>
-    <div class="white" ng-controller="cvController as con">
-        <div id="education" class="col s12 m8">
+
+    <div class="row white" ng-controller="cvController as con">
+        <div id="education" class="col s12 m7">
             <h4>{{con.getName('education')}}</h4>
             <div class="educationItem" ng-repeat="ed in con.education">
                 <div class="institution">{{ed.institution}}</div>
                 <ul>
                     <li class="carrer">{{con.getName(ed.carrer)}}</li>
                     <li>
-                        <div class="period_init">{{con.getName('since')}}: {{ed.period_init}}</div>
-                        <div class="period_finish">{{con.getName('until')}}: {{ed.period_finish}}</div>
+                        <div class="period_init"><span>{{con.getName('since')}}:</span> {{ed.period_init}}</div>
+                        <div class="period_finish"><span>{{con.getName('until')}}:</span> {{ed.period_finish}}</div>
                     </li>
                     <li class="place">{{ed.place}}</li>
                 </ul>
             </div>
         </div>
 
-        <div id="languages" class="white col s12 m4">
+        <div id="languages" class="white col s12 m5">
             <h4>{{con.getName('language')}}</h4>
             <div class="lang" ng-repeat="l in con.languages">
                 <div class="language_name">{{con.getName(l.name)}}</div>
@@ -41,7 +44,7 @@
         </div>
     </div>
 
-    <div id="work" class="white" ng-controller="experienceController as exp">
+    <div id="work" class="row white" ng-controller="experienceController as exp">
         <h4>{{exp.getName('work_experience')}}</h4>
         <div class="workItem card-panel hoverable" ng-repeat="wk in exp.work">
             <div class="row">
@@ -56,23 +59,23 @@
                     <div class="work_description">  {{exp.getName(wk.description)}}</div>
                 </div>
                 <div class="col s12">
-                    <div class="chip" 
+                    <div class="chip keywordList" 
                          ng-repeat="k in wk.keywords.split(',')"> {{k}}</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="programming" ng-controller="cvController as con">
+    <div id="programming" class="row" ng-controller="cvController as con">
         <h4>{{con.getName('programming_experience')}}</h4>
         <div class="row">
             <div class="programmingItem card-panel hoverable" ng-repeat="p in con.programming">
-                {{p.language}}<br />{{con.getName(p.level)}}
+                <span class="pLanguage">{{p.language}}</span><span class="pLevel">{{con.getName(p.level)}}</span>
             </div>
         </div>
     </div>
 
-    <div ng-controller="cvController as con">
+    <div class="row" ng-controller="cvController as con">
         <div id="tools" class="col s12 m6">
             <h4>{{con.getName('tools')}}</h4>
             <div class="row">
@@ -91,15 +94,14 @@
             </div>
         </div>
     </div>
-    <div id="projects" ng-controller="projectsController as prj">
+    <div id="projects" class="row" ng-controller="projectsController as prj">
         <h4 >{{prj.getName('projects')}}</h4>
         <div class="projectItem card-panel hoverable col s12"  ng-click="prj.details(p)" ng-repeat="p in prj.projects">
             <div class="row">
                 <div class="projectName col s12">{{prj.getName(p.name)}}</div>
                 <div class="projectSmallDescription col s12">{{prj.getName(p.description)}}</div>
-                <a class="col s12" href="{{p.demo}}">{{p.demo}}</a>
                 <div class="col s12">
-                    <div class="chip" 
+                    <div class="chip keywordList" 
                          ng-repeat="k in p.technologies.split(',')"> {{k}}</div>
                 </div>
             </div>
