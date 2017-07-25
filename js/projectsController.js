@@ -12,8 +12,8 @@ angularApp.controller('projectsController', function ($firebaseArray, $timeout) 
     controller.currentDate = new Date();
     controller.colors = ["red", "blue", "green", "purple", "indigo"];
     controller.colors = shuffle(controller.colors);
-    controller.eventsTime = [];
     controller.currentEvent = null;
+    controller.currentIdx = 0;
 
     controller.formatDate = function (timestamp) {
         var date = new Date();
@@ -26,14 +26,12 @@ angularApp.controller('projectsController', function ($firebaseArray, $timeout) 
     };
 
     controller.nextEvent = function () {
-    
+        $('.carousel').carousel('next');
     };
 
     controller.previousEvent = function () {
-    
+        $('.carousel').carousel('prev');
     };
-    
-    $timeout(initControls, 500)
 });
 
 

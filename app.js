@@ -1,5 +1,5 @@
 var firebaseApp = initFireBase();
-var angularApp = angular.module('cvApp', ['firebase', 'ngRoute']);
+var angularApp = angular.module('cvApp', ['firebase', 'ngRoute','ngAnimate']);
 
 var strings = {};
 var language = "en";
