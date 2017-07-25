@@ -69,6 +69,7 @@ nav ul li i {
 }
 .carousel.carousel-slider.initialized{
     min-height: 60vh !important;
+    margin-bottom: 50px;
 }
 .keywordList{
     margin-top: 30px; 
@@ -82,6 +83,12 @@ nav ul li i {
 .pLevel{
     font-size: smaller;
 }
+#map {
+    width: 100%;
+    height: 400px;
+    background-color: grey;
+}
+
 
 div[ng-view].ng-enter {
     -webkit-animation: fadeIn 0.5s;
