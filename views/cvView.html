@@ -96,7 +96,7 @@
     </div>
     <div id="projects" class="row" ng-controller="projectsController as prj">
         <h4 >{{prj.getName('projects')}}</h4>
-        <div class="projectItem card-panel hoverable col s12"  ng-click="prj.details(p)" ng-repeat="p in prj.projects">
+        <div class="projectItem card-panel hoverable col s12"  ng-click="prj.details(p)" ng-repeat="p in prj.mainProjects">
             <div class="row">
                 <div class="projectName col s12">{{prj.getName(p.name)}}</div>
                 <div class="projectSmallDescription col s12">{{prj.getName(p.description)}}</div>

@@ -1,27 +1,27 @@
-[debug] [2017-07-25T15:49:19.499Z] ----------------------------------------------------------------------
-[debug] [2017-07-25T15:49:19.502Z] Command:      /usr/bin/nodejs /usr/bin/firebase serve
-[debug] [2017-07-25T15:49:19.502Z] CLI Version:  3.9.1
-[debug] [2017-07-25T15:49:19.502Z] Platform:     linux
-[debug] [2017-07-25T15:49:19.502Z] Node Version: v6.11.1
-[debug] [2017-07-25T15:49:19.503Z] Time:         Tue Jul 25 2017 10:49:19 GMT-0500 (COT)
-[debug] [2017-07-25T15:49:19.503Z] ----------------------------------------------------------------------
+[debug] [2017-07-25T17:32:05.956Z] ----------------------------------------------------------------------
+[debug] [2017-07-25T17:32:05.962Z] Command:      /usr/bin/nodejs /usr/bin/firebase serve
+[debug] [2017-07-25T17:32:05.963Z] CLI Version:  3.9.1
+[debug] [2017-07-25T17:32:05.963Z] Platform:     linux
+[debug] [2017-07-25T17:32:05.963Z] Node Version: v6.11.1
+[debug] [2017-07-25T17:32:05.963Z] Time:         Tue Jul 25 2017 12:32:05 GMT-0500 (COT)
+[debug] [2017-07-25T17:32:05.963Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2017-07-25T15:49:19.516Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2017-07-25T15:49:19.516Z] > authorizing via signed-in user
-[debug] [2017-07-25T15:49:19.518Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/cvitae-dad25  
- Tue Jul 25 2017 10:49:19 GMT-0500 (COT)
-[debug] [2017-07-25T15:49:20.207Z] <<< HTTP RESPONSE 200
-[debug] [2017-07-25T15:49:20.209Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/cvitae-dad25/tokens  
- Tue Jul 25 2017 10:49:20 GMT-0500 (COT)
-[debug] [2017-07-25T15:49:20.853Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-25T17:32:05.978Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-07-25T17:32:05.979Z] > authorizing via signed-in user
+[debug] [2017-07-25T17:32:05.985Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/cvitae-dad25  
+ Tue Jul 25 2017 12:32:05 GMT-0500 (COT)
+[debug] [2017-07-25T17:32:06.977Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-25T17:32:06.979Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/cvitae-dad25/tokens  
+ Tue Jul 25 2017 12:32:06 GMT-0500 (COT)
+[debug] [2017-07-25T17:32:07.802Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/home/dellaw724/NetBeansProjects/cv_juan'...
 [info] 
-[debug] [2017-07-25T15:49:20.858Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/cvitae-dad25  
- Tue Jul 25 2017 10:49:20 GMT-0500 (COT)
-[debug] [2017-07-25T15:49:21.462Z] <<< HTTP RESPONSE 200
-[debug] [2017-07-25T15:49:21.463Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/735079542401/clients/_:getWebAppConfig  
- Tue Jul 25 2017 10:49:21 GMT-0500 (COT)
-[debug] [2017-07-25T15:49:21.949Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-25T17:32:07.805Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/cvitae-dad25  
+ Tue Jul 25 2017 12:32:07 GMT-0500 (COT)
+[debug] [2017-07-25T17:32:08.410Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-25T17:32:08.411Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/735079542401/clients/_:getWebAppConfig  
+ Tue Jul 25 2017 12:32:08 GMT-0500 (COT)
+[debug] [2017-07-25T17:32:09.109Z] <<< HTTP RESPONSE 200
 [info] ✔  hosting: Local server: http://localhost:5000
 

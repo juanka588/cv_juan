@@ -1,17 +1,20 @@
-angularApp.controller('projectsController', function ($firebaseArray, $timeout) {
+angularApp.controller('projectsController', function ($firebaseArray) {
     var controller = this;
+    var mainProjectsRef = firebaseApp.database().ref('projects')
+            .orderByChild('principal').equalTo(true);
+    
     var projectsRef = firebaseApp.database().ref('projects').orderByChild('time');
 
+    controller.mainProjects = $firebaseArray(mainProjectsRef);
     controller.projects = $firebaseArray(projectsRef);
-//    controller.projects.$loaded()
-//            .then(function (data) {
-//                console.log(data);
-//                initControls();
-//            });
+    controller.projects.$loaded()
+            .then(function () {
+                controller.currentEvent = controller.projects[0];
+            });
 
     controller.currentDate = new Date();
-    controller.colors = ["red", "blue", "green", "purple", "indigo"];
-    controller.colors = shuffle(controller.colors);
+    controller.colors = ["red", "blue", "green", "purple", "indigo", "orange"];
+//    controller.colors = shuffle(controller.colors);
     controller.currentEvent = null;
     controller.currentIdx = 0;
 
@@ -27,11 +30,30 @@ angularApp.controller('projectsController', function ($firebaseArray, $timeout) 
 
     controller.nextEvent = function () {
         $('.carousel').carousel('next');
+        controller.currentIdx++;
+        controller.currentIdx = controller.currentIdx % controller.projects.length;
+        controller.updateSelectedEvent();
     };
 
     controller.previousEvent = function () {
         $('.carousel').carousel('prev');
+        controller.currentIdx--;
+        if (controller.currentIdx < 0) {
+            controller.currentIdx = controller.projects.length - 1;
+        }
+        controller.updateSelectedEvent();
     };
+
+    controller.updateSelectedEvent = function () {
+        controller.currentEvent = controller.projects[controller.currentIdx];
+        var dateSlider = document.getElementById('slider_date');
+        dateSlider.noUiSlider.set(controller.currentEvent.time * 1000);
+    };
+
+    controller.details = function (p) {
+        console.log(p);
+    };
+
 });
 
 
@@ -45,7 +67,7 @@ function initControls() {
     noUiSlider.create(dateSlider, {
         // Create two timestamps to define a range.
         range: {
-            min: timestamp('2010'),
+            min: timestamp('2012'),
             max: new Date().getTime()
         },
         // Steps of one week
