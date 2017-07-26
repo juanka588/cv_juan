@@ -2,7 +2,7 @@ angularApp.controller('projectsController', function ($firebaseArray) {
     var controller = this;
     var mainProjectsRef = firebaseApp.database().ref('projects')
             .orderByChild('principal').equalTo(true);
-    
+
     var projectsRef = firebaseApp.database().ref('projects').orderByChild('time');
 
     controller.mainProjects = $firebaseArray(mainProjectsRef);
