@@ -8,7 +8,6 @@ var language = "en";
 (function ($) {
     $(function () {
         firebaseApp.database().ref('strings').once('value').then(function (snapshot) {
-            //console.log(snapshot.val());
             snapshot.forEach(function (child) {
                 strings[child.key] = child.val();
             });

@@ -25,3 +25,38 @@
 [debug] [2017-07-25T17:32:09.109Z] <<< HTTP RESPONSE 200
 [info] ✔  hosting: Local server: http://localhost:5000
 
+[debug] [2017-07-26T16:00:57.776Z] ----------------------------------------------------------------------
+[debug] [2017-07-26T16:00:57.783Z] Command:      /usr/bin/nodejs /usr/bin/firebase serve
+[debug] [2017-07-26T16:00:57.784Z] CLI Version:  3.9.1
+[debug] [2017-07-26T16:00:57.785Z] Platform:     linux
+[debug] [2017-07-26T16:00:57.785Z] Node Version: v6.11.1
+[debug] [2017-07-26T16:00:57.785Z] Time:         Wed Jul 26 2017 11:00:57 GMT-0500 (COT)
+[debug] [2017-07-26T16:00:57.785Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-07-26T16:00:57.825Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-07-26T16:00:57.826Z] > authorizing via signed-in user
+[debug] [2017-07-26T16:00:57.831Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-07-26T16:00:57.832Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/-JoOWHpXqq_ymiwniF_vYRqiMubWeHblHAAcToE3cxY',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Wed Jul 26 2017 11:00:57 GMT-0500 (COT)
+[debug] [2017-07-26T16:00:58.106Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-26T16:00:58.157Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/cvitae-dad25  
+ Wed Jul 26 2017 11:00:58 GMT-0500 (COT)
+[debug] [2017-07-26T16:00:59.082Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-26T16:00:59.083Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/cvitae-dad25/tokens  
+ Wed Jul 26 2017 11:00:59 GMT-0500 (COT)
+[debug] [2017-07-26T16:00:59.824Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/dellaw724/NetBeansProjects/cv_juan'...
+[info] 
+[debug] [2017-07-26T16:00:59.828Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/cvitae-dad25  
+ Wed Jul 26 2017 11:00:59 GMT-0500 (COT)
+[debug] [2017-07-26T16:01:00.564Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-26T16:01:00.565Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/735079542401/clients/_:getWebAppConfig  
+ Wed Jul 26 2017 11:01:00 GMT-0500 (COT)
+[debug] [2017-07-26T16:01:01.276Z] <<< HTTP RESPONSE 200
+[info] ✔  hosting: Local server: http://localhost:5000
+
