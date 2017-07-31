@@ -14,9 +14,11 @@
   "dependencies": {
     "angular": "^1.6.5",
     "angular-animate": "^1.6.5",
+    "angular-chart.js": "^1.1.1",
     "angular-route": "^1.6.5",
     "angularfire": "^2.3.0",
     "animate.css": "^3.5.2",
+    "chart.js": "^2.6.0",
     "firebase": "^3.9.0",
     "jquery": "^3.2.1",
     "materialize-css": "^0.99.0"

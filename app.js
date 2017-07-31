@@ -1,5 +1,5 @@
 var firebaseApp = initFireBase();
-var angularApp = angular.module('cvApp', ['firebase', 'ngRoute','ngAnimate']);
+var angularApp = angular.module('cvApp', ['firebase', 'ngRoute', 'ngAnimate', 'chart.js']);
 
 var strings = {};
 var language = "en";
@@ -16,6 +16,9 @@ var language = "en";
     }); // end of document ready
 })(jQuery); // end of jQuery name space
 
+(function (ChartJsProvider) {
+    ChartJsProvider.setOptions({colors: ['#803690', '#00ADF9', '#DCDCDC', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360']});
+});
 
 function initMain() {
     $('.button-collapse').sideNav({
@@ -41,18 +44,43 @@ function initFireBase() {
 }
 
 
-var lController = angularApp.controller('languagesController', function () {
+angularApp.controller('languagesController', function () {
     this.languages = ['en', 'es', 'fr'];
     this.updateLanguage = function (lang) {
         language = lang;
     };
     this.getName = function (key) {
-        return getName(key)
+        return getName(key);
     };
 });
 
+// for ngRoute
+angularApp.run(["$rootScope", "$location", function ($rootScope, $location) {
+        $rootScope.$on("$routeChangeError", function (event, next, previous, error) {
+            if (error === "AUTH_REQUIRED") {
+                alert("te saliste");
+                $location.path("/main");
+            }
+        });
+    }]);
+
+angularApp.factory("Auth", ["$firebaseAuth",
+    function ($firebaseAuth) {
+        return $firebaseAuth();
+    }
+]);
+
 angularApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider
+                .when('/accounts', {
+                    templateUrl: 'views/accountsView.html',
+                    controller: 'personalAccountController',
+                    resolve: {
+                        "currentAuth": ["Auth", function (Auth) {
+                                return Auth.$requireSignIn();
+                            }]
+                    }
+                })
                 .when('/juan', {
                     templateUrl: 'views/aboutMeView.html',
                     controller: 'personalDataController'
