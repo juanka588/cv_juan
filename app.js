@@ -97,11 +97,18 @@ angularApp.config(['$routeProvider', '$locationProvider', function ($routeProvid
                     templateUrl: 'views/projectsView.html',
                     controller: 'projectsController'
                 })
+                .when('/experiments', {
+                    templateUrl: 'views/experimentsView.html'
+                })
+                .when('/experiment/:ID', {
+                    templateUrl: 'views/experimentsView.html',
+                    controller: 'experimentsController'
+                })
                 .when('/main', {
-                    templateUrl: 'views/main.html',
+                    templateUrl: 'views/main.html'
                 })
                 .when('/', {
-                    templateUrl: 'views/main.html',
+                    templateUrl: 'views/main.html'
                 });
 
         $locationProvider.html5Mode(true);
