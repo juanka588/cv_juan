@@ -1,0 +1,22 @@
+<div ng-controller="personalAccountController as con">
+    <button ng-click="con.signIn()">Sign In Anonymously</button>
+    <div class="row">
+        <div class="col s3" ng-if="con.firebaseUser">
+            <div>Signed in user: <strong>{{ con.firebaseUser.uid}}</strong></div>
+            <div>Name: <strong>{{ con.firebaseUser.displayName}}</strong></div>
+            <div>Photo: <a><img class="circle" alt="user-profile-photo" src="{{con.firebaseUser.photoURL}}"></a></div>
+            <div>Email: <strong>{{con.firebaseUser.email}}</strong></div>
+            <button ng-click="con.addTemp()">Add temp</button>
+            <ul>
+                <li ng-repeat="hist in con.history">{{hist.description}}</li>
+            </ul>
+        </div>
+        <p ng-if="con.error">Error: <strong>{{ con.error}}</strong></p>
+        <div class="col s9">
+            <canvas id="base" class="chart-bubble" chart-data="data"
+                    chart-series="series" >
+            </canvas> 
+
+        </div>
+    </div>
+</div>
