@@ -56,7 +56,9 @@ function nth(d) {
 }
 
 // Create a string representation of the date.
-function formatDate(date) {
+function formatDate(timestamp) {
+    var date = new Date();
+    date.setTime(timestamp * 1000);
 //     weekdays[date.getDay()] + ", " +
 //            date.getDate() + nth(date.getDate()) + " " +
     return months[date.getMonth()] + " " +
