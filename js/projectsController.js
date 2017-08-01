@@ -19,9 +19,7 @@ angularApp.controller('projectsController', function ($firebaseArray) {
     controller.currentIdx = 0;
 
     controller.formatDate = function (timestamp) {
-        var date = new Date();
-        date.setTime(timestamp * 1000);
-        return formatDate(date);
+        return formatDate(timestamp);
     };
 
     controller.getName = function (key) {
@@ -85,7 +83,7 @@ function initControls() {
     ];
 
     dateSlider.noUiSlider.on('update', function (values, handle) {
-        $("#date_selected").val(formatDate(new Date(+values[handle])));
+        $("#date_selected").val(formatDate(new Date(values[handle]/1000)));
     });
 
 }
