@@ -98,11 +98,11 @@ angularApp.config(['$routeProvider', '$locationProvider', function ($routeProvid
                     controller: 'projectsController'
                 })
                 .when('/experiments', {
-                    templateUrl: 'views/experimentsView.html'
+                    templateUrl: 'views/experimentsMenu.html'
                 })
-                .when('/experiment/:ID', {
-                    templateUrl: 'views/experimentsView.html',
-                    controller: 'experimentsController'
+                .when('/experiment/1', {
+                    templateUrl: 'views/primesGraph.html',
+                    controller: 'primesController'
                 })
                 .when('/main', {
                     templateUrl: 'views/main.html'
