@@ -1,4 +1,9 @@
 <div ng-include="'views/experimentsMenu.html'"></div>
 <div id="experiment-container" ng-controller="primesController as con"
      ng-init="con.run()">
+    <input ng-model="con.total">
+    <a>{{con.primes[con.prev]}}</a>
+    <a>{{con.primes[con.current]}}</a>
+    <a>{{con.primes[con.next]}}</a>
+    <div id="sketch-holder"></div>
 </div>
