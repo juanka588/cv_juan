@@ -32,6 +32,35 @@ angularApp.controller('personalAccountController', function ($firebaseArray) {
     this.series = ['Outcome', 'Income'];
     this.labels = [];
     this.options = {
+        pan: {
+            enabled: true,
+            mode: 'x',
+            rangeMin: {
+                // Format of min pan range depends on scale type
+                x: null,
+                y: null
+            },
+            rangeMax: {
+                // Format of max pan range depends on scale type
+                x: null,
+                y: null
+            }
+        },
+        zoom: {
+            enabled: true,
+            drag: true,
+            mode: 'x',
+            rangeMin: {
+                // Format of min pan range depends on scale type
+                x: null,
+                y: null
+            },
+            rangeMax: {
+                // Format of max pan range depends on scale type
+                x: null,
+                y: null
+            }
+        },
         scales: {
             xAxes: [{
                     type: 'time',
