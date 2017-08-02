@@ -34,12 +34,13 @@
 
         <!--Controllers-->
         <script src="app.js" type="text/javascript"></script>
+        <script src="/js/authController.js" type="text/javascript"></script>
         <script src="/js/personalAccountController.js" type="text/javascript"></script>
         <script src="/js/cvController.js" type="text/javascript"></script>
         <script src="/js/personalDataController.js" type="text/javascript"></script>
         <script src="/js/projectsController.js" type="text/javascript"></script>
         <script src="/js/experienceController.js" type="text/javascript"></script>
-        
+
         <!--Experiments-->
         <script src="js/experiments/primes.js" type="text/javascript"></script>
     </head>
@@ -100,6 +101,23 @@
             </ul>
         </div>
 
+        <div ng-controller="authController as con">
+            <button class="btn btn-flat waves-effect blue white-text" ng-if="!con.firebaseUser" ng-click="con.signIn()">Sign In</button>
+            <button class="btn btn-flat waves-effect blue white-text" ng-if="con.firebaseUser" ng-click="con.signOut()">Sign Out</button>
+            <div class="row" ng-if="con.firebaseUser">
+                <div class="col s12 m3">
+                    <div>Signed in user: <strong>{{ con.firebaseUser.uid}}</strong></div>
+                    <div>Name: <strong>{{ con.firebaseUser.displayName}}</strong></div>
+                    <div>
+                        Photo: 
+                        <a>
+                            <img class="circle" alt="user-profile-photo" src="{{con.firebaseUser.photoURL}}">
+                        </a>
+                    </div>
+                    <div>Email: <strong>{{con.firebaseUser.email}}</strong></div>
+                </div>
+            </div>
+        </div>
         <div ng-view></div>
 
     </body>
