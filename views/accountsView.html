@@ -1,28 +1,31 @@
 <div ng-controller="personalAccountController as con">
-    <button ng-click="con.signIn()">Sign In Anonymously</button>
     <div class="row">
-        <div class="col s12 m3" ng-if="con.firebaseUser">
-            <div>Signed in user: <strong>{{ con.firebaseUser.uid}}</strong></div>
-            <div>Name: <strong>{{ con.firebaseUser.displayName}}</strong></div>
-            <div>
-                Photo: 
-                <a>
-                    <img class="circle" alt="user-profile-photo" src="{{con.firebaseUser.photoURL}}">
-                </a>
-            </div>
-            <div>Email: <strong>{{con.firebaseUser.email}}</strong></div>
-            <button ng-click="con.addTemp()">Add temp</button>
-            <ul>
-                <li ng-repeat="d in con.data">{{d.amount}} 
-                    <span>Date: {{con.formatDate(d.time)}}</span>
-                    <button ng-click="con.deleteItem(d)">X</button>
+        <div class="col s12 m4">
+            <button class="btn btn-flat waves-effect blue white-text" ng-click="con.addTemp(1)">Add OUT</button>
+            <button class="btn btn-flat waves-effect blue white-text" ng-click="con.addTemp(0)">Add IN</button>
+            <ul class="collection">
+                <li class="collection-item" ng-repeat="d in con.data[0]" style="min-height: 80px;">
+                    <div class="col s8">
+                        <div>{{d.amount| number:2}}</div> 
+                        <div>{{d.time * 1000|date:"MMMM-yy 'at' HH:mm"}}</div>
+                    </div>
+                    <button class="btn btn-flat waves-effect col s4" ng-click="con.deleteItem(d, 0)">X</button>
+                </li>
+            </ul>
+            <ul class="collection">
+                <li class="collection-item" ng-repeat="d in con.data[1]" style="min-height: 80px;">
+                    <div class="col s8">
+                        <div>{{d.amount| number:2}}</div> 
+                        <div>{{d.time * 1000|date:"MMMM-yy 'at' HH:mm"}}</div>
+                    </div>
+                    <button class="btn btn-flat waves-effect col s4" ng-click="con.deleteItem(d, 1)">X</button>
                 </li>
             </ul>
         </div>
-        <p ng-if="con.error">Error: <strong>{{ con.error}}</strong></p>
-        <div class="col s12 m9">
+        <div class="col s12 m8">
             <canvas id="base" class="chart chart-line" chart-data="con.data"
-                    chart-series="con.series" chart-options="con.options" >
+                    chart-series="con.series" chart-options="con.options"
+                    chart-labels="con.labels">
             </canvas>
         </div>
     </div>

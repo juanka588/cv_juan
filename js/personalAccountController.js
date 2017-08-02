@@ -1,57 +1,51 @@
-angularApp.controller('personalAccountController', function ($firebaseAuth, $firebaseArray) {
-    this.authObj = $firebaseAuth();
-    // any time auth state changes, add the user data to scope
-    this.authObj.$onAuthStateChanged(function (firebaseUser) {
-        this.firebaseUser = firebaseUser;
-    });
+angularApp.controller('personalAccountController', function ($firebaseArray) {
     var accountOutRef = firebaseApp.database().ref('accounts').orderByChild('type').startAt("outcome").endAt("outcome");
     var accountInRef = firebaseApp.database().ref('accounts').orderByChild('type').startAt("income").endAt("income");
 
-    this.data = $firebaseArray(accountOutRef);
-    this.addTemp = function () {
+    this.data = [];
+    this.data[0] = $firebaseArray(accountOutRef);
+    this.data[1] = $firebaseArray(accountInRef);
+
+    this.addTemp = function (type) {
         var amount = Math.random() * 100;
         var timestamp = parseInt(new Date().getTime() / 1000);
-        this.data.$add(
+        this.data[type].$add(
                 {
-                    x: timestamp,
+                    x: timestamp * 1000,
                     y: amount,
                     category: "bussiness",
                     amount: amount,
                     time: timestamp,
-                    type: "outcome"
+                    type: type === 0 ? "outcome" : "income"
                 }
         );
-    };
-    this.signIn = function () {
-        this.authObj.$signInWithPopup("facebook").then(function (result) {
-            console.log("Signed in as:", result.user);
-        }).catch(function (error) {
-            console.error("Authentication failed:", error);
-        });
-        this.firebaseUser = this.authObj.$getAuth();
     };
 
     this.formatDate = function (timestamp) {
         return formatDate(timestamp);
     };
 
-    this.deleteItem = function (item) {
-        this.data.$remove(item);
+    this.deleteItem = function (item, type) {
+        this.data[type].$remove(item);
     };
-    if (this.firebaseUser) {
-        console.log("Signed in as:", this.firebaseUser);
-    } else {
-        console.log("Signed out");
-    }
 
-    this.series = ['Outcome'];
+    this.series = ['Outcome', 'Income'];
+    this.labels = [];
     this.options = {
         scales: {
             xAxes: [{
                     type: 'time',
                     time: {
                         displayFormats: {
-                            quarter: 'MMM YYYY'
+                            'millisecond': 'YY-MMM DD HH:mm',
+                            'second': 'YY-MMM DD HH:mm',
+                            'minute': 'YY-MMM DD HH:mm',
+                            'hour': 'YY-MMM DD HH:mm',
+                            'day': 'YY-MMM DD HH:mm',
+                            'week': 'YY-MMM DD HH:mm',
+                            'month': 'YY-MMM DD HH:mm',
+                            'quarter': 'YY-MMM DD HH:mm',
+                            'year': 'YY-MMM DD HH:mm'
                         }
                     }
                 }]
