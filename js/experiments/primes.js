@@ -1,5 +1,5 @@
 angularApp.controller('primesController', function () {
-    this.total = 50;
+    this.total = 5000;
     this.primes = calcPrimes(this.total);
     this.prev = this.primes.length - 1;
     this.current = 0;
@@ -16,13 +16,13 @@ function run(primes) {
         var counter = 0;
         var iteration = 0;
         var rotation = 1;
-        var p = primes[iteration];
+        var p = p = primes[iteration];
         var len = 1;
         var movements = [];
 
         s.setup = function () {
-            s.createCanvas(400, 400);
-            s.frameRate(10);
+            s.createCanvas(600, 600);
+//            s.frameRate(30);
         };
 
         s.draw = function () {
@@ -31,9 +31,10 @@ function run(primes) {
             }
             s.push();
             s.background(0);
-            s.strokeWeight(1);
+            s.strokeWeight(2);
+            s.stroke(255);
             s.translate(s.width / 2, s.height / 2);
-            rotation = rotation * p;
+            rotation = (rotation * p) % 360;
             len++;
             movements.push({
                 rotation: rotation,
@@ -41,8 +42,7 @@ function run(primes) {
             });
             for (var i = 0; i < movements.length; i++) {
                 var m = movements[i];
-                s.rotate(s.radians(m.rotation % 360));
-                s.stroke(255 * i % 2, 0, 255);
+                s.rotate(s.radians(m.rotation));
                 s.line(0, 0, 0, m.dist);
                 s.translate(0, m.dist);
             }
@@ -63,7 +63,7 @@ function run(primes) {
 }
 
 function calcPrimes(size) {
-    //0   1    2    3
+//                0       1      2     3
     var sieve = [false, false, true, true];
     var primes = [];
     for (var i = 0; i < size; i++) {
