@@ -1,0 +1,8 @@
+<div class="user-view" ng-controller="authController as con">
+    <div class="background">
+        <img src="images/main3.jpg">
+    </div>
+    <a><img class="circle" alt="user-profile-photo" src="{{con.firebaseUser.photoURL}}"></a>
+    <a><span class="white-text name">{{con.firebaseUser.displayName}}</span></a>
+    <a><span class="white-text email">{{con.firebaseUser.email}}</span></a>
+</div>

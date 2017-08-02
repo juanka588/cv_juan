@@ -65,14 +65,7 @@
             </div>
             <ul class="side-nav" id="mobile-demo">
                 <li>
-                    <div class="user-view" ng-controller="personalAccountController as con">
-                        <div class="background">
-                            <img src="images/main3.jpg">
-                        </div>
-                        <a><img class="circle" alt="user-profile-photo" src="{{con.firebaseUser.photoURL}}"></a>
-                        <a><span class="white-text name">{{con.firebaseUser.displayName}}</span></a>
-                        <a><span class="white-text email">{{con.firebaseUser.email}}</span></a>
-                    </div>
+                    <div ng-include="'views/userView.html'"></div>
                 </li>
                 <li><a href="main"><i class="material-icons grey-text text-darken-4">branding_watermark</i><span class="grey-text text-darken-4">{{lan.getName("index")}}</span></a></li>
                 <li><a href="juan"><i class="material-icons grey-text text-darken-4">comment</i><span class="grey-text text-darken-4">{{lan.getName("about_me")}}</span></a></li>
@@ -101,21 +94,28 @@
                 </li>
             </ul>
         </div>
-
         <div ng-controller="authController as con">
-            <button class="btn btn-flat waves-effect blue white-text" ng-if="!con.firebaseUser" ng-click="con.signIn()">Sign In</button>
-            <button class="btn btn-flat waves-effect blue white-text" ng-if="con.firebaseUser" ng-click="con.signOut()">Sign Out</button>
-            <div class="row" ng-if="con.firebaseUser">
-                <div class="col s12 m3">
-                    <div>Signed in user: <strong>{{ con.firebaseUser.uid}}</strong></div>
-                    <div>Name: <strong>{{ con.firebaseUser.displayName}}</strong></div>
-                    <div>
-                        Photo: 
-                        <a>
-                            <img class="circle" alt="user-profile-photo" src="{{con.firebaseUser.photoURL}}">
-                        </a>
+            <button id="display-login" class="yellow white-text invisible" ng-click="con.toggleView()">Mostrar</button>
+            <div class="login-info yellow">
+                <button class="btn btn-flat waves-effect blue white-text" ng-click="con.toggleView()"><i class=""></i>Hide</button>
+                <button class="btn btn-flat waves-effect blue white-text" ng-if="!con.showUser" ng-click="con.signIn()">Sign In</button>
+                <button class="btn btn-flat waves-effect blue white-text" ng-if="con.showUser" ng-click="con.signOut()">Sign Out</button>
+                <div class="row" ng-if="con.showUser">
+                    <div class="col s12 m3">
+                        <div>Signed in user: <strong>{{ con.firebaseUser.uid}}</strong></div>
+                        <div>Name: <strong>{{ con.firebaseUser.displayName}}</strong></div>
+                        <div>
+                            Photo: 
+                            <a>
+                                <img class="circle" alt="user-profile-photo" src="{{con.firebaseUser.photoURL}}">
+                            </a>
+                        </div>
+                        <div>Email: <strong>{{con.firebaseUser.email}}</strong></div>
                     </div>
-                    <div>Email: <strong>{{con.firebaseUser.email}}</strong></div>
+                    <div class="col s12 m9">
+                        <a href="/experiments" class="btn btn-flat waves-effect blue white-text">Experiments</a>
+                        <a href="/accounts" class="btn btn-flat waves-effect blue white-text">Accounts</a>
+                    </div>
                 </div>
             </div>
         </div>

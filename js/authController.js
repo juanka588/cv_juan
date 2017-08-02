@@ -17,10 +17,17 @@ angularApp.controller('authController', function ($firebaseAuth) {
             console.error("Authentication failed:", error);
         });
         this.firebaseUser = this.authObj.$getAuth();
+        this.showUser = true;
     };
 
     this.signOut = function () {
         this.authObj.$signOut();
+        this.showUser = false;
+    };
+
+    this.toggleView = function () {
+        $("#display-login").toggleClass("invisible");
+        $(".login-info").toggleClass("invisible");
     };
 });
 
