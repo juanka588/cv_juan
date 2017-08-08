@@ -32,7 +32,7 @@
         <script src="js/libs/nouislider.min.js" type="text/javascript"></script>
         <script src="js/libs/wNumb.js" type="text/javascript"></script>
         <script src="js/libs/p5.min.js" type="text/javascript"></script>
-        
+
         <!--Utils-->
         <script src="/js/utils.js" type="text/javascript"></script>
 
@@ -53,76 +53,44 @@
             <div class="navbar-fixed">
                 <nav>
                     <div class="blue nav-wrapper">
-                        <a href="main" class="brand-logo"><i class="large material-icons">insert_chart</i></a>
-                        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons cyan-text text-darken-4">menu</i></a>
-                        <ul class="right hide-on-med-and-down">
-                            <li><a class="valign-wrapper" href="main"><i class="material-icons white-text text-darken-4">branding_watermark</i><span class="white-text text-darken-4">{{lan.getName("index")}}</span></a></li>
-                            <li><a class="valign-wrapper" href="juan"><i class="material-icons white-text text-darken-4">comment</i><span class="white-text text-darken-4">{{lan.getName("about_me")}}</span></a></li>
-                            <li><a class="valign-wrapper" href="cvitae"><i class="material-icons white-text text-darken-4">move_to_inbox</i><span class="white-text text-darken-4">Curriculum Vitae</span></a></li>
-                            <li><a class="valign-wrapper" href="experience"><i class="material-icons white-text text-darken-4">code</i><span class="white-text text-darken-4">{{lan.getName("work_experience")}}</span></a></li>
-                            <li><a class="valign-wrapper" href="projects"><i class="material-icons white-text text-darken-4">apps</i><span class="white-text text-darken-4">{{lan.getName("projects")}}</span></a></li>
+                        <a href="main" class="brand-logo"><i class="large material-icons">insert_chart</i>Juan Camilo</a>
+                        <ul class="right">
                             <li><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i><span class="white-text text-darken-4">Languages</span></a></li>
                         </ul>				
                     </div>
                 </nav>
             </div>
-            <ul class="side-nav" id="mobile-demo">
-                <li>
-                    <div ng-include="'views/userView.html'"></div>
-                </li>
-                <li><a href="main"><i class="material-icons grey-text text-darken-4">branding_watermark</i><span class="grey-text text-darken-4">{{lan.getName("index")}}</span></a></li>
-                <li><a href="juan"><i class="material-icons grey-text text-darken-4">comment</i><span class="grey-text text-darken-4">{{lan.getName("about_me")}}</span></a></li>
-                <li><a href="cvitae"><i class="material-icons grey-text text-darken-4">move_to_inbox</i><span class="grey-text text-darken-4">Curriculum Vitae</span></a></li>
-                <li><a href="experience"><i class="material-icons grey-text text-darken-4">code</i><span class="grey-text text-darken-4">{{lan.getName("work_experience")}}</span></a></li>
-                <li><a href="projects"><i class="material-icons grey-text text-darken-4">apps</i><span class="grey-text text-darken-4">{{lan.getName("projects")}}</span></a></li>
-                <li class="no-padding">
-                    <ul class="collapsible collapsible-accordion">
-                        <li>
-                            <a class="collapsible-header">Languages<i class="material-icons">arrow_drop_down</i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li ng-repeat="l in lan.languages">
-                                        <a href="" ng-click="lan.updateLanguage(l)">{{l}}</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-
             <ul id="dropdown1" class="dropdown-content">
                 <li ng-repeat="l in lan.languages">
                     <a href="" ng-click="lan.updateLanguage(l)">{{l}}</a>
                 </li>
             </ul>
         </div>
-        <div ng-controller="authController as con">
-            <button id="display-login" class="yellow white-text invisible" ng-click="con.toggleView()">Mostrar</button>
-            <div class="login-info yellow">
-                <button class="btn btn-flat waves-effect blue white-text" ng-click="con.toggleView()"><i class=""></i>Hide</button>
-                <button class="btn btn-flat waves-effect blue white-text" ng-if="!con.showUser" ng-click="con.signIn()">Sign In</button>
-                <button class="btn btn-flat waves-effect blue white-text" ng-if="con.showUser" ng-click="con.signOut()">Sign Out</button>
-                <div class="row" ng-if="con.showUser">
-                    <div class="col s12 m3">
-                        <div>Signed in user: <strong>{{ con.firebaseUser.uid}}</strong></div>
-                        <div>Name: <strong>{{ con.firebaseUser.displayName}}</strong></div>
-                        <div>
-                            Photo: 
-                            <a>
-                                <img class="circle" alt="user-profile-photo" src="{{con.firebaseUser.photoURL}}">
-                            </a>
-                        </div>
-                        <div>Email: <strong>{{con.firebaseUser.email}}</strong></div>
-                    </div>
-                    <div class="col s12 m9">
-                        <a href="/experiments" class="btn btn-flat waves-effect blue white-text">Experiments</a>
-                        <a href="/accounts" class="btn btn-flat waves-effect blue white-text">Accounts</a>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col s2">
+                <ul class="main-menu white" ng-controller="languagesController as lan">
+                    <li>
+                        <div ng-include="'views/userView.html'"></div>
+                    </li>
+                    <li><a class="valign-wrapper" href="main"><i class="material-icons grey-text text-darken-4">branding_watermark</i><span class="grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("index")}}</span></a></li>
+                    <li><a class="valign-wrapper" href="juan"><i class="material-icons grey-text text-darken-4">comment</i><span class="grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("about_me")}}</span></a></li>
+                    <li class="no-padding">
+                        <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header valign-wrapper"  href="cvitae"><span class="hide-on-small-and-down">Curriculum Vitae</span><i class="material-icons">move_to_inbox</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a class="valign-wrapper" href="experience"><i class="material-icons grey-text text-darken-4">code</i><span class="grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("work_experience")}}</span></a></li>
+                                        <li><a class="valign-wrapper" href="projects"><i class="material-icons grey-text text-darken-4">apps</i><span class="grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("projects")}}</span></a></li>             
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
+            <div class="col s10" ng-view></div>
         </div>
-        <div ng-view></div>
 
     </body>
 </html>

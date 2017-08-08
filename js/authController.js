@@ -24,11 +24,6 @@ angularApp.controller('authController', function ($firebaseAuth) {
         this.authObj.$signOut();
         this.showUser = false;
     };
-
-    this.toggleView = function () {
-        $("#display-login").toggleClass("invisible");
-        $(".login-info").toggleClass("invisible");
-    };
 });
 
 
