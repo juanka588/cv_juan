@@ -89,6 +89,10 @@ angularApp.config(['$routeProvider', '$locationProvider', function ($routeProvid
                     templateUrl: 'views/cvView.html',
                     controller: 'cvController'
                 })
+                .when('/cvitae/print', {
+                    templateUrl: 'views/cvPrintView.html',
+                    controller: 'cvController'
+                })
                 .when('/experience', {
                     templateUrl: 'views/experienceView.html',
                     controller: 'experienceController'
