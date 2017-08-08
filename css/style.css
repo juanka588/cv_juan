@@ -104,12 +104,22 @@ nav ul li i {
 .invisible{
     display: none;
 }
-
+.projects-container{
+    margin-top: 16px;
+}
+.main-menu{
+    position: fixed;
+    top: 64px;
+    left: 0;
+    z-index: 5;
+    width: 17%;
+}
 
 div[ng-view].ng-enter {
     -webkit-animation: fadeIn 0.5s;
     animation: fadeIn 0.5s;
 }
+
 
 
 /*

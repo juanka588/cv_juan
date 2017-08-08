@@ -1,6 +1,6 @@
-<div class="container" ng-controller="projectsController as con">
-    <div class="row">
-        <h4>{{con.getName('projects')}}</h4>
+<div class="row" ng-controller="projectsController as con">
+    <div class="col s12 m8 offset-m2 row">
+        <h4 class="col s12">{{con.getName('projects')}}</h4>
         <div class="col s12" id="slider_date"></div>
         <input class="col s12" disabled id="date_selected" ng-model="con.currentDate">
         <div class="col s1">
@@ -13,70 +13,71 @@
                 <i class="material-icons right">navigate_next</i>
             </button>
         </div>
-    </div>
-    <div ng-if="con.projects.$resolved">
-        <div class="carousel carousel-slider center" data-indicators="true">
-            <div class="carousel-item {{con.colors[$index % con.colors.length]}} white-text" 
-                 ng-click="con.details(p)" ng-repeat="p in con.projects">
-                <div class="col s12">{{con.formatDate(p.time)}}</div>
-                <div class="projectName col s12"><h4>{{con.getName(p.name)}}</h4></div>
-                <div class="row">
-                    <div class="col s12 m6">
-                        <p class="projectDescription">{{con.getName(p.description)}}</p>
-                        <div class="chip" 
-                             ng-repeat="k in p.technologies.split(',')"> {{k}}</div>
-                    </div>
-                    <div class="col s12 m6">
-                        <p><img  style="max-width: 350px;padding: 30px;" alt="{{p.demo}}" src="{{p.demo}}"></p>
+        <div class="row col s12">
+            <div class="col s12 projects-container" ng-if="con.projects.$resolved">
+                <div class="carousel carousel-slider center" data-indicators="true">
+                    <div class="carousel-item {{con.colors[$index % con.colors.length]}} white-text" 
+                         ng-click="con.details(p)" ng-repeat="p in con.projects">
+                        <div class="col s12">{{con.formatDate(p.time)}}</div>
+                        <div class="projectName col s12"><h4>{{con.getName(p.name)}}</h4></div>
+                        <div class="row">
+                            <div class="col s12 m6">
+                                <p class="projectDescription">{{con.getName(p.description)}}</p>
+                                <div class="chip" 
+                                     ng-repeat="k in p.technologies.split(',')"> {{k}}</div>
+                            </div>
+                            <div class="col s12 m6">
+                                <p><img  style="max-width: 350px;padding: 30px;" alt="{{p.demo}}" src="{{p.demo}}"></p>
+                            </div>
+                        </div>
+                        <a class="black-text col s12" href="{{p.link}}">{{p.link}}</a>
                     </div>
                 </div>
-                <a class="black-text col s12" href="{{p.link}}">{{p.link}}</a>
+                <script>setTimeout(initControls, 500);</script>
+            </div>
+            <div ng-if="!con.projects.$resolved" class="center col s12">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div><div class="gap-patch">
+                            <div class="circle"></div>
+                        </div><div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+
+                    <div class="spinner-layer spinner-red">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div><div class="gap-patch">
+                            <div class="circle"></div>
+                        </div><div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+
+                    <div class="spinner-layer spinner-yellow">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div><div class="gap-patch">
+                            <div class="circle"></div>
+                        </div><div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+
+                    <div class="spinner-layer spinner-green">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div><div class="gap-patch">
+                            <div class="circle"></div>
+                        </div><div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <script>setTimeout(initControls, 500);</script>
     </div>
-    <div ng-if="!con.projects.$resolved" class="center">
-        <div class="preloader-wrapper big active">
-            <div class="spinner-layer spinner-blue">
-                <div class="circle-clipper left">
-                    <div class="circle"></div>
-                </div><div class="gap-patch">
-                    <div class="circle"></div>
-                </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                </div>
-            </div>
-
-            <div class="spinner-layer spinner-red">
-                <div class="circle-clipper left">
-                    <div class="circle"></div>
-                </div><div class="gap-patch">
-                    <div class="circle"></div>
-                </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                </div>
-            </div>
-
-            <div class="spinner-layer spinner-yellow">
-                <div class="circle-clipper left">
-                    <div class="circle"></div>
-                </div><div class="gap-patch">
-                    <div class="circle"></div>
-                </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                </div>
-            </div>
-
-            <div class="spinner-layer spinner-green">
-                <div class="circle-clipper left">
-                    <div class="circle"></div>
-                </div><div class="gap-patch">
-                    <div class="circle"></div>
-                </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>

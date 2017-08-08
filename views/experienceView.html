@@ -1,20 +1,22 @@
-<div class="container" ng-controller="experienceController as con">
-    <h3>{{con.getName('work_experience')}}</h3>
-    <div class="workItem card-panel hoverable" ng-repeat="wk in con.work">
-        <div class="row">
-            <div class="col s12 m4">
-                <div class="enterprise">{{wk.enterprise}}</div>
-                <div class="period_init">{{con.getName('since')}}: {{wk.period_init}}</div>
-                <div class="period_finish">{{con.getName('until')}}: {{wk.period_finish}}</div>
-                <div class="place">{{wk.place}}</div>
-            </div>
-            <div class="col s12 m8">
-                <div class="rol">{{con.getName(wk.rol)}}</div>
-                <div class="work_description">  {{con.getName(wk.description)}}</div>
-            </div>
-            <div class="col s12">
-                <div class="chip keywordList" 
-                     ng-repeat="k in wk.keywords.split(',')"> {{k}}</div>
+<div class="row" ng-controller="experienceController as con">
+    <div class="row col s12 m8 offset-m2">
+        <h3 class="col s12">{{con.getName('work_experience')}}</h3>
+        <div class="col s12 workItem card-panel hoverable" ng-repeat="wk in con.work">
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="enterprise">{{wk.enterprise}}</div>
+                    <div class="period_init">{{con.getName('since')}}: {{wk.period_init}}</div>
+                    <div class="period_finish">{{con.getName('until')}}: {{wk.period_finish}}</div>
+                    <div class="place">{{wk.place}}</div>
+                </div>
+                <div class="col s12 m8">
+                    <div class="rol">{{con.getName(wk.rol)}}</div>
+                    <div class="work_description">  {{con.getName(wk.description)}}</div>
+                </div>
+                <div class="col s12">
+                    <div class="chip keywordList" 
+                         ng-repeat="k in wk.keywords.split(',')"> {{k}}</div>
+                </div>
             </div>
         </div>
     </div>
