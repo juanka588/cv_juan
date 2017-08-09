@@ -56,10 +56,10 @@ angularApp.controller('languagesController', function () {
     this.expandMenu = function () {
         if (this.menuExpanded) {
             $("span.menu-label").hide();
-            $("ul.main-menu").css("width", "8.5%");
+            $("div.side-nav-cv").css("width", "8.5%");
         } else {
             $("span.menu-label").show();
-            $("ul.main-menu").css("width", "17%");
+            $("div.side-nav-cv").css("width", "17%");
         }
         this.menuExpanded = !this.menuExpanded;
     };
