@@ -56,10 +56,14 @@ angularApp.controller('languagesController', function () {
     this.expandMenu = function () {
         if (this.menuExpanded) {
             $("span.menu-label").hide();
-            $("div.side-nav-cv").css("width", "8.5%");
+            $("ul.main-menu").css("width", "8.5%");
+            $("div.side-nav-cv").removeClass("m2");
+            $("div.side-nav-cv").addClass("m1");
         } else {
             $("span.menu-label").show();
-            $("div.side-nav-cv").css("width", "17%");
+            $("ul.main-menu").css("width", "17%");
+            $("div.side-nav-cv").removeClass("m1");
+            $("div.side-nav-cv").addClass("m2");
         }
         this.menuExpanded = !this.menuExpanded;
     };
