@@ -25,9 +25,6 @@ nav ul li i {
     display: inline !important;
     margin-right: 8px;
 }
-.nav-wrapper{
-    background-color: #fafafa !important;
-}
 .lang,.educationItem,.workItem{
     /*border: 1px solid;*/
 }

@@ -7,5 +7,4 @@ angularApp.controller('personalDataController', function ($firebaseObject) {
     controller.getName = function (key) {
         return getName(key);
     };
-
 });
