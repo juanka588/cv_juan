@@ -26,13 +26,12 @@
         <script src="node_modules/chart.js/dist/Chart.min.js" type="text/javascript"></script>
         <script src="node_modules/chartjs-plugin-zoom/chartjs-plugin-zoom.min.js" type="text/javascript"></script>
         <script src="node_modules/angular-chart.js/dist/angular-chart.min.js" type="text/javascript"></script>
-         
+
         <!--Libs-->
         <script src="js/libs/nouislider.min.js" type="text/javascript"></script>
         <script src="js/libs/wNumb.js" type="text/javascript"></script>
         <script src="js/libs/p5.min.js" type="text/javascript"></script>
-        <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
-
+        <script src="js/mapController.js" type="text/javascript"></script>
         <!--Utils-->
         <script src="/js/utils.js" type="text/javascript"></script>
 
@@ -95,22 +94,22 @@
 
         <div class="row">
             <div class="side-nav-cv col s1 m2 hide-on-small-and-down" >
-                <ul class="main-menu white" ng-controller="languagesController as lan">
-                    <li>
+                <ul class="main-menu white collection" ng-controller="languagesController as lan">
+                    <li class="collection-header with-header">
                         <div ng-include="'views/userView.html'"></div>
                     </li>
-                    <li><a class="valign-wrapper" href="main"><span class="material-icons grey-text text-darken-4">branding_watermark</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("index")}}</span></a></li>
-                    <li><a class="valign-wrapper" href="juan"><span class="material-icons grey-text text-darken-4">comment</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("about_me")}}</span></a></li>
-                    <li><a class="valign-wrapper"  href="cvitae"><span class="material-icons grey-text text-darken-4">move_to_inbox</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">Curriculum Vitae</span></a></li>
-                    <li><a class="valign-wrapper" href="experience"><span class="material-icons grey-text text-darken-4">code</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("work_experience")}}</span></a></li>
-                    <li><a class="valign-wrapper" href="projects"><span class="material-icons grey-text text-darken-4">apps</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("projects")}}</span></a></li>             
-                    <li>
+                    <li class="collection-item"><a class="valign-wrapper" href="main"><span class="material-icons grey-text text-darken-4">branding_watermark</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("index")}}</span></a></li>
+                    <li class="collection-item"><a class="valign-wrapper" href="juan"><span class="material-icons grey-text text-darken-4">comment</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("about_me")}}</span></a></li>
+                    <li class="collection-item"><a class="valign-wrapper" href="cvitae"><span class="material-icons grey-text text-darken-4">move_to_inbox</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">Curriculum Vitae</span></a></li>
+                    <li class="collection-item"><a class="valign-wrapper" href="experience"><span class="material-icons grey-text text-darken-4">code</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("work_experience")}}</span></a></li>
+                    <li class="collection-item"><a class="valign-wrapper" href="projects"><span class="material-icons grey-text text-darken-4">apps</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("projects")}}</span></a></li>             
+                    <li class="collection-item">
                         <a ng-if="lan.menuExpanded" ng-click="lan.expandMenu()"> <span class="material-icons grey-text text-darken-4 right">arrow_back</span></a>
                         <a ng-if="!lan.menuExpanded" ng-click="lan.expandMenu()"><span class="material-icons grey-text text-darken-4">arrow_forward</span></a>
                     </li>
                 </ul>
             </div>
-            <div class="col s11 m10" ng-view></div>
+            <div class="col s11 m10 detail-container" ng-view></div>
         </div>
 
     </body>

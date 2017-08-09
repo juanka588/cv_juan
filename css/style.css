@@ -104,12 +104,17 @@ nav ul li i {
 .projects-container{
     margin-top: 16px;
 }
+.detail-container{
+    padding: 0 0 0 0 !important;
+}
+.brand-logo{
+    margin-left: 4px;
+}
+
 .main-menu{
-    position: fixed;
-    top: 64px;
-    left: 0;
-    z-index: 5;
-    width: 17%;
+    /*position: fixed !important;*/
+    /*top: 64px;*/
+    /*left: 0;*/
 }
 
 div[ng-view].ng-enter {
