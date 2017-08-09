@@ -1,4 +1,4 @@
-<div ng-include="'views/experimentsMenu.html'"></div>
+<div ng-include="'../views/experimentsMenu.html'"></div>
 <div id="experiment-container" ng-controller="primesController as con"
      ng-init="con.run()">
     <input ng-model="con.total">
@@ -6,6 +6,6 @@
     <a>{{con.primes[con.current]}}</a>
     <a>{{con.primes[con.next]}}</a>
     <div class="row" >
-        <div id="sketch-holder" class="col s6 offset-s3"></div>
+        <div id="sketch-holder" class="col s12 m6 offset-m3"></div>
     </div>
 </div>

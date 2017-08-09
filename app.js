@@ -52,13 +52,23 @@ angularApp.controller('languagesController', function () {
     this.getName = function (key) {
         return getName(key);
     };
+    this.menuExpanded = true;
+    this.expandMenu = function () {
+        if (this.menuExpanded) {
+            $("span.menu-label").hide();
+            $("ul.main-menu").css("width", "8.5%");
+        } else {
+            $("span.menu-label").show();
+            $("ul.main-menu").css("width", "17%");
+        }
+        this.menuExpanded = !this.menuExpanded;
+    };
 });
 
 // for ngRoute
 angularApp.run(["$rootScope", "$location", function ($rootScope, $location) {
         $rootScope.$on("$routeChangeError", function (event, next, previous, error) {
             if (error === "AUTH_REQUIRED") {
-                alert("te saliste");
                 $location.path("/main");
             }
         });
@@ -105,7 +115,7 @@ angularApp.config(['$routeProvider', '$locationProvider', function ($routeProvid
                     templateUrl: 'views/experimentsMenu.html'
                 })
                 .when('/experiment/1', {
-                    templateUrl: 'views/primesGraph.html',
+                    templateUrl: 'views/experiments/primesGraph.html',
                     controller: 'primesController'
                 })
                 .when('/main', {
@@ -118,3 +128,4 @@ angularApp.config(['$routeProvider', '$locationProvider', function ($routeProvid
         $locationProvider.html5Mode(true);
 
     }]);
+                

@@ -1,18 +1,16 @@
 <div class="container" ng-controller="personalDataController as con">
-    <div class="row valign-wrapper card-panel" ng-controller="personalDataController as per">
+    <div class="row valign-wrapper card-panel" >
         <img src="images/me.jpg" alt="myself" class="circle responsive-img col s2 offset-s1">
         <div class="col s6 offset-s1">
-            <div id="full_name">{{per.contact.name}}</div>
-            <div id="adress"><address>{{per.contact.address}}</address></div>
-            <div id="birthdate">{{per.contact.birthdate}}</div>
-            <div id="cellphone">{{per.contact.cellphone}}</div>
-            <div id="email">{{per.contact.email}}</div>
-            <div id="github"><a href="{{per.contact.github}}">{{per.contact.github}}</a></div>
+            <div id="full_name">{{con.contact.name}}</div>
+            <div id="adress"><address>{{con.contact.address}}</address></div>
+            <div id="birthdate">{{con.contact.birthdate}}</div>
+            <div id="cellphone">{{con.contact.cellphone}}</div>
+            <div id="email">{{con.contact.email}}</div>
+            <div id="github"><a href="{{con.contact.github}}">{{con.contact.github}}</a></div>
         </div>
     </div>
-
     <div id="map"></div>
-    <script src="../js/mapController.js" type="text/javascript"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw4bXauoCWz0J0F20VJ9XZgl8LXQb9SE0&callback=initMap">
     </script>
