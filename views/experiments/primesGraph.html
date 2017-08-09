@@ -1,6 +1,6 @@
 <div ng-include="'../views/experimentsMenu.html'"></div>
 <div id="experiment-container" ng-controller="primesController as con"
-     ng-init="con.run()">
+     ng-init="con.run()" class="grey lighten-1">
     <input ng-model="con.total">
     <a>{{con.primes[con.prev]}}</a>
     <a>{{con.primes[con.current]}}</a>
