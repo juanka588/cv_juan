@@ -4,10 +4,4 @@
     <a class="col s12"><span class="email">{{con.firebaseUser.email}}</span></a>
     <button class="btn btn-flat waves-effect blue col s12" ng-if="!con.showUser" ng-click="con.signIn()">Sign In</button>
     <button class="btn btn-flat waves-effect blue col s12" ng-if="con.showUser" ng-click="con.signOut()">Sign Out</button>
-    <div class="row col s12" ng-if="con.showUser">
-        <ul>
-            <li><a class="valign-wrapper" href="/experiments"><i class="material-icons grey-text text-darken-4">code</i><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">Experiments</span></a></li>
-            <li><a class="valign-wrapper" href="/accounts"><i class="material-icons grey-text text-darken-4">code</i><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">Accounts</span></a></li>
-        </ul>
-    </div>
 </div>
