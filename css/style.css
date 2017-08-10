@@ -110,6 +110,9 @@ nav ul li i {
 .brand-logo{
     margin-left: 4px;
 }
+.collection-item:hover{
+    background-color: #ddd !important;
+}
 
 .main-menu{
     /*position: fixed !important;*/
