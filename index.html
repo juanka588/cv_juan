@@ -47,7 +47,7 @@
         <!--Experiments-->
         <script src="js/experiments/primes.js" type="text/javascript"></script>
     </head>
-    <body class="blue lighten-5">
+    <body class="blue lighten-5" ng-controller="authController as con">
         <div ng-controller="languagesController as lan">
             <div class="navbar-fixed">
                 <nav>
@@ -67,15 +67,17 @@
             </ul>
 
             <ul class="side-nav" id="menu-mobile">
+
                 <li>
                     <div ng-include="'views/userView.html'"></div>
                 </li>
+
                 <li><a href="main"><i class="material-icons grey-text text-darken-4">branding_watermark</i><span class="grey-text text-darken-4">{{lan.getName("index")}}</span></a></li>
                 <li><a href="juan"><i class="material-icons grey-text text-darken-4">comment</i><span class="grey-text text-darken-4">{{lan.getName("about_me")}}</span></a></li>
                 <li><a href="cvitae"><i class="material-icons grey-text text-darken-4">move_to_inbox</i><span class="grey-text text-darken-4">Curriculum Vitae</span></a></li>
                 <li><a href="experience"><i class="material-icons grey-text text-darken-4">code</i><span class="grey-text text-darken-4">{{lan.getName("work_experience")}}</span></a></li>
                 <li><a href="projects"><i class="material-icons grey-text text-darken-4">apps</i><span class="grey-text text-darken-4">{{lan.getName("projects")}}</span></a></li>
-                <div  ng-controller="authController as con" ng-if="con.showUser">
+                <div  ng-if="con.showUser">
                     <ul>
                         <li><a class="valign-wrapper" href="/experiments"><i class="material-icons grey-text text-darken-4">code</i><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">Experiments</span></a></li>
                         <li><a class="valign-wrapper" href="/accounts"><i class="material-icons grey-text text-darken-4">code</i><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">Accounts</span></a></li>
@@ -109,12 +111,14 @@
                     <li class="collection-item"><a class="valign-wrapper" href="cvitae"><span class="material-icons grey-text text-darken-4">move_to_inbox</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">Curriculum Vitae</span></a></li>
                     <li class="collection-item"><a class="valign-wrapper" href="experience"><span class="material-icons grey-text text-darken-4">code</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("work_experience")}}</span></a></li>
                     <li class="collection-item"><a class="valign-wrapper" href="projects"><span class="material-icons grey-text text-darken-4">apps</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("projects")}}</span></a></li>             
-                    <li ng-controller="authController as con" >
+
+                    <li>
                         <ul ng-if="con.showUser">
                             <li><a class="valign-wrapper" href="/experiments"><i class="material-icons grey-text text-darken-4">code</i><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">Experiments</span></a></li>
                             <li><a class="valign-wrapper" href="/accounts"><i class="material-icons grey-text text-darken-4">code</i><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">Accounts</span></a></li>
                         </ul>
                     </li>
+
                     <li class="collection-item">
                         <a ng-if="lan.menuExpanded" ng-click="lan.expandMenu()"> <span class="material-icons grey-text text-darken-4 right">arrow_back</span></a>
                         <a ng-if="!lan.menuExpanded" ng-click="lan.expandMenu()"><span class="material-icons grey-text text-darken-4">arrow_forward</span></a>
