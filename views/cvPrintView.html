@@ -1,119 +1,108 @@
-<div id="section-to-print" class="container white" >
-    <div class="row valign-wrapper card-panel" ng-controller="personalDataController as per">
-        <img src="images/me.jpg" alt="myself" class="circle responsive-img col s2 offset-s1">
-        <div class="col s6 offset-s1">
-            <div id="full_name">{{per.contact.name}}</div>
-            <div id="adress"><address>{{per.contact.address}}</address></div>
-            <div id="birthdate">{{per.contact.birthdate}}</div>
-            <div id="cellphone">{{per.contact.cellphone}}</div>
-            <div id="email">{{per.contact.email}}</div>
-            <div id="github"><a href="{{per.contact.github}}">{{per.contact.github}}</a></div>
-        </div>
-        <div class="col s2">
-            <a id="printButton" class="btn-floating btn-large red">
-                <i class="large material-icons">print</i>
-            </a>
-        </div>
-    </div>
+<div id="section-to-print" class="container white" ng-controller="cvController as con">
+    <table>
+        <tbody>
+            <tr>
+                <td ng-controller="personalDataController as per">
+                    <div  class="center" id="full_name">{{per.contact.name}}</div>
+                    <div class="center" id="adress"><address>{{per.contact.address}}</address></div>
+                    <div class="center" id="birthdate">{{per.contact.birthdate}}</div>
+                    <div class="center" id="cellphone">{{per.contact.cellphone}}</div>
+                    <div class="center" id="email">{{per.contact.email}}</div>
+                    <div class="center" id="github"><a href="{{per.contact.github}}">{{per.contact.github}}</a></div>
+                </td>
+                <td>
 
-    <div class="row white" ng-controller="cvController as con">
-        <div id="education" class="col s12 m7">
-            <h4>{{con.getName('education')}}</h4>
-            <div class="educationItem" ng-repeat="ed in con.education">
-                <div class="institution">{{ed.institution}}</div>
-                <ul>
-                    <li class="carrer">{{con.getName(ed.carrer)}}</li>
-                    <li>
-                        <div class="period_init"><span>{{con.getName('since')}}:</span> {{ed.period_init}}</div>
-                        <div class="period_finish"><span>{{con.getName('until')}}:</span> {{ed.period_finish}}</div>
-                    </li>
-                    <li class="place">{{ed.place}}</li>
-                </ul>
-            </div>
-        </div>
+                    <img src="images/me.jpg" alt="myself">
+                </td>
+            </tr>
+        </tbody></table>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <span>{{con.getName('education')}}</span>
+                    <div class="educationItem" ng-repeat="ed in con.education">
+                        <div class="institution">{{ed.institution}}</div>
+                        <ul>
+                            <li class="carrer">{{con.getName(ed.carrer)}}</li>
+                            <li>
+                                <div class="period_init"><span>{{con.getName('since')}}:</span> {{ed.period_init}}</div>
+                                <div class="period_finish"><span>{{con.getName('until')}}:</span> {{ed.period_finish}}</div>
+                            </li>
+                            <li class="place">{{ed.place}}</li>
+                        </ul>
+                    </div>
+                </td>
+                <td>
+                    <span>{{con.getName('language')}}</span>
+                    <ul>
+                        <li ng-repeat="l in con.languages">{{con.getName(l.name)}}:{{l.level}}</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <tbody>
+            <tr>
+                <td >Exp laboral</td>
+                <td style="max-width: 120px;">exp la otra</td>
+            </tr>
+            <tr>
+                <td>
+                    <table ng-controller="experienceController as exp">
+                        <tbody>
+                            <tr ng-repeat="wk in exp.work">
+                                <td>
+                                    <div class="enterprise">{{wk.enterprise}}</div>
+                                    <div class="period_init">{{exp.getName('since')}}: {{wk.period_init}}</div>
+                                    <div class="period_finish">{{exp.getName('until')}}: {{wk.period_finish}}</div>
+                                    <div class="place">{{wk.place}}</div>
+                                </td>
+                                <td>
+                                    <div class="rol">{{exp.getName(wk.rol)}}</div>
+                                    <div class="work_description">  {{exp.getName(wk.description)}}</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
 
-        <div id="languages" class="white col s12 m5">
-            <h4>{{con.getName('language')}}</h4>
-            <div class="lang" ng-repeat="l in con.languages">
-                <div class="language_name">{{con.getName(l.name)}}</div>
-                <ul>
-                    <li class="certification">{{con.getName('certification')}}:{{l.certification}}</li>
-                    <li class="level">{{con.getName('level')}}:{{l.level}}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+                <td>
+                    <span>{{con.getName('programming_experience')}}</span>
+                    <div>
+                        <span  ng-repeat="p in con.programming" class="pLanguage">{{p.language}}</span>
+                    </div>
+                    <span>{{con.getName('tools')}}</span>
+                    <div >
+                        <span ng-repeat="(key, value) in con.tools">{{key}}</span>
+                    </div>
+                    <span>{{con.getName('network_experience')}}</span>
+                    <div>
+                        <span ng-repeat="(key, value) in con.network">{{key| uppercase}}</span>
+                    </div>
+                </td>
+            </tr>
 
-    <div id="work" class="row white" ng-controller="experienceController as exp">
-        <h4>{{exp.getName('work_experience')}}</h4>
-        <div class="workItem card-panel hoverable" ng-repeat="wk in exp.work">
-            <div class="row">
-                <div class="col s12 m4">
-                    <div class="enterprise">{{wk.enterprise}}</div>
-                    <div class="period_init">{{exp.getName('since')}}: {{wk.period_init}}</div>
-                    <div class="period_finish">{{exp.getName('until')}}: {{wk.period_finish}}</div>
-                    <div class="place">{{wk.place}}</div>
-                </div>
-                <div class="col s12 m8">
-                    <div class="rol">{{exp.getName(wk.rol)}}</div>
-                    <div class="work_description">  {{exp.getName(wk.description)}}</div>
-                </div>
-                <div class="col s12">
-                    <div class="chip keywordList" 
-                         ng-repeat="k in wk.keywords.split(',')"> {{k}}</div>
-                </div>
-            </div>
-        </div>
-    </div>
+        </tbody>
+    </table>
 
-    <div id="programming" class="row" ng-controller="cvController as con">
-        <h4>{{con.getName('programming_experience')}}</h4>
-        <div class="row">
-            <div class="programmingItem card-panel hoverable" ng-repeat="p in con.programming">
-                <span class="pLanguage">{{p.language}}</span><span class="pLevel">{{con.getName(p.level)}}</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="row" ng-controller="cvController as con">
-        <div id="tools" class="col s12 m6">
-            <h4>{{con.getName('tools')}}</h4>
-            <div class="row">
-                <div class="toolsItem card-panel hoverable" ng-repeat="(key, value) in con.tools">
-                    {{key}}
-                </div>
-            </div>
-        </div>
-
-        <div id="network" class="col s12 m6">
-            <h4>{{con.getName('network_experience')}}</h4>
-            <div class="row">
-                <div class="networkItem card-panel hoverable" ng-repeat="(key, value) in con.network">
-                    {{key| uppercase}}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="projects" class="row" ng-controller="projectsController as prj">
-        <h4 >{{prj.getName('projects')}}</h4>
-        <div class="projectItem card-panel hoverable col s12"  ng-click="prj.details(p)" ng-repeat="p in prj.mainProjects">
-            <div class="row">
-                <div class="projectName col s12">{{prj.getName(p.name)}}</div>
-                <div class="projectSmallDescription col s12">{{prj.getName(p.description)}}</div>
-                <div class="col s12">
-                    <div class="chip keywordList" 
-                         ng-repeat="k in p.technologies.split(',')"> {{k}}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="contest" class="row" ng-controller="cvController as con">
+    <div id="contest">
         <h4>{{con.getName('contests')}}</h4>
-        <div class="row">
-            <div class="contestItem card-panel hoverable" ng-repeat="c in con.contests">
+        <ul>
+            <li class="" ng-repeat="c in con.contests">
                 <span class="title">{{con.getName(c.title)}}</span>
                 <span class="description">{{con.getName(c.description)}}</span>
-            </div>
-        </div>
+            </li>
+        </ul>
+    </div>
+    <div id="projects" ng-controller="projectsController as prj">
+        <h4>{{prj.getName('projects')}}</h4>
+        <ul>
+            <li class="projectItem"  ng-click="prj.details(p)" ng-repeat="p in prj.mainProjects">
+                <div class="projectName">{{prj.getName(p.name)}}</div>
+                <div class="projectSmallDescription">{{prj.getName(p.description)}}</div>
+            </li>
+        </ul>
     </div>
 </div>
