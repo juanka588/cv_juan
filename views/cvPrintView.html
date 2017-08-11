@@ -1,5 +1,5 @@
 <div id="section-to-print" class="container white" ng-controller="cvController as con">
-    <table>
+    <table style="border: 1px solid;">
         <tbody>
             <tr>
                 <td ng-controller="personalDataController as per">
@@ -11,84 +11,87 @@
                     <div class="center" id="github"><a href="{{per.contact.github}}">{{per.contact.github}}</a></div>
                 </td>
                 <td>
-
                     <img src="images/me.jpg" alt="myself">
                 </td>
             </tr>
-        </tbody></table>
+        </tbody>
+    </table>
     <table>
+        <colgroup>
+            <col style="width:70%">
+            <col style="width:30%">
+        </colgroup>
         <tbody>
             <tr>
                 <td>
-                    <span>{{con.getName('education')}}</span>
+                    <span class="section-title">{{con.getName('education')}}</span>
+                </td>
+                <td>
+                    <span class="section-title">{{con.getName('language')}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <div class="educationItem" ng-repeat="ed in con.education">
                         <div class="institution">{{ed.institution}}</div>
-                        <ul>
-                            <li class="carrer">{{con.getName(ed.carrer)}}</li>
-                            <li>
+                        <div>
+                            <span class="carrer">{{con.getName(ed.carrer)}}</span>
+                            <div>
                                 <div class="period_init"><span>{{con.getName('since')}}:</span> {{ed.period_init}}</div>
                                 <div class="period_finish"><span>{{con.getName('until')}}:</span> {{ed.period_finish}}</div>
-                            </li>
-                            <li class="place">{{ed.place}}</li>
-                        </ul>
+                            </div>
+                            <span class="place">{{ed.place}}</span>
+                        </div>
                     </div>
                 </td>
-                <td>
-                    <span>{{con.getName('language')}}</span>
-                    <ul>
-                        <li ng-repeat="l in con.languages">{{con.getName(l.name)}}:{{l.level}}</li>
-                    </ul>
+                <td style="vertical-align: text-top">
+                    <div ng-repeat="l in con.languages">{{con.getName(l.name)}}:{{l.level}}</div>
                 </td>
             </tr>
         </tbody>
     </table>
-    <table>
+    <table ng-controller="experienceController as exp">
+
+        <colgroup>
+            <col style="width:30%">
+            <col style="width:70%">
+        </colgroup>
         <tbody>
-            <tr>
-                <td >Exp laboral</td>
-                <td style="max-width: 120px;">exp la otra</td>
+            <tr style="border-top :1px solid;border-bottom :1px solid;" class="no-padding">
+                <td class="center no-padding" colspan="2"><span class="section-title">{{con.getName('work_experience')}}</span></td>
             </tr>
-            <tr>
+            <tr style="border-bottom: 1px solid;" ng-repeat="wk in exp.work">
                 <td>
-                    <table ng-controller="experienceController as exp">
-                        <tbody>
-                            <tr ng-repeat="wk in exp.work">
-                                <td>
-                                    <div class="enterprise">{{wk.enterprise}}</div>
-                                    <div class="period_init">{{exp.getName('since')}}: {{wk.period_init}}</div>
-                                    <div class="period_finish">{{exp.getName('until')}}: {{wk.period_finish}}</div>
-                                    <div class="place">{{wk.place}}</div>
-                                </td>
-                                <td>
-                                    <div class="rol">{{exp.getName(wk.rol)}}</div>
-                                    <div class="work_description">  {{exp.getName(wk.description)}}</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="enterprise">{{wk.enterprise}}</div>
+                    <div class="period_init">{{exp.getName('since')}}: {{wk.period_init}}</div>
+                    <div class="period_finish">{{exp.getName('until')}}: {{wk.period_finish}}</div>
+                    <div class="place">{{wk.place}}</div>
                 </td>
-
                 <td>
-                    <span>{{con.getName('programming_experience')}}</span>
-                    <div>
-                        <span  ng-repeat="p in con.programming" class="pLanguage">{{p.language}}</span>
-                    </div>
-                    <span>{{con.getName('tools')}}</span>
-                    <div >
-                        <span ng-repeat="(key, value) in con.tools">{{key}}</span>
-                    </div>
-                    <span>{{con.getName('network_experience')}}</span>
-                    <div>
-                        <span ng-repeat="(key, value) in con.network">{{key| uppercase}}</span>
-                    </div>
+                    <div class="rol">{{exp.getName(wk.rol)}}</div>
+                    <div class="work_description">  {{exp.getName(wk.description)}}</div>
                 </td>
             </tr>
-
         </tbody>
     </table>
+
+    <div>
+        <span class="section-title">{{con.getName('programming_experience')}}</span>
+        <div>
+            <span class="line-list-item" ng-repeat="p in con.programming">{{p.language}}</span>
+        </div>
+        <span class="section-title">{{con.getName('tools')}}</span>
+        <div>
+            <span class="line-list-item" ng-repeat="(key, value) in con.tools">{{key}}</span>
+        </div>
+        <span class="section-title">{{con.getName('network_experience')}}</span>
+        <div>
+            <span class="line-list-item" ng-repeat="(key, value) in con.network">{{key| uppercase}}</span>
+        </div>
+    </div>
 
     <div id="contest">
-        <h4>{{con.getName('contests')}}</h4>
+        <span  class="section-title">{{con.getName('contests')}}</span>
         <ul>
             <li class="" ng-repeat="c in con.contests">
                 <span class="title">{{con.getName(c.title)}}</span>
@@ -97,7 +100,7 @@
         </ul>
     </div>
     <div id="projects" ng-controller="projectsController as prj">
-        <h4>{{prj.getName('projects')}}</h4>
+        <span  class="section-title">{{prj.getName('projects')}}</span>
         <ul>
             <li class="projectItem"  ng-click="prj.details(p)" ng-repeat="p in prj.mainProjects">
                 <div class="projectName">{{prj.getName(p.name)}}</div>

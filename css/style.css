@@ -28,9 +28,6 @@ nav ul li i {
 .lang,.educationItem,.workItem{
     /*border: 1px solid;*/
 }
-#education,#languages,#work{
-    /*border: 2px solid;*/
-}
 .rol,.institution,.language_name,.enterprise,.projectName{
     font-weight: bold;
     font-size: large;
@@ -113,7 +110,18 @@ nav ul li i {
 .collection-item:hover{
     background-color: #ddd !important;
 }
-
+.section-title{
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 12px;
+}
+.line-list-item:before{
+    content: ",";
+    margin-right: 4px;
+}
+.line-list-item:first-child:before{
+    content: "";
+}
 .main-menu{
     /*position: fixed !important;*/
     /*top: 64px;*/
