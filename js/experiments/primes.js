@@ -8,6 +8,7 @@ angularApp.controller('primesController', function () {
     this.increasing = false;
     this.len = 1;
     this.customNumber = -1;
+    this.auto = false;
 
     this.nextNumber = function () {
         this.prev = this.current;
@@ -97,6 +98,9 @@ function run(controller) {
             rotation = 1;
             movements = [];
             len = controller.len;
+            if (controller.auto) {
+                controller.nextNumber();
+            }
             iteration = controller.current;
             p = primes[iteration];
         }
