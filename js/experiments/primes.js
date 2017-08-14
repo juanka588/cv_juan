@@ -99,7 +99,7 @@ function run(controller) {
             movements = [];
             len = controller.len;
             if (controller.auto) {
-                controller.nextNumber();
+                angular.element('#next-prime-btn').triggerHandler('click');
             }
             iteration = controller.current;
             p = primes[iteration];
