@@ -1,13 +1,20 @@
-<div>
+<div ng-controller="experimentsController as con">
     <nav>
         <div class="blue lighten-1 nav-wrapper">
             <a href="experiments" class="brand-logo">Experimentos</a>
         </div>
     </nav>
-    <ul>
-        <li>
-            <a href="experiment/1">Primos</a>
-            <a href="experiment/2">Otra Cosa</a>
-        </li>
-    </ul>
+    <div class="row">
+        <div ng-repeat="e in con.experiments" class="col s12 m3 l2" style="padding: 4px;">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="{{e.image}}">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">{{e.name}}</span>
+                    <p><a href="experiment/{{e.id}}" >Show</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
