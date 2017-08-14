@@ -2,9 +2,33 @@
 <div id="experiment-container" ng-controller="primesController as con"
      ng-init="con.run()" class="grey lighten-1">
     <input ng-model="con.total">
-    <a>{{con.primes[con.prev]}}</a>
-    <a>{{con.primes[con.current]}}</a>
-    <a>{{con.primes[con.next]}}</a>
+    <div class="row">
+        <a>{{con.primes[con.prev]}}</a>
+        <a>{{con.primes[con.current]}}</a>
+        <a>{{con.primes[con.next]}}</a>
+
+    </div>
+    <div class="row">
+        <a class="left" ng-click="con.prevNumber()">Prev</a>
+        <a class="right" ng-click="con.nextNumber()">Next</a>
+    </div>
+    <div class="row">
+        <label>
+            Increasing
+        </label>
+        <!-- Switch -->
+        <div class="switch">
+            <label>
+                Off
+                <input type="checkbox" ng-model="con.increasing">
+                <span class="lever"></span>
+                On
+            </label>
+        </div>
+        <input type="number" min="0" max="1000" step="1" ng-model="con.iterations">
+        <input type="number" step="1" ng-model="con.customNumber">
+    </div>
+
     <div class="row" >
         <div id="sketch-holder" class="col s12 m6 offset-m3"></div>
     </div>
