@@ -42,8 +42,8 @@
                     <div class="lang" ng-repeat="l in con.languages">
                         <div class="language_name">{{con.getName(l.name)}}</div>
                         <ul>
-                            <li class="certification">{{con.getName('certification')}}:{{l.certification}}</li>
-                            <li class="level">{{con.getName('level')}}:{{l.level}}</li>
+                            <li class="certification">{{con.getName('certification')}}:{{con.getName(l.certification)}}</li>
+                            <li class="level">{{con.getName('level')}}:{{con.getName(l.level)}}</li>
                         </ul>
                     </div>
                 </div>
