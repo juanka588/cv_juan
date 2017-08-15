@@ -122,6 +122,10 @@ nav ul li i {
 .line-list-item:first-child:before{
     content: "";
 }
+.material-icons + span{
+    margin-left: 4px !important;
+}
+
 .main-menu{
     /*position: fixed !important;*/
     /*top: 64px;*/
