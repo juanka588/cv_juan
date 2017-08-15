@@ -1,11 +1,56 @@
 <div ng-include="'../views/experimentsMenu.html'"></div>
-<div id="experiment-container" ng-controller="primesController as con"
-     ng-init="con.run()" class="grey lighten-1">
-    <input ng-model="con.total">
-    <a>{{con.primes[con.prev]}}</a>
-    <a>{{con.primes[con.current]}}</a>
-    <a>{{con.primes[con.next]}}</a>
-    <div class="row" >
-        <div id="sketch-holder" class="col s12 m6 offset-m3"></div>
+<div id="experiment-container row" ng-controller="primesController as con"
+     ng-init="con.run()">
+    <div class=" row col s12 m3">
+        <div class="row col s12">
+            <label>
+                Max Number
+            </label>
+            <input ng-model="con.total">
+        </div>
+        <div class="row col s12">
+            <a class="col s4 center">{{con.primes[con.prev]}}</a>
+            <a class="col s4 center btn">{{con.primes[con.current]}}</a>
+            <a class="col s4 center">{{con.primes[con.next]}}</a>
+
+        </div>
+        <div class="row col s12">
+            <a class="left" ng-click="con.prevNumber()">Prev</a>
+            <a class="right" id="next-prime-btn" ng-click="con.nextNumber()">Next</a>
+        </div>
+        <div class="row col s12">
+            <label>
+                Increasing
+            </label>
+            <!-- Switch -->
+            <div class="switch">
+                <label>
+                    Off
+                    <input type="checkbox" ng-model="con.increasing">
+                    <span class="lever"></span>
+                    On
+                </label>
+            </div>
+            <label>
+                Auto
+            </label>
+            <!-- Switch -->
+            <div class="switch">
+                <label>
+                    Off
+                    <input type="checkbox" ng-model="con.auto">
+                    <span class="lever"></span>
+                    On
+                </label>
+            </div>
+            <label>Iterations</label>
+            <input type="number" min="0" max="1000" step="1" ng-model="con.iterations">
+            <label>Try your own number</label>
+            <input type="number" step="1" ng-model="con.customNumber">
+        </div>
+
+    </div>
+    <div class="row col s12 m6" >
+        <div id="sketch-holder" class="col s12 m6"></div>
     </div>
 </div>
