@@ -8,14 +8,9 @@ function getName(key) {
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
-    // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-
-        // Pick a remaining element...
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
-
-        // And swap it with the current element.
         temporaryValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
@@ -41,8 +36,6 @@ var months = [
 // Append a suffix to dates.
 // Example: 23 => 23rd, 1 => 1st.
 function nth(d) {
-    if (d > 3 && d < 21)
-        return 'th';
     switch (d % 10) {
         case 1:
             return "st";
@@ -59,8 +52,6 @@ function nth(d) {
 function formatDate(timestamp) {
     var date = new Date();
     date.setTime(timestamp * 1000);
-//     weekdays[date.getDay()] + ", " +
-//            date.getDate() + nth(date.getDate()) + " " +
     return months[date.getMonth()] + " " +
             date.getFullYear();
 }
