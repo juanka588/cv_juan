@@ -7,7 +7,6 @@ angularApp.controller('authController', function ($firebaseAuth) {
         if (this.firebaseUser) {
             this.showUser = true;
         }
-        console.log(this.firebaseUser);
     });
 
     this.signIn = function () {
