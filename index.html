@@ -73,17 +73,54 @@
                     <div ng-include="'views/userView.html'"></div>
                 </li>
 
-                <li><a href="main"><i class="material-icons grey-text text-darken-4">branding_watermark</i><span class="grey-text text-darken-4">{{lan.getName("index")}}</span></a></li>
-                <li><a href="juan"><i class="material-icons grey-text text-darken-4">comment</i><span class="grey-text text-darken-4">{{lan.getName("about_me")}}</span></a></li>
-                <li><a href="cvitae"><i class="material-icons grey-text text-darken-4">move_to_inbox</i><span class="grey-text text-darken-4">Curriculum Vitae</span></a></li>
-                <li><a href="experience"><i class="material-icons grey-text text-darken-4">code</i><span class="grey-text text-darken-4">{{lan.getName("work_experience")}}</span></a></li>
-                <li><a href="projects"><i class="material-icons grey-text text-darken-4">apps</i><span class="grey-text text-darken-4">{{lan.getName("projects")}}</span></a></li>
-                <li ng-if="con.showUser" class="collection-item"><a class="valign-wrapper" href="/experiments"><i class="material-icons grey-text text-darken-4">code</i><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">Experiments</span></a></li>
-                <li ng-if="con.showUser" class="collection-item"><a class="valign-wrapper" href="/accounts"><i class="material-icons grey-text text-darken-4">code</i><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">Accounts</span></a></li>
+                <li>
+                    <a href="main">
+                        <span class="material-icons grey-text text-darken-4">branding_watermark</span>
+                        <span class="grey-text text-darken-4">{{lan.getName("index")}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="juan">
+                        <span class="material-icons grey-text text-darken-4">comment</span>
+                        <span class="grey-text text-darken-4">{{lan.getName("about_me")}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="cvitae">
+                        <span class="material-icons grey-text text-darken-4">move_to_inbox</span>
+                        <span class="grey-text text-darken-4">Curriculum Vitae</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="experience">
+                        <span class="material-icons grey-text text-darken-4">code</span>
+                        <span class="grey-text text-darken-4">{{lan.getName("work_experience")}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="projects">
+                        <span class="material-icons grey-text text-darken-4">apps</span>
+                        <span class="grey-text text-darken-4">{{lan.getName("projects")}}</span>
+                    </a>
+                </li>
+                <li ng-if="con.showUser" class="collection-item">
+                    <a class="valign-wrapper" href="/experiments">
+                        <span class="material-icons grey-text text-darken-4">code</span>
+                        <span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("experiments")}}</span>
+                    </a>
+                </li>
+                <li ng-if="con.showUser" class="collection-item">
+                    <a class="valign-wrapper" href="/accounts">
+                        <span class="material-icons grey-text text-darken-4">code</span>
+                        <span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("accounts")}}</span>
+                    </a>
+                </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
                         <li>
-                            <a class="collapsible-header">Languages<i class="material-icons">arrow_drop_down</i></a>
+                            <a class="collapsible-header">Languages
+                                <span class="material-icons">arrow_drop_down</span>
+                            </a>
                             <div class="collapsible-body">
                                 <ul>
                                     <li ng-repeat="l in lan.languages">
