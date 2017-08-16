@@ -120,6 +120,10 @@ angularApp.config(['$routeProvider', '$locationProvider', function ($routeProvid
                     templateUrl: 'views/experiments/primesGraph.html',
                     controller: 'primesController'
                 })
+                .when('/experiment/2', {
+                    templateUrl: 'views/experiments/chromeView.html',
+                    controller: 'chromeController'
+                })
                 .when('/main', {
                     templateUrl: 'views/main.html'
                 })
