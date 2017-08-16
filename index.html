@@ -146,12 +146,12 @@
                     <li class="collection-item"><a class="valign-wrapper" href="experience"><span class="material-icons grey-text text-darken-4">code</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("work_experience")}}</span></a></li>
                     <li class="collection-item"><a class="valign-wrapper" href="projects"><span class="material-icons grey-text text-darken-4">apps</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("projects")}}</span></a></li>             
 
-                    <li ng-if="con.showUser" class="collection-item"><a class="valign-wrapper" href="/experiments"><i class="material-icons grey-text text-darken-4">code</i><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("experiments")}}</span></a></li>
-                    <li ng-if="con.showUser" class="collection-item"><a class="valign-wrapper" href="/accounts"><i class="material-icons grey-text text-darken-4">code</i><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("accounts")}}</span></a></li>
+                    <li ng-if="con.showUser" class="collection-item"><a class="valign-wrapper" href="/experiments"><span class="material-icons grey-text text-darken-4">code</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("experiments")}}</span></a></li>
+                    <li ng-if="con.showUser" class="collection-item"><a class="valign-wrapper" href="/accounts"><span class="material-icons grey-text text-darken-4">code</span><span class="menu-label grey-text text-darken-4 hide-on-small-and-down">{{lan.getName("accounts")}}</span></a></li>
 
 
                     <li class="collection-item">
-                        <a ng-if="lan.menuExpanded" ng-click="lan.expandMenu()"> <span class="material-icons grey-text text-darken-4 right">arrow_back</span></a>
+                        <a ng-if="lan.menuExpanded" ng-click="lan.expandMenu()"><span class="material-icons grey-text text-darken-4 right">arrow_back</span></a>
                         <a ng-if="!lan.menuExpanded" ng-click="lan.expandMenu()"><span class="material-icons grey-text text-darken-4">arrow_forward</span></a>
                     </li>
                 </ul>
