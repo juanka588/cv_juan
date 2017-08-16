@@ -57,7 +57,6 @@ function run(controller) {
 
         s.setup = function () {
             s.createCanvas(600, 600);
-//            s.frameRate(30);
         };
 
         s.draw = function () {
