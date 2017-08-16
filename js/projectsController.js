@@ -14,7 +14,6 @@ angularApp.controller('projectsController', function ($firebaseArray) {
 
     controller.currentDate = new Date();
     controller.colors = ["red", "blue", "green", "purple", "indigo", "orange"];
-//    controller.colors = shuffle(controller.colors);
     controller.currentEvent = null;
     controller.currentIdx = 0;
 
@@ -77,10 +76,6 @@ function initControls() {
             decimals: 0
         })
     });
-    var dateValues = [
-        document.getElementById('event-start'),
-        document.getElementById('event-end')
-    ];
 
     dateSlider.noUiSlider.on('update', function (values, handle) {
         $("#date_selected").val(formatDate(new Date(values[handle]/1000)));
