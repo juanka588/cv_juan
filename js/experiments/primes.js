@@ -115,7 +115,7 @@ function calcPrimes(size) {
     var sieve = [false, false, true, true];
     var primes = [];
     for (var i = 0; i < size; i++) {
-        if (typeof sieve[i] == "undefined" || sieve[i]) {
+        if (sieve[i] == null || sieve[i]) {
             var n = 2;
             while (n * i < size) {
                 sieve[n * i] = false;
