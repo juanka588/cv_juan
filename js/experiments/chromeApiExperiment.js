@@ -1,4 +1,7 @@
 angularApp.controller('chromeController', function () {
+    this.colors = ["red", "orange", "blue", "green", "purple", "grey"];
+    this.indices = [0, 1, 2, 3, 4, 5];
+    this.pageElements=["Navbar","Sidenav","Main container","Line","Title","Footer"];
 
     this.sendNotification = function () {
         var notification = null;
@@ -29,4 +32,27 @@ angularApp.controller('chromeController', function () {
         };
     };
 
+    this.applyPermutation = function () {
+        //remove color
+        $("div.nav-test").toggleClass(this.colors[this.indices[0]]);
+        $("div.aside-test").toggleClass(this.colors[this.indices[1]]);
+        $("div.main-content-test").toggleClass(this.colors[this.indices[2]]);
+        $("div.line-test").toggleClass(this.colors[this.indices[3]]);
+        $("div.title-test").toggleClass(this.colors[this.indices[4]]);
+        $("div.footer-test").toggleClass(this.colors[this.indices[5]]);
+        //change color order
+
+        //re-apply color
+
+    };
+
 });
+
+
+function addColors(colors) {
+
+}
+
+function permutateColors(colors) {
+
+}
