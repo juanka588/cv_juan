@@ -1,7 +1,11 @@
 <div ng-include="'../views/backButton.html'"></div>
-<div ng-controller="chromeController as con">
+<div ng-controller="chromeController as con" ng-init="con.applyPermutation()">
     <button class=" center btn blue" ng-click="con.sendNotification()">Notify me</button>
-    <div class="row" ng-init="con.applyPermutation()">
+    <div class="row">
+        <span>count: {{con.permutationNumber}}</span>
+        <span>total: {{con.factorial(con.colors.length)}}</span>
+    </div>
+    <div class="row">
         <div class="navigator-test col s9 offset-s1">
             <div class="top-bar">
                 <div class="circles">
@@ -45,12 +49,12 @@
 
     <div class="row">
         <div class="circles">
-            <div ng-repeat="(i,c) in con.colors"  class="center col s{{((12/con.colors.length) %12)+1   | number:0}}">
-                    <div class="valign-wrapper col s12">
-                        <div class="color-circle {{c}}"></div>
-                        <label class="color-description">{{con.pageElements[i]}}</label>
-                        <!--<input type="color" ng-model="con.colors[i]">-->
-                    </div>
+            <div ng-repeat="(i,c) in con.colors"  class="center col s{{((12 / con.colors.length) % 12) + 1 | number:0}}">
+                <div class="valign-wrapper col s12">
+                    <div class="color-circle {{con.classNames[i]}}"></div>
+                    <label class="color-description">{{con.pageElements[i]}}</label>
+                    <input type="color" ng-model="con.colors[i]">
+                </div>
             </div>
         </div>
         <div>

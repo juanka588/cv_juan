@@ -60,3 +60,11 @@ function formatDate(timestamp) {
 function timestamp(str) {
     return new Date(str).getTime();
 }
+
+function factorial(n) {
+    var number = 1;
+    for (var i = 1; i <= n; i++) {
+        number = number * i;
+    }
+    return number;
+}

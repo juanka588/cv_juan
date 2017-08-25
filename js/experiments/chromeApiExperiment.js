@@ -1,7 +1,9 @@
 angularApp.controller('chromeController', function () {
-    this.colors = ["red", "orange", "blue", "green", "purple", "grey"];
+    this.colors = ["#f44336", "#ff9800", "#2196f3", "#4caf50", "#673ab7", "#9e9e9e"];
     this.indices = [0, 1, 2, 3, 4, 5];
-    this.pageElements=["Navbar","Sidenav","Main container","Line","Title","Footer"];
+    this.pageElements = ["Navbar", "Sidenav", "Main container", "Line", "Title", "Footer"];
+    this.classNames = ["nav-test", "aside-test", "main-content-test", "line-test", "title-test", "footer-test"];
+    this.permutationNumber = 1;
 
     this.sendNotification = function () {
         var notification = null;
@@ -33,26 +35,67 @@ angularApp.controller('chromeController', function () {
     };
 
     this.applyPermutation = function () {
+        this.permutationNumber++;
         //remove color
-        $("div.nav-test").toggleClass(this.colors[this.indices[0]]);
-        $("div.aside-test").toggleClass(this.colors[this.indices[1]]);
-        $("div.main-content-test").toggleClass(this.colors[this.indices[2]]);
-        $("div.line-test").toggleClass(this.colors[this.indices[3]]);
-        $("div.title-test").toggleClass(this.colors[this.indices[4]]);
-        $("div.footer-test").toggleClass(this.colors[this.indices[5]]);
+        this.removeColors();
         //change color order
-
+        this.indices = permutateColors(this.indices);
         //re-apply color
-
+        this.applyColors();
     };
 
+    this.removeColors = function () {
+        for (var i = 0; i < this.classNames.length; i++) {
+            $("div." + this.classNames[i]).css("background-color", "transparent");
+        }
+    };
+
+    this.applyColors = function () {
+        for (var i = 0; i < this.classNames.length; i++) {
+            $("div." + this.classNames[i]).css("background-color", this.colors[this.indices[i]]);
+        }
+    };
+
+    this.factorial = function () {
+        return factorial(this.colors.length);
+    };
 });
 
 
-function addColors(colors) {
+
+function addColors(positions) {
 
 }
 
-function permutateColors(colors) {
+function permutateColors(positions) {
+    var permuted = positions;
+    var x = -1;
+    for (var i = 0; i < permuted.length - 1; i++) {
+        if (permuted[i] < permuted[i + 1]) {
+            x = i;
+        }
+    }
+    if (x === -1) {
+        return positions.reverse();
+    }
+    var y = -1;
+    for (var i = 0; i < permuted.length; i++) {
+        if (permuted[x] < permuted[i]) {
+            y = i;
+        }
+    }
+    var temp = positions[x];
+    positions[x] = positions[y];
+    positions[y] = temp;
+    //reverse
+    var high = (positions.length - 1 - x) / 2;
+    var idx = x + 1;
+    for (var i = 0; i < high; i++) {
+        idx += i;
+        temp = positions[idx];
+        positions[idx] = positions[positions.length - 1 - i];
+        positions[positions.length - 1 - i] = temp;
+    }
 
+    return permuted;
 }
