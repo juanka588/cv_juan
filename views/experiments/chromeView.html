@@ -2,8 +2,11 @@
 <div ng-controller="chromeController as con" ng-init="con.applyPermutation()">
     <button class=" center btn blue" ng-click="con.sendNotification()">Notify me</button>
     <div class="row">
+        {{con.indices}}
+    </div>
+    <div class="row">
         <span>Count: {{con.permutationNumber}}</span>
-        <span>Total: {{con.factorial(con.colors.length)}}</span>
+        <span>Total: {{con.maxPermutations}}</span>
     </div>
     <div class="row">
         <div class="navigator-test col s9 offset-s1">

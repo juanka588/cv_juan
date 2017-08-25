@@ -4,7 +4,7 @@ angularApp.controller('chromeController', function () {
     this.pageElements = ["Navbar", "Sidenav", "Main container", "Line", "Title", "Footer"];
     this.classNames = ["nav-test", "aside-test", "main-content-test", "line-test", "title-test", "footer-test"];
     this.permutationNumber = 1;
-    this.maxPermutations = this.factorial();
+    this.maxPermutations = factorial(this.colors.length);
 
     this.sendNotification = function () {
         var notification = null;
@@ -56,10 +56,6 @@ angularApp.controller('chromeController', function () {
         for (var i = 0; i < this.classNames.length; i++) {
             $("div." + this.classNames[i]).css("background-color", this.colors[this.indices[i]]);
         }
-    };
-
-    this.factorial = function () {
-        return factorial(this.colors.length);
     };
 });
 
