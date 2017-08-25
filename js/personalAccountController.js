@@ -5,6 +5,9 @@ angularApp.controller('personalAccountController', function ($firebaseArray) {
     this.data = [];
     this.data[0] = $firebaseArray(accountOutRef);
     this.data[1] = $firebaseArray(accountInRef);
+    this.initView=function(){
+        $('.collapsible').collapsible();
+    };
 
     this.addTemp = function (type) {
         var amount = Math.random() * 100;
