@@ -4,6 +4,7 @@ angularApp.controller('chromeController', function () {
     this.pageElements = ["Navbar", "Sidenav", "Main container", "Line", "Title", "Footer"];
     this.classNames = ["nav-test", "aside-test", "main-content-test", "line-test", "title-test", "footer-test"];
     this.permutationNumber = 1;
+    this.maxPermutations = this.factorial();
 
     this.sendNotification = function () {
         var notification = null;
@@ -36,6 +37,7 @@ angularApp.controller('chromeController', function () {
 
     this.applyPermutation = function () {
         this.permutationNumber++;
+        this.permutationNumber = this.permutationNumber % this.maxPermutations;
         //remove color
         this.removeColors();
         //change color order
