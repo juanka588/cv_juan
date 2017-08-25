@@ -33,6 +33,11 @@ nav ul li i {
     font-size: large;
     margin-top: 12px;
 }
+div.print{
+    font-weight: bold;
+    font-size: large;
+    margin-top: 6px;
+}
 .period_finish,.period_init{
     display: inline;
 }
