@@ -21,12 +21,12 @@ function shuffle(array) {
 
 
 // Create a list of day and monthnames.
-var weekdays = [
+const weekdays = [
     "Sunday", "Monday", "Tuesday",
     "Wednesday", "Thursday", "Friday",
     "Saturday"
 ];
-var months = [
+const months = [
     "January", "February", "March",
     "April", "May", "June", "July",
     "August", "September", "October",

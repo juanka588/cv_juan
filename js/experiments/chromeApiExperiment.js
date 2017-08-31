@@ -68,7 +68,8 @@ function addColors(positions) {
 function permutateColors(positions) {
     var permuted = positions;
     var x = -1;
-    for (var i = 0; i < permuted.length - 1; i++) {
+    var i = 0;
+    for (i; i < permuted.length - 1; i++) {
         if (permuted[i] < permuted[i + 1]) {
             x = i;
         }
@@ -77,7 +78,7 @@ function permutateColors(positions) {
         return positions.reverse();
     }
     var y = -1;
-    for (var i = 0; i < permuted.length; i++) {
+    for (i = 0; i < permuted.length; i++) {
         if (permuted[x] < permuted[i]) {
             y = i;
         }
@@ -88,7 +89,7 @@ function permutateColors(positions) {
     //reverse
     var high = (positions.length - 1 - x) / 2;
     var idx = x + 1;
-    for (var i = 0; i < high; i++) {
+    for (i = 0; i < high; i++) {
         idx += i;
         temp = positions[idx];
         positions[idx] = positions[positions.length - 1 - i];
