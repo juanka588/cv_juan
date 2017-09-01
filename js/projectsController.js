@@ -1,4 +1,4 @@
-angularApp.controller('projectsController', function ($firebaseArray) {
+angularApp.controller('projectsController', function ($firebaseArray, utils) {
     var controller = this;
     var mainProjectsRef = firebaseApp.database().ref('projects')
             .orderByChild('principal').equalTo(true);
@@ -18,11 +18,11 @@ angularApp.controller('projectsController', function ($firebaseArray) {
     controller.currentIdx = 0;
 
     controller.formatDate = function (timestamp) {
-        return formatDate(timestamp);
+        return utils.formatDate(timestamp);
     };
 
     controller.getName = function (key) {
-        return getName(key);
+        return utils.getName(key);
     };
 
     controller.nextEvent = function () {
@@ -51,34 +51,33 @@ angularApp.controller('projectsController', function ($firebaseArray) {
         console.log(p);
     };
 
+    controller.initControls = function () {
+        $('.carousel.carousel-slider').carousel({fullWidth: true});
+
+        var dateSlider = document.getElementById('slider_date');
+
+        noUiSlider.create(dateSlider, {
+            // Create two timestamps to define a range.
+            range: {
+                min: timestamp('2011'),
+                max: new Date().getTime()
+            },
+            // Steps of one week
+            step: 4 * 7 * 24 * 60 * 60 * 1000,
+            // Two more timestamps indicate the handle starting positions.
+            start: [timestamp('2011')],
+            // No decimals
+            format: wNumb({
+                decimals: 0
+            })
+        });
+
+        dateSlider.noUiSlider.on('update', function (values, handle) {
+            $("#date_selected").val(utils.formatDate(new Date(values[handle] / 1000)));
+        });
+    };
+
 });
 
 
 
-function initControls() {
-
-    $('.carousel.carousel-slider').carousel({fullWidth: true});
-
-    var dateSlider = document.getElementById('slider_date');
-
-    noUiSlider.create(dateSlider, {
-        // Create two timestamps to define a range.
-        range: {
-            min: timestamp('2012'),
-            max: new Date().getTime()
-        },
-        // Steps of one week
-        step: 4 * 7 * 24 * 60 * 60 * 1000,
-        // Two more timestamps indicate the handle starting positions.
-        start: [timestamp('2011')],
-        // No decimals
-        format: wNumb({
-            decimals: 0
-        })
-    });
-
-    dateSlider.noUiSlider.on('update', function (values, handle) {
-        $("#date_selected").val(formatDate(new Date(values[handle]/1000)));
-    });
-
-}

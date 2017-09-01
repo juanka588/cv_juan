@@ -1,4 +1,4 @@
-angularApp.controller('cvController', function ($firebaseObject) {
+angularApp.controller('cvController', function ($firebaseObject, utils) {
     var controller = this;
     var langsRef = firebaseApp.database().ref('languages');
     var educationRef = firebaseApp.database().ref('education').orderByChild('time');
@@ -15,7 +15,7 @@ angularApp.controller('cvController', function ($firebaseObject) {
     controller.contests = $firebaseObject(contestsRef);
 
     controller.getName = function (key) {
-        return getName(key);
+        return utils.getName(key);
     };
 
     controller.details = function (p) {

@@ -15,7 +15,7 @@
         </div>
         <div class="row col s12">
             <div class="col s12 projects-container" ng-if="con.projects.$resolved">
-                <div class="carousel carousel-slider center" data-indicators="true">
+                <div class="carousel carousel-slider center" data-indicators="true" ng-init="con.initControls()">
                     <div class="carousel-item {{con.colors[$index % con.colors.length]}} white-text" 
                          ng-click="con.details(p)" ng-repeat="p in con.projects">
                         <div class="col s12">{{con.formatDate(p.time)}}</div>
@@ -33,7 +33,6 @@
                         <a class="black-text col s12" target="_blank" href="{{p.link}}">{{p.link}}</a>
                     </div>
                 </div>
-                <script>setTimeout(initControls, 500);</script>
             </div>
             <div ng-if="!con.projects.$resolved" class="center col s12">
                 <div class="preloader-wrapper big active">

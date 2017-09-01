@@ -1,10 +1,10 @@
-angularApp.controller('chromeController', function () {
+angularApp.controller('chromeController', function (utils) {
     this.colors = ["#f44336", "#ff9800", "#2196f3", "#4caf50", "#673ab7", "#9e9e9e"];
     this.indices = [0, 1, 2, 3, 4, 5];
     this.pageElements = ["Navbar", "Sidenav", "Main container", "Line", "Title", "Footer"];
     this.classNames = ["nav-test", "aside-test", "main-content-test", "line-test", "title-test", "footer-test"];
     this.permutationNumber = 1;
-    this.maxPermutations = factorial(this.colors.length);
+    this.maxPermutations = utils.factorial(this.colors.length);
 
     this.sendNotification = function () {
         var notification = null;

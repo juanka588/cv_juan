@@ -1,23 +1,24 @@
 var firebaseApp = initFireBase();
 var angularApp = angular.module('cvApp', ['firebase', 'ngRoute', 'ngAnimate', 'chart.js']);
 
-var strings = {};
-var language = "en";
-
-
 (function ($) {
     $(function () {
-        firebaseApp.database().ref('strings').once('value').then(function (snapshot) {
-            snapshot.forEach(function (child) {
-                strings[child.key] = child.val();
-            });
-        });
         initMain();
     }); // end of document ready
 })(jQuery); // end of jQuery name space
 
 (function (ChartJsProvider) {
-    ChartJsProvider.setOptions({colors: ['#803690', '#00ADF9', '#DCDCDC', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360']});
+    ChartJsProvider.setOptions(
+            {
+                colors: [
+                    '#803690',
+                    '#00ADF9',
+                    '#DCDCDC',
+                    '#46BFBD',
+                    '#FDB45C',
+                    '#949FB1',
+                    '#4D5360']
+            });
 });
 
 function initMain() {
@@ -42,30 +43,6 @@ function initFireBase() {
     };
     return firebase.initializeApp(config);
 }
-
-
-angularApp.controller('languagesController', function () {
-    this.languages = ['en', 'es', 'fr'];
-    this.updateLanguage = function (lang) {
-        language = lang;
-    };
-    this.getName = function (key) {
-        return getName(key);
-    };
-    this.menuExpanded = true;
-    this.expandMenu = function () {
-        if (this.menuExpanded) {
-            $("span.menu-label").hide();
-            $("div.side-nav-cv").removeClass("m2");
-            $("div.side-nav-cv").addClass("m1");
-        } else {
-            $("span.menu-label").show();
-            $("div.side-nav-cv").removeClass("m1");
-            $("div.side-nav-cv").addClass("m2");
-        }
-        this.menuExpanded = !this.menuExpanded;
-    };
-});
 
 // for ngRoute
 angularApp.run(["$rootScope", "$location", function ($rootScope, $location) {

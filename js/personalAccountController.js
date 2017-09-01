@@ -1,4 +1,4 @@
-angularApp.controller('personalAccountController', function ($firebaseArray) {
+angularApp.controller('personalAccountController', function ($firebaseArray,utils) {
     var accountOutRef = firebaseApp.database().ref('accounts').orderByChild('type').startAt("outcome").endAt("outcome");
     var accountInRef = firebaseApp.database().ref('accounts').orderByChild('type').startAt("income").endAt("income");
 
@@ -25,7 +25,7 @@ angularApp.controller('personalAccountController', function ($firebaseArray) {
     };
 
     this.formatDate = function (timestamp) {
-        return formatDate(timestamp);
+        return utils.formatDate(timestamp);
     };
 
     this.deleteItem = function (item, type) {
