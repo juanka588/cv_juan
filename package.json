@@ -23,7 +23,7 @@
     "firebase": "^3.9.0",
     "jquery": "^3.2.1",
     "materialize-css": "^0.99.0",
-    "moment": "^2.18.1",
+    "moment": "^2.18.1"
   },
   "devDependencies": {
     "jasmine-core": "^2.8.0",
