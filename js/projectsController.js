@@ -59,7 +59,7 @@ angularApp.controller('projectsController', function ($firebaseArray, utils) {
         noUiSlider.create(dateSlider, {
             // Create two timestamps to define a range.
             range: {
-                min: timestamp('2011'),
+                min: utils.timestamp('2011'),
                 max: new Date().getTime()
             },
             // Steps of one week
