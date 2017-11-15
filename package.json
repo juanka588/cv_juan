@@ -4,7 +4,8 @@
   "description": "Juan Curriculum Vitae",
   "main": "index.html",
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start karma.conf.js "
+    "test": "./node_modules/karma/bin/karma start karma.conf.js ",
+	"start": "firebase serve"
   },
   "keywords": [
     "firebase"

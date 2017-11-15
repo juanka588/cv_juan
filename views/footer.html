@@ -2,24 +2,32 @@
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                <h5 class="white-text">{{con.contact.name}}</h5>
+                <p class="grey-text text-lighten-4">{{con.getName('main_description')}}</p>
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
+                <h5 class="white-text">{{con.getName('links')}}</h5>
                 <ul>
                     <li><a class="grey-text text-lighten-3 valign-wrapper" href="{{con.contact.github}}">
                             <img class="icon" alt="github" src="../images/github.png">
                             GitHub
-                        </a></li>
+                        </a>
+                    </li>
+                    <li><a class="grey-text text-lighten-3 valign-wrapper" href="{{con.contact.stackoverflow}}">
+                            <img class="icon" alt="github" src="../images/SO.svg">
+                            StackOverflow
+                        </a>
+                    </li>
                     <li><a class="grey-text text-lighten-3 valign-wrapper" href="{{con.contact.linkedIn}}">
                             <img class="icon" alt="linkedIn" src="../images/Linkedin.png">
                             LinkedIn
-                        </a></li>
+                        </a>
+                    </li>
                     <li><a class="grey-text text-lighten-3 valign-wrapper" href="{{con.contact.facebook}}">
                             <img class="icon" alt="Facebook" src="../images/facebook.png">
                             Facebook
-                        </a></li>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

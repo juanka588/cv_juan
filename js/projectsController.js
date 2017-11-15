@@ -52,32 +52,41 @@ angularApp.controller('projectsController', function ($firebaseArray, utils) {
     };
 
     controller.initControls = function () {
-        $('.carousel.carousel-slider').carousel({fullWidth: true});
-
-        var dateSlider = document.getElementById('slider_date');
-
-        noUiSlider.create(dateSlider, {
-            // Create two timestamps to define a range.
-            range: {
-                min: utils.timestamp('2011'),
-                max: new Date().getTime()
-            },
-            // Steps of one week
-            step: 4 * 7 * 24 * 60 * 60 * 1000,
-            // Two more timestamps indicate the handle starting positions.
-            start: [timestamp('2011')],
-            // No decimals
-            format: wNumb({
-                decimals: 0
-            })
-        });
-
-        dateSlider.noUiSlider.on('update', function (values, handle) {
-            $("#date_selected").val(utils.formatDate(new Date(values[handle] / 1000)));
-        });
+        initControls(utils);
     };
 
 });
 
 
+function initControls(utils) {
+    var dateSlider = document.getElementById('slider_date');
 
+    noUiSlider.create(dateSlider, {
+        // Create two timestamps to define a range.
+        range: {
+            min: utils.timestamp('2011'),
+            max: new Date().getTime()
+        },
+        // Steps of one week
+        step: 4 * 7 * 24 * 60 * 60 * 1000,
+        // Two more timestamps indicate the handle starting positions.
+        start: [utils.timestamp('2011')],
+        // No decimals
+        format: wNumb({
+            decimals: 0
+        })
+    });
+
+    dateSlider.noUiSlider.on('update', function (values, handle) {
+        $("#date_selected").val(utils.formatDate(new Date(values[handle] / 1000)));
+    });
+
+    var caro = $('.carousel.carousel-slider');
+    if (caro.length === 1) {
+        setTimeout(function () {
+            caro.carousel({fullWidth: true});
+        }, 1000);
+        return;
+    }
+    caro.carousel({fullWidth: true});
+}
