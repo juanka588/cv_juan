@@ -7,9 +7,9 @@ angularApp.controller('chromeController', function (utils) {
     this.maxPermutations = utils.factorial(this.colors.length);
 
     this.sendNotification = function () {
-        var notification = null;
-        var title = "CV notif";
-        var options = {
+        let notification = null;
+        const title = "CV notif";
+        const options = {
             body: "theBody",
             icon: "images/me.jpg"
         };
@@ -47,13 +47,13 @@ angularApp.controller('chromeController', function (utils) {
     };
 
     this.removeColors = function () {
-        for (var i = 0; i < this.classNames.length; i++) {
+        for (let i = 0; i < this.classNames.length; i++) {
             $("div." + this.classNames[i]).css("background-color", "transparent");
         }
     };
 
     this.applyColors = function () {
-        for (var i = 0; i < this.classNames.length; i++) {
+        for (let i = 0; i < this.classNames.length; i++) {
             $("div." + this.classNames[i]).css("background-color", this.colors[this.indices[i]]);
         }
     };
@@ -66,9 +66,9 @@ function addColors(positions) {
 }
 
 function permutateColors(positions) {
-    var permuted = positions;
-    var x = -1;
-    var i = 0;
+    const permuted = positions;
+    let x = -1;
+    let i = 0;
     for (i; i < permuted.length - 1; i++) {
         if (permuted[i] < permuted[i + 1]) {
             x = i;
@@ -77,18 +77,18 @@ function permutateColors(positions) {
     if (x === -1) {
         return positions.reverse();
     }
-    var y = -1;
+    let y = -1;
     for (i = 0; i < permuted.length; i++) {
         if (permuted[x] < permuted[i]) {
             y = i;
         }
     }
-    var temp = positions[x];
+    let temp = positions[x];
     positions[x] = positions[y];
     positions[y] = temp;
     //reverse
-    var high = (positions.length - 1 - x) / 2;
-    var idx = x + 1;
+    const high = (positions.length - 1 - x) / 2;
+    let idx = x + 1;
     for (i = 0; i < high; i++) {
         idx += i;
         temp = positions[idx];

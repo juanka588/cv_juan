@@ -1,11 +1,11 @@
 angularApp.controller('cvController', function ($firebaseObject, utils) {
-    var controller = this;
-    var educationRef = firebaseApp.database().ref('education').orderByChild('time');
-    var langsRef = firebaseApp.database().ref('languages');
-    var programmingRef = firebaseApp.database().ref('programming_experience');
-    var networkRef = firebaseApp.database().ref('network_experience');
-    var toolsRef = firebaseApp.database().ref('programming_tools');
-    var contestsRef = firebaseApp.database().ref('contests');
+    const controller = this;
+    const educationRef = firebaseApp.database().ref('education').orderByChild('time');
+    const langsRef = firebaseApp.database().ref('languages');
+    const programmingRef = firebaseApp.database().ref('programming_experience');
+    const networkRef = firebaseApp.database().ref('network_experience');
+    const toolsRef = firebaseApp.database().ref('programming_tools');
+    const contestsRef = firebaseApp.database().ref('contests');
 
     controller.education = $firebaseObject(educationRef);
     controller.languages = $firebaseObject(langsRef);

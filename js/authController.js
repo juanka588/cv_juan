@@ -2,7 +2,7 @@ angularApp.controller('authController', function ($firebaseAuth) {
     this.authObj = $firebaseAuth();
     this.showUser = false;
     // any time auth state changes, add the user data to scope
-    this.authObj.$onAuthStateChanged(function (firebaseUser) {
+    this.authObj.$onAuthStateChanged((firebaseUser) => {
         this.firebaseUser = firebaseUser;
         if (this.firebaseUser) {
             this.showUser = true;

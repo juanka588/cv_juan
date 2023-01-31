@@ -1,6 +1,6 @@
 angularApp.service('utils', function ($firebaseObject) {
 
-    var stringsRef = firebaseApp.database().ref('strings');
+    const stringsRef = firebaseApp.database().ref('strings');
     this.strings = $firebaseObject(stringsRef);
 
     this.language = "en";
@@ -13,7 +13,7 @@ angularApp.service('utils', function ($firebaseObject) {
     };
 
     this.shuffle = function (array) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
+        let currentIndex = array.length, temporaryValue, randomIndex;
 
         while (0 !== currentIndex) {
             randomIndex = Math.floor(Math.random() * currentIndex);
@@ -57,7 +57,7 @@ angularApp.service('utils', function ($firebaseObject) {
 
     // Create a string representation of the date.
     this.formatDate = function (timestamp) {
-        var date = new Date();
+        const date = new Date();
         date.setTime(timestamp * 1000);
         return this.months[date.getMonth()] + " " +
                 date.getFullYear();
@@ -68,8 +68,8 @@ angularApp.service('utils', function ($firebaseObject) {
     };
 
     this.factorial = function (n) {
-        var number = 1;
-        for (var i = 1; i <= n; i++) {
+        let number = 1;
+        for (let i = 1; i <= n; i++) {
             number = number * i;
         }
         return number;

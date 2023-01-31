@@ -1,5 +1,5 @@
-var firebaseApp = initFireBase();
-var angularApp = angular.module('cvApp', ['firebase', 'ngRoute', 'ngAnimate', 'chart.js']);
+const firebaseApp = initFireBase();
+const angularApp = angular.module('cvApp', ['firebase', 'ngRoute', 'ngAnimate', 'chart.js']);
 
 (function ($) {
     $(function () {
@@ -34,7 +34,7 @@ function initMain() {
 
 function initFireBase() {
 // Initialize Firebase
-    var config = {
+    const config = {
         apiKey: "AIzaSyAaoOSHTD7s_TVjhHRIZYvSvwD27W-Vy6Q",
         authDomain: "cvitae-dad25.firebaseapp.com",
         databaseURL: "https://cvitae-dad25.firebaseio.com",
@@ -47,7 +47,7 @@ function initFireBase() {
 // for ngRoute
 angularApp.run(["$rootScope", "$location", function ($rootScope, $location) {
         $rootScope.$on("$routeChangeError", function (event, next, previous, error) {
-            if (error === "AUTH_REQUIRED") {
+            if (error == "AUTH_REQUIRED") {
                 $location.path("/main");
             }
         });

@@ -1,6 +1,6 @@
 angularApp.controller('personalAccountController', function ($firebaseArray,utils) {
-    var accountOutRef = firebaseApp.database().ref('accounts').orderByChild('type').startAt("outcome").endAt("outcome");
-    var accountInRef = firebaseApp.database().ref('accounts').orderByChild('type').startAt("income").endAt("income");
+    const accountOutRef = firebaseApp.database().ref('accounts').orderByChild('type').startAt("outcome").endAt("outcome");
+    const accountInRef = firebaseApp.database().ref('accounts').orderByChild('type').startAt("income").endAt("income");
 
     this.data = [];
     this.data[0] = $firebaseArray(accountOutRef);
@@ -10,8 +10,8 @@ angularApp.controller('personalAccountController', function ($firebaseArray,util
     };
 
     this.addTemp = function (type) {
-        var amount = Math.random() * 100;
-        var timestamp = parseInt(new Date().getTime() / 1000);
+        const amount = Math.random() * 100;
+        const timestamp = parseInt(new Date().getTime() / 1000);
         this.data[type].$add(
                 {
                     x: timestamp * 1000,

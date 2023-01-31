@@ -1,9 +1,9 @@
 angularApp.controller('projectsController', function ($firebaseArray, utils) {
-    var controller = this;
-    var mainProjectsRef = firebaseApp.database().ref('projects')
-            .orderByChild('principal').equalTo(true);
+    const controller = this;
+    const mainProjectsRef = firebaseApp.database().ref('projects')
+        .orderByChild('principal').equalTo(true);
 
-    var projectsRef = firebaseApp.database().ref('projects').orderByChild('time');
+    const projectsRef = firebaseApp.database().ref('projects').orderByChild('time');
 
     controller.mainProjects = $firebaseArray(mainProjectsRef);
     controller.projects = $firebaseArray(projectsRef);
@@ -43,7 +43,7 @@ angularApp.controller('projectsController', function ($firebaseArray, utils) {
 
     controller.updateSelectedEvent = function () {
         controller.currentEvent = controller.projects[controller.currentIdx];
-        var dateSlider = document.getElementById('slider_date');
+        const dateSlider = document.getElementById('slider_date');
         dateSlider.noUiSlider.set(controller.currentEvent.time * 1000);
     };
 
@@ -59,7 +59,7 @@ angularApp.controller('projectsController', function ($firebaseArray, utils) {
 
 
 function initControls(utils) {
-    var dateSlider = document.getElementById('slider_date');
+    const dateSlider = document.getElementById('slider_date');
 
     noUiSlider.create(dateSlider, {
         // Create two timestamps to define a range.
@@ -81,7 +81,7 @@ function initControls(utils) {
         $("#date_selected").val(utils.formatDate(new Date(values[handle] / 1000)));
     });
 
-    var caro = $('.carousel.carousel-slider');
+    const caro = $('.carousel.carousel-slider');
     if (caro.length === 1) {
         setTimeout(function () {
             caro.carousel({fullWidth: true});

@@ -40,3 +40,5 @@ firebase-debug.log
 
 # sonarQube scanner results
 /.scannerwork
+nbproject
+.idea

@@ -46,14 +46,14 @@ angularApp.controller('primesController', function () {
 function run(controller) {
 
     new p5(function (s) {
-        var primes = controller.primes;
-        var maxIter = controller.iterations;
-        var counter = 0;
-        var iteration = 0;
-        var rotation = 1;
-        var p = primes[iteration];
-        var len = controller.len;
-        var movements = [];
+        const primes = controller.primes;
+        let maxIter = controller.iterations;
+        let counter = 0;
+        let iteration = 0;
+        let rotation = 1;
+        let p = primes[iteration];
+        let len = controller.len;
+        let movements = [];
 
         s.setup = function () {
             s.createCanvas(600, 600);
@@ -78,8 +78,8 @@ function run(controller) {
                 rotation: rotation,
                 dist: len
             });
-            for (var i = 0; i < movements.length; i++) {
-                var m = movements[i];
+            for (let i = 0; i < movements.length; i++) {
+                const m = movements[i];
                 s.rotate(s.radians(m.rotation));
                 s.line(0, 0, 0, m.dist);
                 s.translate(0, m.dist);
@@ -111,11 +111,11 @@ function run(controller) {
 
 function calcPrimes(size) {
 //                0       1      2     3
-    var sieve = [false, false, true, true];
-    var primes = [];
-    for (var i = 0; i < size; i++) {
+    const sieve = [false, false, true, true];
+    const primes = [];
+    for (let i = 0; i < size; i++) {
         if (sieve[i] == null || sieve[i]) {
-            var n = 2;
+            let n = 2;
             while (n * i < size) {
                 sieve[n * i] = false;
                 n++;
