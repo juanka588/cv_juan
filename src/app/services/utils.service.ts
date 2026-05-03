@@ -21,10 +21,18 @@ export class UtilsService {
     try {
       const stringsRef = ref(this.db, 'strings');
       this.strings$ = object(stringsRef).pipe(
-        map((snap) => (snap.snapshot.val() as Record<string, Record<string, string>>) || {})
+        map((snap) => {
+          const val = (snap.snapshot.val() as Record<string, Record<string, string>>) || {};
+          console.log('[UtilsService] strings loaded:', Object.keys(val).length, 'keys');
+          return val;
+        })
       );
-      this.strings$.subscribe((val) => (this.stringsCache = val));
-    } catch {
+      this.strings$.subscribe({
+        next: (val) => (this.stringsCache = val),
+        error: (err) => console.error('[UtilsService] strings subscription error:', err),
+      });
+    } catch (e) {
+      console.error('[UtilsService] Failed to initialize Firebase ref:', e);
       this.strings$ = of({});
     }
   }

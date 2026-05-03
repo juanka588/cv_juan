@@ -18,6 +18,12 @@ jobs:
         with:
           node-version: 22
 
+      - name: Generate environment files
+        run: |
+          cp src/environments/environment.example.ts src/environments/environment.ts
+          cp src/environments/environment.example.ts src/environments/environment.prod.ts
+          sed -i 's/production: false/production: true/' src/environments/environment.prod.ts
+
       - name: Install dependencies
         run: npm install --legacy-peer-deps --registry https://registry.npmjs.org/
 

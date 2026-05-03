@@ -18,34 +18,50 @@ export class DataService {
 
   getObject<T>(path: string): Observable<T> {
     try {
+      console.log(`[DataService] getObject('${path}')`);
       return object(ref(this.db, path)).pipe(
-        map((snap) => snap.snapshot.val() as T)
+        map((snap) => {
+          const val = snap.snapshot.val() as T;
+          console.log(`[DataService] getObject('${path}') =>`, val ? 'data received' : 'null');
+          return val;
+        })
       );
-    } catch {
+    } catch (e) {
+      console.error(`[DataService] getObject('${path}') error:`, e);
       return of(null as T);
     }
   }
 
   getList<T>(path: string, orderBy?: string): Observable<T[]> {
     try {
+      console.log(`[DataService] getList('${path}', orderBy='${orderBy || 'none'}')`);
       const dbRef = orderBy
         ? query(ref(this.db, path), orderByChild(orderBy))
         : ref(this.db, path);
       return list(dbRef).pipe(
-        map((changes) => changes.map((c) => ({ $key: c.snapshot.key, ...c.snapshot.val() as object }) as T))
+        map((changes) => {
+          console.log(`[DataService] getList('${path}') => ${changes.length} items`);
+          return changes.map((c) => ({ $key: c.snapshot.key, ...c.snapshot.val() as object }) as T);
+        })
       );
-    } catch {
+    } catch (e) {
+      console.error(`[DataService] getList('${path}') error:`, e);
       return of([]);
     }
   }
 
   getFilteredList<T>(path: string, orderBy: string, value: string | boolean): Observable<T[]> {
     try {
+      console.log(`[DataService] getFilteredList('${path}', '${orderBy}', '${value}')`);
       const dbRef = query(ref(this.db, path), orderByChild(orderBy), equalTo(value));
       return list(dbRef).pipe(
-        map((changes) => changes.map((c) => ({ $key: c.snapshot.key, ...c.snapshot.val() as object }) as T))
+        map((changes) => {
+          console.log(`[DataService] getFilteredList('${path}') => ${changes.length} items`);
+          return changes.map((c) => ({ $key: c.snapshot.key, ...c.snapshot.val() as object }) as T);
+        })
       );
-    } catch {
+    } catch (e) {
+      console.error(`[DataService] getFilteredList('${path}') error:`, e);
       return of([]);
     }
   }

@@ -12,5 +12,9 @@
       <div><a target="_blank" [href]="contact.stackoverflow">{{ contact.stackoverflow }}</a></div>
     </div>
   </div>
-  <div #mapElement class="map"></div>
+  <div *ngIf="!mapUnavailable" #mapElement class="map"></div>
+  <div *ngIf="mapUnavailable" class="map map-placeholder">
+    <span class="material-icons">location_on</span>
+    <span>{{ contact.address || 'Map unavailable' }}</span>
+  </div>
 </div>

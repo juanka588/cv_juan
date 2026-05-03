@@ -11,9 +11,15 @@ export class AuthService {
 
   constructor() {
     try {
-      user(this.auth).subscribe((u) => this.currentUser.set(u));
-    } catch {
-      // No-op in test environment
+      user(this.auth).subscribe({
+        next: (u) => {
+          console.log('[AuthService] user state:', u ? u.email || u.uid : 'null');
+          this.currentUser.set(u);
+        },
+        error: (err) => console.error('[AuthService] user subscription error:', err),
+      });
+    } catch (e) {
+      console.error('[AuthService] Failed to initialize:', e);
     }
   }
 

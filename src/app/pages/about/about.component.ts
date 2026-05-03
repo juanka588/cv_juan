@@ -17,20 +17,36 @@ export class AboutComponent implements OnInit, AfterViewInit {
   private data = inject(DataService);
   utils = inject(UtilsService);
   contact: any = {};
+  mapUnavailable = false;
   @ViewChild('mapElement') mapElement!: ElementRef;
   private mapLoaded = false;
 
+  private get hasValidMapsKey(): boolean {
+    const key = environment.googleMapsApiKey;
+    return !!key && !key.startsWith('YOUR_');
+  }
+
   ngOnInit(): void {
-    this.data.getObject<any>('contact').subscribe((c) => {
-      this.contact = c || {};
-      if (this.mapLoaded && c?.location) {
-        this.initMap(c.location);
-      }
+    console.log('[AboutComponent] Loading contact data...');
+    this.data.getObject<any>('contact').subscribe({
+      next: (c) => {
+        console.log('[AboutComponent] contact data:', c);
+        this.contact = c || {};
+        if (this.mapLoaded && c?.location) {
+          this.initMap(c.location);
+        }
+      },
+      error: (err) => console.error('[AboutComponent] contact subscription error:', err),
     });
   }
 
   ngAfterViewInit(): void {
-    this.loadGoogleMaps();
+    if (this.hasValidMapsKey) {
+      this.loadGoogleMaps();
+    } else {
+      console.warn('[AboutComponent] No valid Google Maps API key configured');
+      this.mapUnavailable = true;
+    }
   }
 
   private loadGoogleMaps(): void {
@@ -40,9 +56,8 @@ export class AboutComponent implements OnInit, AfterViewInit {
       return;
     }
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${environment.googleMapsApiKey}&callback=__initMap`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${environment.googleMapsApiKey}&loading=async&callback=__initMap`;
     script.async = true;
-    script.defer = true;
     (window as any).__initMap = () => {
       this.mapLoaded = true;
       if (this.contact?.location) {
@@ -54,12 +69,15 @@ export class AboutComponent implements OnInit, AfterViewInit {
     document.body.appendChild(script);
   }
 
-  private initMap(location: { lat: number; lng: number }): void {
+  private async initMap(location: { lat: number; lng: number }): Promise<void> {
     if (!this.mapElement?.nativeElement) return;
+    const mapId = 'about-map';
     const map = new google.maps.Map(this.mapElement.nativeElement, {
       zoom: 17,
       center: location,
+      mapId,
     });
-    new google.maps.Marker({ position: location, map });
+    const { AdvancedMarkerElement } = await google.maps.importLibrary('marker');
+    new AdvancedMarkerElement({ position: location, map });
   }
 }

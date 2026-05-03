@@ -6,7 +6,8 @@
     },
     "education": {
       ".read": true,
-      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'"
+      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'",
+      ".indexOn": ["time"]
     },
     "languages": {
       ".read": true,
@@ -26,7 +27,8 @@
     },
     "work_experience": {
       ".read": true,
-      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'"
+      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'",
+      ".indexOn": ["time"]
     },
     "contests": {
       ".read": true,
@@ -34,7 +36,8 @@
     },
     "projects": {
       ".read": true,
-      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'"
+      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'",
+      ".indexOn": ["principal", "time"]
     },
     "strings": {
       ".read": true,

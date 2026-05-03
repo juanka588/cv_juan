@@ -1,43 +1,58 @@
+<div class="year-pill" [class.visible]="showYearPill">{{ currentYear }}</div>
+
 <div class="container">
   <h4 appScrollReveal>{{ utils.getName('projects') }}</h4>
 
   @if (projects.length > 0) {
-    <div class="carousel-wrapper">
-      <button class="nav-btn prev" (click)="prevProject()"><i class="material-icons">navigate_before</i></button>
-      <div class="carousel-card {{ getColor(currentIdx) }}" (click)="openModal(currentProject)">
-        <div class="card-date">{{ utils.formatDate(currentProject.time) }}</div>
-        <h5 class="card-title">{{ utils.getName(currentProject.name) }}</h5>
-        <div class="card-body">
-          <p class="card-desc">{{ utils.getName(currentProject.description) }}</p>
-          @if (currentProject.technologies) {
-            <div class="chips">
-              @for (k of splitTech(currentProject.technologies); track k) {
-                <span class="chip">{{ k }}</span>
+    <div class="timeline" appStaggerReveal>
+      @for (p of projects; track p.$key; let i = $index; let odd = $odd) {
+        @if (isFirstOfYear(i)) {
+          <div class="year-divider" #yearMarker [attr.data-year]="getYear(p.time)">
+            <span class="year-label">{{ getYear(p.time) }}</span>
+          </div>
+        }
+        <div class="timeline-item stagger-item" [class.right]="odd">
+          <div class="timeline-node">
+            <span class="node-dot {{ getColor(i) }}"></span>
+          </div>
+          <div class="timeline-card {{ getColor(i) }}" (click)="openModal(p)">
+            <div class="card-thumbnail">
+              <img [src]="getThumbnail(p)" [alt]="p.name" [class.hidden]="p._imgFailed" (error)="p._imgFailed = true">
+              @if (p._imgFailed) {
+                <div class="thumb-fallback">
+                  <i class="material-icons">code</i>
+                </div>
               }
             </div>
-          }
+            <div class="card-content">
+              <div class="card-date">
+                <i class="material-icons">schedule</i>
+                {{ utils.formatDate(p.time) }}
+              </div>
+              <h5 class="card-title">{{ utils.getName(p.name) }}</h5>
+              <p class="card-desc">{{ utils.getName(p.description) }}</p>
+              @if (p.technologies) {
+                <div class="chips">
+                  @for (k of splitTech(p.technologies); track k) {
+                    <span class="chip">{{ k }}</span>
+                  }
+                </div>
+              }
+              <div class="card-actions">
+                @if (p.link) {
+                  <a [href]="p.link" target="_blank" class="btn white" (click)="$event.stopPropagation()">
+                    <i class="material-icons">open_in_new</i>View
+                  </a>
+                }
+                @if (p.embeddable) {
+                  <button class="btn green" (click)="openModal(p); $event.stopPropagation()">
+                    <i class="material-icons">play_arrow</i>Demo
+                  </button>
+                }
+              </div>
+            </div>
+          </div>
         </div>
-        @if (currentProject.demo) {
-          <img class="card-demo" [src]="currentProject.demo" [alt]="currentProject.name">
-        }
-        <div class="card-actions">
-          @if (currentProject.link) {
-            <a [href]="currentProject.link" target="_blank" class="btn white" (click)="$event.stopPropagation()">
-              <i class="material-icons">open_in_new</i>View
-            </a>
-          }
-          @if (currentProject.embeddable) {
-            <button class="btn green" (click)="openModal(currentProject); $event.stopPropagation()">
-              <i class="material-icons">play_arrow</i>Demo
-            </button>
-          }
-        </div>
-      </div>
-      <button class="nav-btn next" (click)="nextProject()"><i class="material-icons">navigate_next</i></button>
-    </div>
-    <div class="carousel-dots">
-      @for (p of projects; track p.$key; let i = $index) {
-        <span class="dot" [class.active]="i === currentIdx" (click)="currentIdx = i"></span>
       }
     </div>
   } @else {
@@ -48,16 +63,19 @@
 @if (modalOpen) {
   <div class="modal-overlay" (click)="closeModal()">
     <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="closeModal()">
+        <i class="material-icons">close</i>
+      </button>
       <h4>{{ utils.getName(selectedProject.name) }}</h4>
       <p>{{ utils.getName(selectedProject.description) }}</p>
       @if (selectedProject.trustedLink) {
         <iframe class="demo-frame" [src]="selectedProject.trustedLink" sandbox="allow-scripts allow-same-origin"></iframe>
       }
-      @if (selectedProject.demo) {
-        <img class="demo-img" [src]="selectedProject.demo" alt="Demo">
+      @if (getThumbnail(selectedProject)) {
+        <img class="demo-img" [src]="getThumbnail(selectedProject)" alt="Demo">
       }
       @if (selectedProject.technologies) {
-        <div class="chips">
+        <div class="chips modal-chips">
           @for (k of splitTech(selectedProject.technologies); track k) {
             <span class="chip">{{ k }}</span>
           }
