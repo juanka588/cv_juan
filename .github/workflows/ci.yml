@@ -19,9 +19,7 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: |
-          npm cache clean --force
-          npm ci --legacy-peer-deps
+        run: npm install --legacy-peer-deps --registry https://registry.npmjs.org/
 
       - name: Verify karma installed
         run: ls -la node_modules/.bin/karma && node_modules/.bin/karma --version
