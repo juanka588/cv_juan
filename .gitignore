@@ -25,9 +25,8 @@ build/coverage/
 firebase-debug.log
 .firebaserc
 
-# Environment files with real keys
-src/environments/environment.ts
-src/environments/environment.prod.ts
+# Environment files with real keys are tracked with placeholders
+# Copy environment.example.ts and fill in real values locally
 
 # SonarQube
 .scannerwork/
