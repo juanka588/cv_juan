@@ -1,0 +1,52 @@
+{
+  "rules": {
+    "contact": {
+      ".read": true,
+      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'"
+    },
+    "education": {
+      ".read": true,
+      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'"
+    },
+    "languages": {
+      ".read": true,
+      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'"
+    },
+    "programming_experience": {
+      ".read": true,
+      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'"
+    },
+    "network_experience": {
+      ".read": true,
+      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'"
+    },
+    "programming_tools": {
+      ".read": true,
+      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'"
+    },
+    "work_experience": {
+      ".read": true,
+      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'"
+    },
+    "contests": {
+      ".read": true,
+      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'"
+    },
+    "projects": {
+      ".read": true,
+      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'"
+    },
+    "strings": {
+      ".read": true,
+      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'"
+    },
+    "accounts": {
+      ".read": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'",
+      ".write": "auth !== null && auth.uid === 'RjjVTzteOkTP1qQoyzPciiodoLv2'"
+    },
+    "$other": {
+      ".read": false,
+      ".write": false
+    }
+  }
+}
