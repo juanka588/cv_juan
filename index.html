@@ -84,17 +84,18 @@
                 <li>
                     <div ng-include="'views/userView.html'"></div>
                 </li>
-                <li><a href="main"><span class="material-icons grey-text text-darken-4">branding_watermark</span><span class="grey-text text-darken-4">{{lan.getName("index")}}</span></a></li>
-                <li><a href="juan"><span class="material-icons grey-text text-darken-4">comment</span><span class="grey-text text-darken-4">{{lan.getName("about_me")}}</span></a></li>
-                <li><a href="cvitae"><span class="material-icons grey-text text-darken-4">move_to_inbox</span><span class="grey-text text-darken-4">Curriculum Vitae</span></a></li>
-                <li><a href="experience"><span class="material-icons grey-text text-darken-4">code</span><span class="grey-text text-darken-4">{{lan.getName("work_experience")}}</span></a></li>
-                <li><a href="projects"><span class="material-icons grey-text text-darken-4">apps</span><span class="grey-text text-darken-4">{{lan.getName("projects")}}</span></a></li>
-                <li ng-if="con.showUser"><a href="/experiments"><span class="material-icons grey-text text-darken-4">science</span><span class="grey-text text-darken-4">{{lan.getName("experiments")}}</span></a></li>
-                <li ng-if="con.showUser"><a href="/accounts"><span class="material-icons grey-text text-darken-4">account_balance</span><span class="grey-text text-darken-4">{{lan.getName("accounts")}}</span></a></li>
+                <li><a href="main"><i class="material-icons">home</i>{{lan.getName("index")}}</a></li>
+                <li><a href="juan"><i class="material-icons">person</i>{{lan.getName("about_me")}}</a></li>
+                <li><a href="cvitae"><i class="material-icons">description</i>Curriculum Vitae</a></li>
+                <li><a href="experience"><i class="material-icons">work</i>{{lan.getName("work_experience")}}</a></li>
+                <li><a href="projects"><i class="material-icons">apps</i>{{lan.getName("projects")}}</a></li>
+                <li><a href="/experiments"><i class="material-icons">science</i>{{lan.getName("experiments")}}</a></li>
+                <li ng-if="con.showUser"><a href="/accounts"><i class="material-icons">account_balance</i>{{lan.getName("accounts")}}</a></li>
+                <li><div class="divider"></div></li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
                         <li>
-                            <a class="collapsible-header">Languages<span class="material-icons">arrow_drop_down</span></a>
+                            <a class="collapsible-header"><i class="material-icons">language</i>{{lan.getName("language") || 'Languages'}}<span class="material-icons right">arrow_drop_down</span></a>
                             <div class="collapsible-body">
                                 <ul>
                                     <li ng-repeat="l in lan.languages">
@@ -109,21 +110,22 @@
         </div>
 
         <div class="row">
-            <div class="side-nav-cv col s1 m2 hide-on-small-and-down hide-on-med-and-down">
-                <ul class="main-menu white collection" ng-controller="languagesController as lan">
-                    <li class="collection-header with-header">
-                        <div ng-include="'views/userView.html'"></div>
+            <div class="side-nav-cv col m2 hide-on-small-and-down hide-on-med-and-down">
+                <ul class="main-menu collection" ng-controller="languagesController as lan">
+                    <li class="collection-header sidenav-header-desktop">
+                        <img class="circle" alt="profile" src="images/me.jpg">
+                        <span class="sidenav-desktop-name">Juan Camilo</span>
                     </li>
-                    <li class="collection-item"><a class="valign-wrapper" href="main"><span class="material-icons grey-text text-darken-4">branding_watermark</span><span class="menu-label grey-text text-darken-4">{{lan.getName("index")}}</span></a></li>
-                    <li class="collection-item"><a class="valign-wrapper" href="juan"><span class="material-icons grey-text text-darken-4">comment</span><span class="menu-label grey-text text-darken-4">{{lan.getName("about_me")}}</span></a></li>
-                    <li class="collection-item"><a class="valign-wrapper" href="cvitae"><span class="material-icons grey-text text-darken-4">move_to_inbox</span><span class="menu-label grey-text text-darken-4">Curriculum Vitae</span></a></li>
-                    <li class="collection-item"><a class="valign-wrapper" href="experience"><span class="material-icons grey-text text-darken-4">code</span><span class="menu-label grey-text text-darken-4">{{lan.getName("work_experience")}}</span></a></li>
-                    <li class="collection-item"><a class="valign-wrapper" href="projects"><span class="material-icons grey-text text-darken-4">apps</span><span class="menu-label grey-text text-darken-4">{{lan.getName("projects")}}</span></a></li>
-                    <li ng-if="con.showUser" class="collection-item"><a class="valign-wrapper" href="/experiments"><span class="material-icons grey-text text-darken-4">science</span><span class="menu-label grey-text text-darken-4">{{lan.getName("experiments")}}</span></a></li>
-                    <li ng-if="con.showUser" class="collection-item"><a class="valign-wrapper" href="/accounts"><span class="material-icons grey-text text-darken-4">account_balance</span><span class="menu-label grey-text text-darken-4">{{lan.getName("accounts")}}</span></a></li>
-                    <li class="collection-item">
-                        <a ng-if="lan.menuExpanded" ng-click="lan.expandMenu()"><span class="material-icons grey-text text-darken-4 right">arrow_back</span></a>
-                        <a ng-if="!lan.menuExpanded" ng-click="lan.expandMenu()"><span class="material-icons grey-text text-darken-4">arrow_forward</span></a>
+                    <li class="collection-item sidenav-item"><a class="valign-wrapper" href="main"><i class="material-icons blue-text">home</i><span class="menu-label">{{lan.getName("index")}}</span></a></li>
+                    <li class="collection-item sidenav-item"><a class="valign-wrapper" href="juan"><i class="material-icons blue-text">person</i><span class="menu-label">{{lan.getName("about_me")}}</span></a></li>
+                    <li class="collection-item sidenav-item"><a class="valign-wrapper" href="cvitae"><i class="material-icons blue-text">description</i><span class="menu-label">Curriculum Vitae</span></a></li>
+                    <li class="collection-item sidenav-item"><a class="valign-wrapper" href="experience"><i class="material-icons blue-text">work</i><span class="menu-label">{{lan.getName("work_experience")}}</span></a></li>
+                    <li class="collection-item sidenav-item"><a class="valign-wrapper" href="projects"><i class="material-icons blue-text">apps</i><span class="menu-label">{{lan.getName("projects")}}</span></a></li>
+                    <li class="collection-item sidenav-item"><a class="valign-wrapper" href="/experiments"><i class="material-icons blue-text">science</i><span class="menu-label">{{lan.getName("experiments")}}</span></a></li>
+                    <li ng-if="con.showUser" class="collection-item sidenav-item"><a class="valign-wrapper" href="/accounts"><i class="material-icons blue-text">account_balance</i><span class="menu-label">{{lan.getName("accounts")}}</span></a></li>
+                    <li class="collection-item sidenav-item sidenav-toggle">
+                        <a ng-if="lan.menuExpanded" ng-click="lan.expandMenu()"><i class="material-icons blue-text right">chevron_left</i></a>
+                        <a ng-if="!lan.menuExpanded" ng-click="lan.expandMenu()"><i class="material-icons blue-text">chevron_right</i></a>
                     </li>
                 </ul>
             </div>

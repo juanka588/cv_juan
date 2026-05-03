@@ -390,10 +390,116 @@ footer .icon:hover {
     }
 }
 
-/* ===== SIDE NAV CV ===== */
+/* ===== SIDE NAV CV (Desktop) ===== */
 .side-nav-cv {
     position: sticky;
     top: 64px;
     height: calc(100vh - 64px);
     overflow-y: auto;
+    z-index: 10;
+}
+.side-nav-cv .main-menu {
+    margin: 0;
+    border: none;
+    border-right: 1px solid #e0e0e0;
+    border-radius: 0;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.05);
+    background: linear-gradient(180deg, #ffffff 0%, #f5f8ff 100%);
+    min-height: 100%;
+}
+.sidenav-header-desktop {
+    background: linear-gradient(135deg, #1565c0, #1976d2);
+    padding: 20px 16px !important;
+    text-align: center;
+}
+.sidenav-header-desktop img {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 0 auto 8px;
+    border: 2px solid rgba(255,255,255,0.5);
+}
+.sidenav-desktop-name {
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: block;
+    letter-spacing: 0.5px;
+}
+.sidenav-item {
+    padding: 0 !important;
+    border-bottom: none !important;
+}
+.sidenav-item a {
+    padding: 12px 16px !important;
+    gap: 10px;
+    color: #424242 !important;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, padding-left 0.2s ease;
+}
+.sidenav-item a:hover {
+    background-color: #e3f2fd !important;
+    padding-left: 20px !important;
+}
+.sidenav-item a i {
+    font-size: 20px;
+    margin-right: 10px;
+}
+.sidenav-toggle {
+    border-top: 1px solid #e0e0e0 !important;
+    margin-top: auto;
+}
+.sidenav-toggle a {
+    justify-content: center;
+}
+
+/* ===== SIDE NAV MOBILE HEADER ===== */
+.sidenav-header {
+    background: linear-gradient(135deg, #1565c0, #1976d2);
+    padding: 24px 16px;
+    text-align: center;
+}
+.sidenav-user, .sidenav-guest {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.sidenav-header img {
+    width: 70px;
+    height: 70px;
+    border: 3px solid rgba(255,255,255,0.4);
+}
+.sidenav-user-name {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.sidenav-user-email {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.85rem;
+}
+.sidenav-header .btn {
+    margin-top: 4px;
+    border-radius: 20px;
+    text-transform: none;
+    font-size: 0.85rem;
+    padding: 0 20px;
+    height: 32px;
+    line-height: 32px;
+}
+
+/* ===== MOBILE SIDE-NAV ITEMS ===== */
+#menu-mobile li > a {
+    display: flex !important;
+    align-items: center;
+    gap: 6px;
+    padding: 0 20px;
+    height: 48px;
+    font-size: 0.95rem;
+    color: #424242;
+}
+#menu-mobile li > a > i {
+    color: #1565c0;
+    margin-right: 12px;
 }

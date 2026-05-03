@@ -38,8 +38,11 @@ module.exports = function (config) {
         },
         reporters: ['spec', 'coverage'],
         coverageReporter: {
-            type: 'html',
-            dir: 'build/coverage/'
+            dir: 'build/coverage/',
+            reporters: [
+                { type: 'html', subdir: 'html' },
+                { type: 'lcovonly', subdir: '.', file: 'lcov.info' }
+            ]
         },
         port: 9876,
         colors: true,
