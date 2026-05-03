@@ -24,8 +24,11 @@ jobs:
       - name: Create config.js for tests
         run: cp config.example.js config.js
 
+      - name: Verify karma installed
+        run: ls -la node_modules/.bin/karma && node -e "require('karma')"
+
       - name: Run tests
-        run: npm test
+        run: node node_modules/karma/bin/karma start karma.conf.js --single-run
 
       - name: Upload coverage
         uses: actions/upload-artifact@v4
