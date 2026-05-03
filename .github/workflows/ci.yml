@@ -19,12 +19,13 @@ jobs:
           node-version: 18
           cache: npm
 
-      - run: npm ci
+      - run: npm install
 
       - name: Create config.js for tests
         run: cp config.example.js config.js
 
-      - run: npm test
+      - name: Run tests
+        run: ./node_modules/.bin/karma start karma.conf.js --single-run
 
       - name: Upload coverage
         uses: actions/upload-artifact@v4
