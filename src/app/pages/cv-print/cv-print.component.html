@@ -1,0 +1,35 @@
+<div class="print-container">
+  <h2>{{ contact.name }}</h2>
+  <p>{{ contact.address }} | {{ contact.cellphone }} | {{ contact.email }}</p>
+
+  <h3>{{ utils.getName('education') }}</h3>
+  @for (ed of education; track ed.$key) {
+    <div class="print-item">
+      <strong>{{ ed.institution }}</strong> - {{ utils.getName(ed.carrer) }}
+      <div class="print-period">{{ ed.period_init }} - {{ ed.period_finish }} | {{ ed.place }}</div>
+    </div>
+  }
+
+  <h3>{{ utils.getName('work_experience') }}</h3>
+  @for (wk of work; track wk.$key) {
+    <div class="print-item">
+      <strong>{{ wk.enterprise }}</strong> - {{ utils.getName(wk.rol) }}
+      <div class="print-period">{{ wk.period_init }} - {{ wk.period_finish }} | {{ wk.place }}</div>
+      <div>{{ utils.getName(wk.description) }}</div>
+    </div>
+  }
+
+  <h3>{{ utils.getName('programming_experience') }}</h3>
+  <div class="inline-list">
+    @for (p of programming; track p.$key) {
+      <span>{{ p.language }} ({{ utils.getName(p.level) }})</span>
+    }
+  </div>
+
+  <h3>{{ utils.getName('language') }}</h3>
+  @for (l of languages; track l.$key) {
+    <div>{{ utils.getName(l.name) }} - {{ utils.getName(l.level) }}</div>
+  }
+
+  <button class="no-print btn" onclick="window.print()">Print</button>
+</div>

@@ -1,0 +1,20 @@
+.container { max-width: 900px; margin: 0 auto; padding: 20px 16px; }
+h3 { color: #1565c0; font-weight: 400; }
+.work-item {
+  border-left: 3px solid #1565c0; margin-bottom: 16px; padding: 16px; background: white; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  &:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+}
+.work-row { display: flex; flex-wrap: wrap; gap: 16px; }
+.work-meta { flex: 0 0 200px; }
+.work-detail { flex: 1; min-width: 200px; }
+.enterprise { font-weight: 600; font-size: 1.1rem; color: #1565c0; }
+.period { color: #616161; font-size: 0.9rem; }
+.place { color: #9e9e9e; }
+.rol { font-weight: 600; font-size: 1.1rem; color: #1565c0; margin-bottom: 6px; }
+.chips { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 4px; }
+.chip { padding: 4px 12px; background: #e0e0e0; border-radius: 16px; font-size: 0.85rem; transition: transform 0.2s, background 0.2s; &:hover { transform: scale(1.05); background: #e3f2fd; } }
+:host ::ng-deep .scroll-reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+:host ::ng-deep .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+:host ::ng-deep .stagger-item { opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
+:host ::ng-deep .stagger-item.revealed { opacity: 1; transform: translateY(0); }

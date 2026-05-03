@@ -1,0 +1,41 @@
+<div class="container">
+  <a routerLink="/experiments" class="back-link">&larr; Back</a>
+  <h4>Chrome API Experiment</h4>
+  <button class="btn blue" (click)="sendNotification()">Notify me</button>
+  <div class="permutation-info">
+    <span>Count: {{ permutationNumber }}</span>
+    <span>Total: {{ maxPermutations }}</span>
+  </div>
+  <div class="browser-mock">
+    <div class="top-bar">
+      <div class="circles">
+        <span class="circle-btn close"></span>
+        <span class="circle-btn minimize"></span>
+        <span class="circle-btn maximize"></span>
+      </div>
+    </div>
+    <div class="browser-body">
+      <div class="nav-test" [style.background-color]="getColor(0)"></div>
+      <div class="content-area">
+        <div class="aside-test" [style.background-color]="getColor(1)">
+          @for (i of [1,2,3,4,5]; track i) { <div class="line-test" [style.background-color]="getColor(3)"></div> }
+        </div>
+        <div class="main-content-test" [style.background-color]="getColor(2)">
+          <div class="title-test" [style.background-color]="getColor(4)"></div>
+          @for (i of [1,2,3,4]; track i) { <div class="line-test" [style.background-color]="getColor(3)"></div> }
+        </div>
+      </div>
+      <div class="footer-test" [style.background-color]="getColor(5)"></div>
+    </div>
+  </div>
+  <div class="color-controls">
+    @for (c of colors; let i = $index; track i) {
+      <div class="color-row">
+        <span class="color-swatch" [style.background-color]="c"></span>
+        <span>{{ pageElements[i] }}</span>
+        <input type="color" [(ngModel)]="colors[i]">
+      </div>
+    }
+  </div>
+  <button class="btn blue" (click)="applyPermutation()">Next Permutation</button>
+</div>

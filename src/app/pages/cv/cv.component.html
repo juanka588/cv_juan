@@ -1,0 +1,187 @@
+<div class="cv-container">
+  <div class="cv-content">
+    <!-- Header Card -->
+    <div class="card-panel header-card" appScrollReveal>
+      <img src="images/me.jpg" alt="myself" class="circle profile-img">
+      <div class="header-info">
+        <div class="full-name">{{ contact.name }}</div>
+        <address>{{ contact.address }}</address>
+        <div class="birthdate">{{ contact.birthdate }}</div>
+        <div>{{ contact.cellphone }}</div>
+        <div><a [href]="'mailto:' + contact.email">{{ contact.email }}</a></div>
+        <div><a target="_blank" [href]="contact.github">{{ contact.github }}</a></div>
+      </div>
+      <div class="print-btn">
+        <a routerLink="/cvitae/print" class="btn-floating btn-large red"><i class="material-icons">print</i></a>
+      </div>
+    </div>
+
+    <!-- Education & Languages -->
+    <div class="section-divider"><span class="material-icons">school</span></div>
+    <div class="two-col cv-section">
+      <div class="col-left" appScrollReveal>
+        <h4>{{ utils.getName('education') }}</h4>
+        <div appStaggerReveal>
+          @for (ed of education; track ed.$key) {
+            <div class="stagger-item education-item">
+              <div class="institution">{{ ed.institution }}</div>
+              <div>{{ utils.getName(ed.carrer) }}</div>
+              <div class="period">{{ utils.getName('since') }}: {{ ed.period_init }} - {{ utils.getName('until') }}: {{ ed.period_finish }}</div>
+              <div class="place">{{ ed.place }}</div>
+            </div>
+          }
+        </div>
+      </div>
+      <div class="col-right" appScrollReveal>
+        <h4>{{ utils.getName('language') }}</h4>
+        <div appStaggerReveal>
+          @for (l of languages; track l.$key) {
+            <div class="stagger-item">
+              <div class="language-name">{{ utils.getName(l.name) }}</div>
+              <div class="detail">{{ utils.getName('certification') }}: {{ utils.getName(l.certification) }}</div>
+              <div class="detail">{{ utils.getName('level') }}: {{ utils.getName(l.level) }}</div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Work -->
+    <div class="section-divider"><span class="material-icons">work</span></div>
+    <div class="cv-section" appScrollReveal>
+      <h4>{{ utils.getName('work_experience') }}</h4>
+      <div appStaggerReveal>
+        @for (wk of work; track wk.$key) {
+          <div class="work-item card-panel stagger-item">
+            <div class="work-row">
+              <div class="work-left">
+                <div class="enterprise">{{ wk.enterprise }}</div>
+                <div class="period">{{ utils.getName('since') }}: {{ wk.period_init }}</div>
+                <div class="period">{{ utils.getName('until') }}: {{ wk.period_finish }}</div>
+                <div class="place">{{ wk.place }}</div>
+              </div>
+              <div class="work-right">
+                <div class="rol">{{ utils.getName(wk.rol) }}</div>
+                <div>{{ utils.getName(wk.description) }}</div>
+              </div>
+            </div>
+            @if (wk.keywords) {
+              <div class="chips">
+                @for (k of splitTech(wk.keywords); track k) {
+                  <span class="chip">{{ k }}</span>
+                }
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Programming -->
+    <div class="section-divider"><span class="material-icons">code</span></div>
+    <div class="cv-section" appScrollReveal>
+      <h4>{{ utils.getName('programming_experience') }}</h4>
+      <div class="inline-items" appStaggerReveal>
+        @for (p of programming; track p.$key) {
+          <div class="card-panel inline-item stagger-item">
+            <span class="p-language">{{ p.language }}</span>
+            <span class="p-level">{{ utils.getName(p.level) }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Tools & Network -->
+    <div class="two-col cv-section">
+      <div class="col-left" appScrollReveal>
+        <h4>{{ utils.getName('tools') }}</h4>
+        <div class="inline-items" appStaggerReveal>
+          @for (key of objectKeys(tools); track key) {
+            <div class="card-panel inline-item stagger-item tool-item">{{ key }}</div>
+          }
+        </div>
+      </div>
+      <div class="col-right" appScrollReveal>
+        <h4>{{ utils.getName('network_experience') }}</h4>
+        <div class="inline-items" appStaggerReveal>
+          @for (key of objectKeys(network); track key) {
+            <div class="card-panel inline-item stagger-item">{{ key | uppercase }}</div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section-divider"><span class="material-icons">apps</span></div>
+    <div class="cv-section" appScrollReveal>
+      <h4>{{ utils.getName('projects') }}</h4>
+      <div appStaggerReveal>
+        @for (p of mainProjects; track p.$key) {
+          <div class="project-item card-panel stagger-item" (click)="openProjectModal(p)">
+            <div class="project-header">
+              <span class="project-name">{{ utils.getName(p.name) }}</span>
+              @if (p.embeddable) {
+                <span class="demo-badge">DEMO</span>
+              } @else {
+                <span class="no-demo-badge">Link</span>
+              }
+            </div>
+            <div class="project-desc">{{ utils.getName(p.description) }}</div>
+            @if (p.technologies) {
+              <div class="chips">
+                @for (k of splitTech(p.technologies); track k) {
+                  <span class="chip">{{ k }}</span>
+                }
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Contests -->
+    <div class="section-divider"><span class="material-icons">emoji_events</span></div>
+    <div class="cv-section" appScrollReveal>
+      <h4>{{ utils.getName('contests') }}</h4>
+      <div appStaggerReveal>
+        @for (c of contests; track c.$key) {
+          <div class="card-panel stagger-item">
+            <strong>{{ utils.getName(c.title) }}</strong>
+            <div>{{ utils.getName(c.description) }}</div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Project Modal -->
+@if (modalOpen) {
+  <div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h4>{{ utils.getName(selectedProject.name) }}</h4>
+      <p>{{ utils.getName(selectedProject.description) }}</p>
+      @if (selectedProject.trustedLink) {
+        <iframe class="demo-frame" [src]="selectedProject.trustedLink" sandbox="allow-scripts allow-same-origin"></iframe>
+      }
+      @if (selectedProject.demo) {
+        <img class="demo-img" [src]="selectedProject.demo" alt="Project demo">
+      }
+      @if (selectedProject.technologies) {
+        <div class="chips">
+          @for (k of splitTech(selectedProject.technologies); track k) {
+            <span class="chip">{{ k }}</span>
+          }
+        </div>
+      }
+      <div class="modal-actions">
+        @if (selectedProject.link) {
+          <a [href]="selectedProject.link" target="_blank" class="btn blue">
+            <i class="material-icons left">open_in_new</i>Open Project
+          </a>
+        }
+        <button class="btn-flat" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+}

@@ -1,0 +1,74 @@
+<div class="container">
+  <h4 appScrollReveal>{{ utils.getName('projects') }}</h4>
+
+  @if (projects.length > 0) {
+    <div class="carousel-wrapper">
+      <button class="nav-btn prev" (click)="prevProject()"><i class="material-icons">navigate_before</i></button>
+      <div class="carousel-card {{ getColor(currentIdx) }}" (click)="openModal(currentProject)">
+        <div class="card-date">{{ utils.formatDate(currentProject.time) }}</div>
+        <h5 class="card-title">{{ utils.getName(currentProject.name) }}</h5>
+        <div class="card-body">
+          <p class="card-desc">{{ utils.getName(currentProject.description) }}</p>
+          @if (currentProject.technologies) {
+            <div class="chips">
+              @for (k of splitTech(currentProject.technologies); track k) {
+                <span class="chip">{{ k }}</span>
+              }
+            </div>
+          }
+        </div>
+        @if (currentProject.demo) {
+          <img class="card-demo" [src]="currentProject.demo" [alt]="currentProject.name">
+        }
+        <div class="card-actions">
+          @if (currentProject.link) {
+            <a [href]="currentProject.link" target="_blank" class="btn white" (click)="$event.stopPropagation()">
+              <i class="material-icons">open_in_new</i>View
+            </a>
+          }
+          @if (currentProject.embeddable) {
+            <button class="btn green" (click)="openModal(currentProject); $event.stopPropagation()">
+              <i class="material-icons">play_arrow</i>Demo
+            </button>
+          }
+        </div>
+      </div>
+      <button class="nav-btn next" (click)="nextProject()"><i class="material-icons">navigate_next</i></button>
+    </div>
+    <div class="carousel-dots">
+      @for (p of projects; track p.$key; let i = $index) {
+        <span class="dot" [class.active]="i === currentIdx" (click)="currentIdx = i"></span>
+      }
+    </div>
+  } @else {
+    <div class="loading"><div class="spinner"></div></div>
+  }
+</div>
+
+@if (modalOpen) {
+  <div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h4>{{ utils.getName(selectedProject.name) }}</h4>
+      <p>{{ utils.getName(selectedProject.description) }}</p>
+      @if (selectedProject.trustedLink) {
+        <iframe class="demo-frame" [src]="selectedProject.trustedLink" sandbox="allow-scripts allow-same-origin"></iframe>
+      }
+      @if (selectedProject.demo) {
+        <img class="demo-img" [src]="selectedProject.demo" alt="Demo">
+      }
+      @if (selectedProject.technologies) {
+        <div class="chips">
+          @for (k of splitTech(selectedProject.technologies); track k) {
+            <span class="chip">{{ k }}</span>
+          }
+        </div>
+      }
+      <div class="modal-actions">
+        @if (selectedProject.link) {
+          <a [href]="selectedProject.link" target="_blank" class="btn blue">Open Project</a>
+        }
+        <button class="btn-flat" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+}

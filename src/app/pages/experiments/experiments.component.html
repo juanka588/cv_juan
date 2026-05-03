@@ -1,0 +1,14 @@
+<div class="container">
+  <h4>Experiments</h4>
+  <div class="grid">
+    @for (e of experiments; track e.id) {
+      <a [routerLink]="'/experiment/' + e.id" class="card">
+        <img [src]="e.image" [alt]="e.name">
+        <div class="card-content">
+          <h5>{{ e.name }}</h5>
+          <span class="link">Show &rarr;</span>
+        </div>
+      </a>
+    }
+  </div>
+</div>

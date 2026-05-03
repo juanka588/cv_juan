@@ -1,0 +1,28 @@
+<div class="container">
+  <h3 appScrollReveal>{{ utils.getName('work_experience') }}</h3>
+  <div appStaggerReveal>
+    @for (wk of work; track wk.$key) {
+      <div class="work-item card-panel stagger-item">
+        <div class="work-row">
+          <div class="work-meta">
+            <div class="enterprise">{{ wk.enterprise }}</div>
+            <div class="period">{{ utils.getName('since') }}: {{ wk.period_init }}</div>
+            <div class="period">{{ utils.getName('until') }}: {{ wk.period_finish }}</div>
+            <div class="place">{{ wk.place }}</div>
+          </div>
+          <div class="work-detail">
+            <div class="rol">{{ utils.getName(wk.rol) }}</div>
+            <div class="description">{{ utils.getName(wk.description) }}</div>
+          </div>
+        </div>
+        @if (wk.keywords) {
+          <div class="chips">
+            @for (k of splitKeywords(wk.keywords); track k) {
+              <span class="chip">{{ k }}</span>
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

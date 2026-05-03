@@ -1,0 +1,72 @@
+<nav class="navbar-fixed">
+  <div class="nav-wrapper blue">
+    <a routerLink="/main" class="brand-logo">
+      <span class="material-icons">insert_chart</span>
+      <span>Juan Camilo</span>
+    </a>
+    <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
+      <span class="material-icons">menu</span>
+    </button>
+    <ul class="nav-links hide-on-med-and-down">
+      <li><a routerLink="/main">{{ utils.getName('index') }}</a></li>
+      <li><a routerLink="/juan">{{ utils.getName('about_me') }}</a></li>
+      <li><a routerLink="/cvitae">CV</a></li>
+      <li><a routerLink="/experience">{{ utils.getName('work_experience') }}</a></li>
+      <li><a routerLink="/projects">{{ utils.getName('projects') }}</a></li>
+      <li class="lang-dropdown">
+        <a (click)="langDropdownOpen = !langDropdownOpen">
+          <span class="material-icons right-icon">arrow_drop_down</span>
+          {{ utils.language | uppercase }}
+        </a>
+        @if (langDropdownOpen) {
+          <ul class="dropdown-content">
+            @for (l of languages; track l) {
+              <li><a (click)="updateLanguage(l)">{{ l | uppercase }}</a></li>
+            }
+          </ul>
+        }
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Mobile Side Nav Overlay -->
+@if (mobileMenuOpen) {
+  <div class="sidenav-overlay" (click)="closeMobileMenu()"></div>
+  <ul class="sidenav" [class.open]="mobileMenuOpen">
+    <li class="sidenav-header">
+      @if (auth.firebaseUser(); as user) {
+        <div class="sidenav-user">
+          <img class="circle" [src]="user.photoURL || 'images/me.jpg'" alt="profile">
+          <span class="sidenav-user-name">{{ user.displayName }}</span>
+          <span class="sidenav-user-email">{{ user.email }}</span>
+          <button class="btn btn-small" (click)="auth.signOut()">Sign Out</button>
+        </div>
+      } @else {
+        <div class="sidenav-guest">
+          <img class="circle" src="images/me.jpg" alt="profile">
+          <span class="sidenav-user-name">Juan Camilo</span>
+          <button class="btn btn-small" (click)="auth.signIn()">Sign In</button>
+        </div>
+      }
+    </li>
+    <li><a routerLink="/main" (click)="closeMobileMenu()"><i class="material-icons">home</i>{{ utils.getName('index') }}</a></li>
+    <li><a routerLink="/juan" (click)="closeMobileMenu()"><i class="material-icons">person</i>{{ utils.getName('about_me') }}</a></li>
+    <li><a routerLink="/cvitae" (click)="closeMobileMenu()"><i class="material-icons">description</i>Curriculum Vitae</a></li>
+    <li><a routerLink="/experience" (click)="closeMobileMenu()"><i class="material-icons">work</i>{{ utils.getName('work_experience') }}</a></li>
+    <li><a routerLink="/projects" (click)="closeMobileMenu()"><i class="material-icons">apps</i>{{ utils.getName('projects') }}</a></li>
+    <li><a routerLink="/experiments" (click)="closeMobileMenu()"><i class="material-icons">science</i>{{ utils.getName('experiments') }}</a></li>
+    @if (auth.isLoggedIn()) {
+      <li><a routerLink="/accounts" (click)="closeMobileMenu()"><i class="material-icons">account_balance</i>{{ utils.getName('accounts') }}</a></li>
+    }
+    <li class="divider"></li>
+    <li class="lang-section">
+      <span class="lang-title"><i class="material-icons">language</i>{{ utils.getName('language') || 'Languages' }}</span>
+      <div class="lang-options">
+        @for (l of languages; track l) {
+          <a (click)="updateLanguage(l); closeMobileMenu()">{{ l | uppercase }}</a>
+        }
+      </div>
+    </li>
+  </ul>
+}

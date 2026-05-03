@@ -1,0 +1,22 @@
+<div class="side-nav-cv" [class.collapsed]="!expanded">
+  <div class="sidenav-header-desktop">
+    <img class="circle" alt="profile" src="images/me.jpg">
+    <span class="sidenav-desktop-name">Juan Camilo</span>
+  </div>
+  <ul class="menu-list">
+    <li><a routerLink="/main" routerLinkActive="active"><i class="material-icons">home</i>@if (expanded) { <span>{{ utils.getName('index') }}</span> }</a></li>
+    <li><a routerLink="/juan" routerLinkActive="active"><i class="material-icons">person</i>@if (expanded) { <span>{{ utils.getName('about_me') }}</span> }</a></li>
+    <li><a routerLink="/cvitae" routerLinkActive="active"><i class="material-icons">description</i>@if (expanded) { <span>Curriculum Vitae</span> }</a></li>
+    <li><a routerLink="/experience" routerLinkActive="active"><i class="material-icons">work</i>@if (expanded) { <span>{{ utils.getName('work_experience') }}</span> }</a></li>
+    <li><a routerLink="/projects" routerLinkActive="active"><i class="material-icons">apps</i>@if (expanded) { <span>{{ utils.getName('projects') }}</span> }</a></li>
+    <li><a routerLink="/experiments" routerLinkActive="active"><i class="material-icons">science</i>@if (expanded) { <span>{{ utils.getName('experiments') }}</span> }</a></li>
+    @if (auth.isLoggedIn()) {
+      <li><a routerLink="/accounts" routerLinkActive="active"><i class="material-icons">account_balance</i>@if (expanded) { <span>{{ utils.getName('accounts') }}</span> }</a></li>
+    }
+  </ul>
+  <div class="toggle-btn">
+    <a (click)="toggleExpand()">
+      <i class="material-icons">{{ expanded ? 'chevron_left' : 'chevron_right' }}</i>
+    </a>
+  </div>
+</div>

@@ -21,21 +21,18 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps --registry https://registry.npmjs.org/
 
-      - name: Verify karma installed
-        run: ls -la node_modules/.bin/karma && node_modules/.bin/karma --version
-
-      - name: Create config.js for tests
-        run: cp config.example.js config.js
-
       - name: Run tests
-        run: node node_modules/karma/bin/karma start karma.conf.js --single-run
+        run: npx ng test --no-watch --browsers=ChromeHeadless --code-coverage
+
+      - name: Build
+        run: npx ng build --configuration production
 
       - name: Upload coverage
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: coverage-report
-          path: build/coverage/
+          path: coverage/
 
   sonar:
     runs-on: ubuntu-latest
@@ -49,7 +46,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: coverage-report
-          path: build/coverage/
+          path: coverage/
 
       - uses: SonarSource/sonarcloud-github-action@v5
         env:

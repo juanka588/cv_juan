@@ -1,0 +1,25 @@
+<div class="experiment-layout">
+  <div class="controls">
+    <a routerLink="/experiments" class="back-link">&larr; Back</a>
+    <label>Max Number</label>
+    <input type="number" [(ngModel)]="total">
+    <div class="prime-nav">
+      <span>{{ primes[prev] }}</span>
+      <strong class="current-prime">{{ primes[current] }}</strong>
+      <span>{{ primes[next] }}</span>
+    </div>
+    <div class="nav-buttons">
+      <button (click)="prevNumber()">Prev</button>
+      <button (click)="nextNumber()">Next</button>
+    </div>
+    <label>Increasing <input type="checkbox" [(ngModel)]="increasing"></label>
+    <label>Auto <input type="checkbox" [(ngModel)]="auto"></label>
+    <label>Iterations</label>
+    <input type="number" min="0" max="1000" [(ngModel)]="iterations">
+    <label>Custom number</label>
+    <input type="number" [(ngModel)]="customNumber">
+  </div>
+  <div class="canvas-area">
+    <div #sketchHolder></div>
+  </div>
+</div>

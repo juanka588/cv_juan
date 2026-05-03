@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="card-panel contact-card">
+    <img src="images/me.jpg" alt="myself" class="circle profile-img">
+    <div class="contact-info">
+      <div class="full-name">{{ contact.name }}</div>
+      <address>{{ contact.address }}</address>
+      <div class="birthdate">{{ contact.birthdate }}</div>
+      <div>{{ contact.cellphone }}</div>
+      <div><a [href]="'mailto:' + contact.email">{{ contact.email }}</a></div>
+      <div><a target="_blank" [href]="contact.github">{{ contact.github }}</a></div>
+      <div><a target="_blank" [href]="contact.linkedIn">{{ contact.linkedIn }}</a></div>
+      <div><a target="_blank" [href]="contact.stackoverflow">{{ contact.stackoverflow }}</a></div>
+    </div>
+  </div>
+  <div #mapElement class="map"></div>
+</div>

@@ -1,0 +1,20 @@
+.container { max-width: 700px; margin: 0 auto; padding: 20px 16px; }
+.back-link { color: #1565c0; text-decoration: none; &:hover { text-decoration: underline; } }
+h4 { color: #1565c0; }
+.btn { padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer; color: white; margin: 8px 0; &.blue { background: #1565c0; } }
+.permutation-info { margin: 12px 0; display: flex; gap: 20px; color: #616161; }
+.browser-mock { border: 2px solid #e0e0e0; border-radius: 8px; overflow: hidden; margin: 20px 0; }
+.top-bar { background: #e0e0e0; padding: 8px 12px; }
+.circles { display: flex; gap: 6px; }
+.circle-btn { width: 12px; height: 12px; border-radius: 50%; &.close { background: #f44336; } &.minimize { background: #ff9800; } &.maximize { background: #4caf50; } }
+.browser-body { min-height: 200px; }
+.nav-test { height: 30px; }
+.content-area { display: flex; min-height: 150px; }
+.aside-test { width: 80px; padding: 8px; }
+.main-content-test { flex: 1; padding: 12px; }
+.title-test { height: 16px; width: 60%; margin-bottom: 12px; border-radius: 2px; }
+.line-test { height: 8px; margin: 6px 0; border-radius: 2px; opacity: 0.7; }
+.footer-test { height: 24px; }
+.color-controls { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; margin: 16px 0; }
+.color-row { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
+.color-swatch { width: 20px; height: 20px; border-radius: 50%; border: 1px solid #e0e0e0; }
