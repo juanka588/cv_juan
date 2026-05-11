@@ -27,13 +27,11 @@ export class AboutComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    console.log('[AboutComponent] Loading contact data...');
     this.data.getObject<any>('contact').subscribe({
       next: (c) => {
-        console.log('[AboutComponent] contact data:', c);
         this.contact = c || {};
-        if (this.mapLoaded && c?.location) {
-          this.initMap(c.location);
+        if (this.mapLoaded && c?.lat && c?.lon) {
+          this.initMap({ lat: c.lat, lng: c.lon });
         }
       },
       error: (err) => console.error('[AboutComponent] contact subscription error:', err),
@@ -52,7 +50,7 @@ export class AboutComponent implements OnInit, AfterViewInit {
   private loadGoogleMaps(): void {
     if (typeof google !== 'undefined' && google.maps) {
       this.mapLoaded = true;
-      if (this.contact?.location) this.initMap(this.contact.location);
+      if (this.contact?.lat && this.contact?.lon) this.initMap({ lat: this.contact.lat, lng: this.contact.lon });
       return;
     }
     const script = document.createElement('script');
@@ -60,8 +58,8 @@ export class AboutComponent implements OnInit, AfterViewInit {
     script.async = true;
     (window as any).__initMap = () => {
       this.mapLoaded = true;
-      if (this.contact?.location) {
-        this.initMap(this.contact.location);
+      if (this.contact?.lat && this.contact?.lon) {
+        this.initMap({ lat: this.contact.lat, lng: this.contact.lon });
       } else {
         this.initMap({ lat: 47.9016839, lng: 1.9220688 });
       }
